@@ -1,12 +1,12 @@
-import React from 'react';
-// import { FaPlus, FaCheckCircle, FaBars } from 'react-icons/fa';
+
+import { FaPlus, FaCheckCircle, FaBars } from 'react-icons/fa';
 // import { Inter } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+// const inter = Inter({ subsets: ['latin'] });
 
 const App = () => {
   return (
-    <div className={`${inter.className} bg-teal-50 text-gray-800`}>
+    <div className={` bg-teal-50 text-gray-800`}>
       {/* Header */}
       <header className="w-full bg-white shadow-md z-50">
         <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
