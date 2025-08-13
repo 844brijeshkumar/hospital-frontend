@@ -1,12 +1,10 @@
 import React from 'react';
-// import { FaPlus, FaCheckCircle, FaBars } from 'react-icons/fa';
-// import { Inter } from 'next/font/google';
+import { FaPlus, FaCheckCircle, FaBars } from 'react-icons/fa';
 
-const inter = Inter({ subsets: ['latin'] });
 
 const App = () => {
   return (
-    <div className={`${inter.className} bg-teal-50 text-gray-800`}>
+    <div className={` bg-teal-50 text-gray-800`}>
       {/* Header */}
       <header className="w-full bg-white shadow-md z-50">
         <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
@@ -51,12 +49,12 @@ const App = () => {
       <main className="container mx-auto px-6 py-12">
         {/* Three Icon Cards Section */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-8 -mt-20 relative z-20">
-          {/* Patient Portal Card */}
+        {/* Patient Portal Card */}
           <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
             <img src="PATIENT.png" alt="Patient and Doctor Icon" className="w-24 h-24 mb-4" />
             <h3 className="text-2xl font-semibold text-teal-800">Patient Portal</h3>
             <p className="text-gray-600 mt-2">Manage your appointments, records, and more.</p>
-          </div>
+          </div> 
 
           {/* AI Assistant Card */}
           <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
