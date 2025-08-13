@@ -53,21 +53,21 @@ const App = () => {
         <section className="grid grid-cols-1 md:grid-cols-3 gap-8 -mt-20 relative z-20">
           {/* Patient Portal Card */}
           <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
-            <img src="http://googleusercontent.com/file_content/11" alt="Patient and Doctor Icon" className="w-24 h-24 mb-4" />
+            <img src="PATIENT.png" alt="Patient and Doctor Icon" className="w-24 h-24 mb-4" />
             <h3 className="text-2xl font-semibold text-teal-800">Patient Portal</h3>
             <p className="text-gray-600 mt-2">Manage your appointments, records, and more.</p>
           </div>
 
           {/* AI Assistant Card */}
           <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
-            <img src="http://googleusercontent.com/file_content/9" alt="AI Assistant Icon" className="w-24 h-24 mb-4" />
+            <img src="AI.png" alt="AI Assistant Icon" className="w-24 h-24 mb-4" />
             <h3 className="text-2xl font-semibold text-teal-800">AI Assistant</h3>
             <p className="text-gray-600 mt-2">Get quick answers to your health questions.</p>
           </div>
 
           {/* Our Hospital Card */}
           <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
-            <img src="http://googleusercontent.com/file_content/10" alt="Hospital Icon" className="w-24 h-24 mb-4" />
+            <img src="HOSPITAL.png" alt="Hospital Icon" className="w-24 h-24 mb-4" />
             <h3 className="text-2xl font-semibold text-teal-800">About Us</h3>
             <p className="text-gray-600 mt-2">Learn about our mission and team of experts.</p>
           </div>
