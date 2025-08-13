@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React from 'react';
 import { FaPlus, FaCheckCircle, FaBars } from 'react-icons/fa';
+=======
+import { FaPlus, FaCheckCircle, FaBars } from 'react-icons/fa';
+
+>>>>>>> 45e8e85a85e3dff400d9667b748b6035d9862275
 
 
 const App = () => {
