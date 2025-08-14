@@ -58,7 +58,8 @@ const App = () => {
           </div> 
 
           {/* AI Assistant Card */}
-          <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
+          <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300);
+">
             <img src="AI.png" alt="AI Assistant Icon" className="w-24 h-24 mb-4" />
             <h3 className="text-2xl font-semibold text-teal-800">AI Assistant</h3>
             <p className="text-gray-600 mt-2">Get quick answers to your health questions.</p>
@@ -106,7 +107,7 @@ const App = () => {
       {/* Footer */}
       <footer className="bg-teal-900 text-white py-8 mt-12">
         <div className="container mx-auto px-6 text-center">
-          <p>&copy; 2023 Fauget Center. All rights reserved.</p>
+          <p>&copy; 2023 CareFirst. All rights reserved.</p>
         </div>
       </footer>
     </div>
