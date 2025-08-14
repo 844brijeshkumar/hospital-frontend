@@ -111,7 +111,6 @@ export default function index() {
     // --- END OF BACKEND INTEGRATION POINT ---
   };
 
-<<<<<<< HEAD
     return (
         <div className="bg-gradient-to-br from-[#7DB1AD] to-white min-h-screen flex justify-center items-center p-4 text-black">
             <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 space-y-6">
@@ -126,23 +125,6 @@ export default function index() {
                             ${isLogin
                                 ? 'text-gray-700 border-indigo-600'
                                 : 'text-gray-400 border-transparent hover:text-indigo-600'
-=======
-  return (
-    <div className="bg-gradient-to-br from-[#7DB1AD] text-black to-white min-h-screen flex justify-center items-center p-4">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 space-y-6">
-        {/* Tab Navigation */}
-        <div className="flex border-b border-gray-200">
-          <button
-            onClick={() => {
-              setIsLogin(true);
-              setMessage({ text: "", type: "" });
-            }}
-            className={`py-2 px-4 text-center font-semibold focus:outline-none transition-colors duration-200 border-b-2
-                            ${
-                              isLogin
-                                ? "text-gray-700 border-indigo-600"
-                                : "text-gray-400 border-transparent hover:text-indigo-600"
->>>>>>> f72e3b8c05e8470f48ef3aa48fd002732b84352e
                             }`}
           >
             Login
