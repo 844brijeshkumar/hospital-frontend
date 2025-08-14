@@ -127,7 +127,7 @@ export default function index() {
                     </button>
                 </div>
 
-                {/* Conditional Rendering of Forms */}
+                {/* Conditional Rendering of Form*/}
                 {isLogin ? (
                     // Login Form
                     <div className="space-y-6">
