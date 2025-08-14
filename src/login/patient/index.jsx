@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 // The main App component that renders the authentication page.
-export default function App() {
+export default function index() {
     // State to toggle between the Login and Signup forms.
     const [isLogin, setIsLogin] = useState(true);
     // State to hold and display messages to the user (e.g., success or error).
