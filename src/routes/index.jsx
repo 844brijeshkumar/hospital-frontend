@@ -4,6 +4,7 @@ import { lazy } from "react";
 import HomePage from "../pages/HomePage";
 import NotFound from "../pages/NotFound";
 import Test from "../pages/Test";
+import loginp from "../login/patient"
 // const PageNotFound = lazy(() => import("../component/PageNotFound"));
 
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
     path: "*",
     element: <NotFound />,
   },
+  {
+    path:"/loginp",
+    element:<l/>,
+  }
 ]);
 
 export default router;
