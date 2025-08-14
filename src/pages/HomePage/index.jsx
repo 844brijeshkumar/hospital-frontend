@@ -1,10 +1,6 @@
-<<<<<<< HEAD
+
 import React from 'react';
 import { FaPlus, FaCheckCircle, FaBars } from 'react-icons/fa';
-=======
-import { FaPlus, FaCheckCircle, FaBars } from 'react-icons/fa';
-
->>>>>>> 45e8e85a85e3dff400d9667b748b6035d9862275
 
 
 const App = () => {
@@ -15,14 +11,14 @@ const App = () => {
         <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
           <a href="#" className="flex items-center space-x-2">
             <FaPlus className="w-8 h-8 text-teal-600" />
-            <span className="text-2xl font-bold text-teal-900">FAUGET CENTER</span>
+            <span className="text-2xl font-bold text-teal-900">CareFirst</span>
           </a>
           <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
             <a href="#" className="hover:text-teal-600 transition-colors duration-200">Home</a>
             <a href="#" className="hover:text-teal-600 transition-colors duration-200">Services</a>
             <a href="#" className="hover:text-teal-600 transition-colors duration-200">About Us</a>
             <a href="#" className="hover:text-teal-600 transition-colors duration-200">Contact</a>
-            <a href="#" className="bg-teal-600 text-white px-4 py-2 rounded-full hover:bg-teal-700 transition-colors duration-200">Patient Portal</a>
+            {/* <a href="#" className="bg-teal-600 text-white px-4 py-2 rounded-full hover:bg-teal-700 transition-colors duration-200">Patient Portal</a> */}
           </div>
           {/* Mobile Menu Button */}
           <button className="md:hidden text-teal-600">
@@ -35,7 +31,7 @@ const App = () => {
       <div
         className="text-white flex items-center justify-center text-center py-20 px-4 md:py-32 lg:py-48"
         style={{
-          backgroundImage: `url('https://placehold.co/1920x800/d1e7e5/030202?text=Welcome+to+Fauget+Center')`,
+          backgroundImage: `url('https://placehold.co/1920x800/d1e7e5')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -44,9 +40,9 @@ const App = () => {
       >
         <div className="absolute top-0 left-0 w-full h-full bg-teal-800 opacity-40"></div>
         <div className="relative z-10">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Good Health is in your hands</h1>
-          <p className="text-xl md:text-2xl font-light mb-8">Providing compassionate and expert care for all your health needs.</p>
-          <a href="#" className="bg-white text-teal-600 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-200 transition-colors duration-200">Book an Appointment</a>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Good Health is in your hands</h1><br></br>
+          {/* <p className="text-xl md:text-2xl font-light mb-8">Providing compassionate and expert care for all your health needs.</p> */}
+          <a href="#" className=" rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300 bg-white text-teal-600 font-bold py-3 px-8 rounded-full shadow-lg  transition-colors duration-200 ">Book an Appointment</a>
         </div>
       </div>
 
@@ -55,8 +51,8 @@ const App = () => {
         {/* Three Icon Cards Section */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-8 -mt-20 relative z-20">
         {/* Patient Portal Card */}
-          <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
-            <img src="PATIENT.png" alt="Patient and Doctor Icon" className="w-24 h-24 mb-4" />
+          <div  className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
+            <img src="PATIENT.png"  alt="Patient and Doctor Icon" className="w-24 h-24 mb-4" />
             <h3 className="text-2xl font-semibold text-teal-800">Patient Portal</h3>
             <p className="text-gray-600 mt-2">Manage your appointments, records, and more.</p>
           </div> 
@@ -71,7 +67,7 @@ const App = () => {
           {/* Our Hospital Card */}
           <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
             <img src="HOSPITAL.png" alt="Hospital Icon" className="w-24 h-24 mb-4" />
-            <h3 className="text-2xl font-semibold text-teal-800">About Us</h3>
+            <h3 className="text-2xl font-semibold text-teal-800">Hospital Portal</h3>
             <p className="text-gray-600 mt-2">Learn about our mission and team of experts.</p>
           </div>
         </section>
