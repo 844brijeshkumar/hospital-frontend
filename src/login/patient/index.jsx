@@ -95,7 +95,7 @@ export default function index() {
     };
 
     return (
-        <div className="bg-gradient-to-br from-[#7DB1AD] to-white min-h-screen flex justify-center items-center p-4">
+        <div className="bg-gradient-to-br from-[#7DB1AD] to-white min-h-screen flex justify-center items-center p-4 text-black">
             <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 space-y-6">
                 {/* Tab Navigation */}
                 <div className="flex border-b border-gray-200">
