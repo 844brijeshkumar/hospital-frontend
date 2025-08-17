@@ -8,13 +8,15 @@ import {
   Tag,
   Clock,
 } from "lucide-react";
-const index = ({ reports }) => {
+
+const Reports = ({ reports }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedPriority, setSelectedPriority] = useState("all");
-  const [sortBy, setSortBy] = useState("date"); // default sort by date
+  const [sortBy, setSortBy] = useState("date");
   const [sortOrder, setSortOrder] = useState("asc");
 
+  // Define categories and priorities for the filter options
   const categories = [
     { value: "all", label: "All Categories" },
     { value: "lab", label: "Lab Tests" },
@@ -34,6 +36,7 @@ const index = ({ reports }) => {
     { value: "low", label: "Low" },
   ];
 
+  // Use useMemo to filter and sort reports efficiently
   const filteredAndSortedReports = useMemo(() => {
     let filtered = reports.filter((report) => {
       const matchesSearch =
@@ -50,7 +53,7 @@ const index = ({ reports }) => {
       return matchesSearch && matchesCategory && matchesPriority;
     });
 
-    // Sort reports
+    // Sort reports based on selected criteria
     filtered.sort((a, b) => {
       if (sortBy === "date") {
         const dateA = new Date(a.date).getTime();
@@ -77,6 +80,7 @@ const index = ({ reports }) => {
     sortOrder,
   ]);
 
+  // Helper function to get the appropriate emoji icon for a report category
   const getCategoryIcon = (category) => {
     switch (category) {
       case "lab":
@@ -88,7 +92,7 @@ const index = ({ reports }) => {
       case "consultation":
         return "👨‍⚕️";
       case "surgery":
-        return "🏥";
+        return "�";
       case "vaccination":
         return "💉";
       default:
@@ -96,6 +100,7 @@ const index = ({ reports }) => {
     }
   };
 
+  // Helper function to format the date
   const formatDate = (date) => {
     return new Intl.DateTimeFormat("en-IN", {
       year: "numeric",
@@ -103,9 +108,10 @@ const index = ({ reports }) => {
       day: "numeric",
       hour: "2-digit",
       minute: "2-digit",
-    }).format(date);
+    }).format(new Date(date));
   };
 
+  // Helper function to get the Tailwind CSS classes for priority color
   const getPriorityColor = (priority) => {
     switch (priority) {
       case "critical":
@@ -115,7 +121,7 @@ const index = ({ reports }) => {
       case "medium":
         return "bg-yellow-100 text-yellow-800 border-yellow-200";
       case "low":
-        return "bg-green-100 text-green-800 border-green-200";
+        return "bg-emerald-100 text-emerald-800 border-emerald-200";
       default:
         return "bg-gray-100 text-gray-800 border-gray-200";
     }
@@ -123,12 +129,12 @@ const index = ({ reports }) => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-2xl shadow-2xl p-8 mb-8 text-white">
+      {/* Header with the new color gradient */}
+      <div className="bg-gradient-to-r from-[#6B9691] via-[#8FBEB9] to-[#B5E3E0] rounded-2xl shadow-2xl p-8 mb-8 text-white">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
           <div>
             <h1 className="text-4xl font-bold mb-2">Medical History</h1>
-            <p className="text-indigo-100">
+            <p className="text-stone-100">
               Complete timeline of your healthcare journey
             </p>
           </div>
@@ -212,7 +218,7 @@ const index = ({ reports }) => {
             <div className="p-6">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-start space-x-4">
-                  <div className="text-4xl bg-gradient-to-br from-blue-50 to-purple-50 p-3 rounded-xl border border-blue-100">
+                  <div className="text-4xl bg-gradient-to-br from-[#E1F3F1] to-[#F1F9F8] p-3 rounded-xl border border-[#D5E6E4]">
                     {getCategoryIcon(report.category)}
                   </div>
                   <div className="flex-1">
@@ -236,7 +242,7 @@ const index = ({ reports }) => {
                         {report.tags.map((tag, index) => (
                           <span
                             key={index}
-                            className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 border border-blue-200"
+                            className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-gradient-to-r from-[#D5E6E4] to-[#E1F3F1] text-[#4A726E] border border-[#B5D6D3]"
                           >
                             <Tag className="h-3 w-3 mr-1" />
                             {tag}
@@ -268,7 +274,7 @@ const index = ({ reports }) => {
                   <span>Last updated: {formatDate(report.date)}</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <button className="text-blue-600 hover:text-blue-700 p-2 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-200">
+                  <button className="text-[#6B9691] hover:text-[#58807C] p-2 rounded-xl hover:bg-[#F1F9F8] transition-all duration-200">
                     <Eye className="h-4 w-4" />
                   </button>
                   <button className="text-emerald-600 hover:text-emerald-700 p-2 rounded-xl hover:bg-emerald-50 transition-all duration-200">
@@ -299,4 +305,4 @@ const index = ({ reports }) => {
   );
 };
 
-export default index;
+export default Reports;

@@ -9,18 +9,21 @@ import {
   Clock,
 } from "lucide-react";
 
-const index = ({ patient, reports }) => {
+const Dashboard = ({ patient, reports }) => {
+  // Slice the reports to show only the 3 most recent
   const recentReports = reports.slice(0, 3);
+  // Filter for high priority reports
   const criticalReports = reports.filter(
     (r) => r.priority === "critical" || r.priority === "high"
   );
 
+  // Helper function to get the appropriate emoji icon for a report category
   const getCategoryIcon = (category) => {
     switch (category) {
       case "lab":
         return "🧪";
       case "imaging":
-        return "📊";
+        return "�";
       case "prescription":
         return "💊";
       case "consultation":
@@ -34,14 +37,16 @@ const index = ({ patient, reports }) => {
     }
   };
 
+  // Helper function to format the date
   const formatDate = (date) => {
     return new Intl.DateTimeFormat("en-IN", {
       year: "numeric",
       month: "short",
       day: "numeric",
-    }).format(date);
+    }).format(new Date(date));
   };
 
+  // Helper function to calculate the patient's age
   const getAge = () => {
     const today = new Date();
     const birthDate = new Date(patient.dateOfBirth);
@@ -58,16 +63,14 @@ const index = ({ patient, reports }) => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      {/* Welcome Section */}
-      <div className="bg-gradient-to-r from-purple-600 via-blue-600 to-emerald-600 rounded-2xl p-8 text-white mb-8 shadow-2xl">
+      {/* Welcome Section with the new gradient */}
+      <div className="bg-gradient-to-r from-[#6B9691] via-[#8FBEB9] to-[#B5E3E0] rounded-2xl p-8 text-white mb-8 shadow-2xl">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between">
           <div>
             <h1 className="text-3xl font-bold mb-2">
               Welcome back, {patient.name}!
             </h1>
-            <p className="text-purple-100">
-              Your complete medical history at a glance
-            </p>
+            <p className="text-stone-100">Your complete medical history at a glance</p>
           </div>
           <div className="mt-4 md:mt-0">
             <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/30">
@@ -295,4 +298,4 @@ const index = ({ patient, reports }) => {
   );
 };
 
-export default index;
+export default Dashboard;
