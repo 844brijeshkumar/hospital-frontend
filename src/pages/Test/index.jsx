@@ -38,17 +38,9 @@ const index = () => {
       <footer className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 border-t border-slate-600 py-8 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <div className="bg-gradient-to-r from-emerald-500 to-teal-500 p-2 rounded-xl">
-                <svg
-                  className="h-6 w-6 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 2L13.09 8.26L19 7L17.74 13.09L22 14L15.74 17.74L14 22L7.74 15.74L2 14L8.26 13.09L7 7L13.09 8.26L12 2Z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-white">MediVault</h3>
+            <div className="flex items-center justify-center space-x-1 mb-2">
+              <img src="logo.png" className=" h-20 w-20" />
+              <h3 className="text-lg font-bold text-white">MedLock</h3>
             </div>
             <p className="text-slate-300 mb-2">
               Your trusted centralized medical report system

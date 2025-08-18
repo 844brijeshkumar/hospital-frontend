@@ -7,11 +7,11 @@ const Header = ({ activeView, onViewChange, patientName }) => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="bg-white/20 backdrop-blur-sm p-2 rounded-xl border border-white/30">
-              <Activity className="h-8 w-8 text-white" />
+            <div>
+              <img src="logo.png" className="h-20 w-20 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-white">MediVault</h1>
+              <h1 className="text-2xl font-bold text-white">MedLock</h1>
               <p className="text-xs text-stone-100">
                 Centralized Medical Reports
               </p>

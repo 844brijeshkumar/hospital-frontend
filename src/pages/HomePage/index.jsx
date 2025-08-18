@@ -10,8 +10,8 @@ const App = () => {
       <header className="w-full bg-white shadow-md z-50">
         <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
           <a href="#" className="flex items-center space-x-2">
-            <FaPlus className="w-8 h-8 text-teal-600" />
-            <span className="text-2xl font-bold text-teal-900">CareFirst</span>
+            <img src='logo.png' className="w-30 h-30 text-teal-700" />
+            <span className="text-2xl font-bold text-teal-900">MedLock</span>
           </a>
           <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
             <a href="#" className="hover:text-teal-600 transition-colors duration-200">Home</a>
@@ -107,7 +107,7 @@ const App = () => {
       {/* Footer */}
       <footer className="bg-teal-900 text-white py-8 mt-12">
         <div className="container mx-auto px-6 text-center">
-          <p>&copy; 2023 CareFirst. All rights reserved.</p>
+          <p>&copy; 2023 MedLock. All rights reserved.</p>
         </div>
       </footer>
     </div>
