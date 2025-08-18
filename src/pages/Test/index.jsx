@@ -39,7 +39,7 @@ const index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-1 mb-2">
-              <img src="logo.png" className=" h-20 w-20" />
+              <img src="logo.png" className=" h-22 w-20" />
               <h3 className="text-lg font-bold text-white">MedLock</h3>
             </div>
             <p className="text-slate-300 mb-2">
