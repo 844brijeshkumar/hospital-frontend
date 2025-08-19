@@ -202,7 +202,24 @@ const App = () => {
           </Link>
 
           {/* AI Assistant Card - Replaced with the new component */}
-          <VoiceAssistant />
+          {/* <VoiceAssistant /> */}
+          <Link to="/logina">
+            <div className="bg-white h-full p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
+              <img src="AI.png" alt="AI Icon" className="w-24 h-24 mb-4" />
+              <h3 className="text-2xl font-semibold text-teal-800">
+                AI Assistant
+              </h3>
+              {/* <p className="text-gray-600 mt-2">
+                Manage your appointments, records, and more.
+              </p> */}
+              <div
+                // onClick={startListening}
+                className="bg-teal-600 text-white p-2 rounded-full hover:bg-teal-700 transition-colors duration-200"
+              >
+                <FaMicrophone className="w-4 h-4" />
+              </div>{" "}
+            </div>
+          </Link>
 
           {/* Our Hospital Card */}
           <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
