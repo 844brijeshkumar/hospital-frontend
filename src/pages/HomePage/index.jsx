@@ -1,16 +1,102 @@
+import React, { useState, useRef, useEffect } from 'react';
+import { FaPlus, FaCheckCircle, FaBars, FaMicrophone, FaStop } from 'react-icons/fa';
 
-import React from 'react';
-import { FaPlus, FaCheckCircle, FaBars } from 'react-icons/fa';
+// The new VoiceAssistant component
+const VoiceAssistant = () => {
+  const [isListening, setIsListening] = useState(false);
+  const [status, setStatus] = useState('Press the mic to start talking.');
+  const ws = useRef(null);
+  const audioContext = useRef(null);
+  const sourceNode = useRef(null);
 
+  useEffect(() => {
+    ws.current = new WebSocket('ws://localhost:8080');
 
+    ws.current.onopen = () => {
+      console.log('WebSocket connected');
+    };
+
+    ws.current.onmessage = (event) => {
+      const audioData = event.data;
+      if (audioContext.current && sourceNode.current) {
+        audioContext.current.decodeAudioData(audioData, (buffer) => {
+          const newSource = audioContext.current.createBufferSource();
+          newSource.buffer = buffer;
+          newSource.connect(sourceNode.current);
+          newSource.start(0);
+        });
+      }
+    };
+
+    return () => {
+      ws.current.close();
+    };
+  }, []);
+
+  const startListening = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const mediaRecorder = new MediaRecorder(stream);
+      audioContext.current = new (window.AudioContext || window.webkitAudioContext)();
+      sourceNode.current = audioContext.current.destination;
+
+      mediaRecorder.ondataavailable = (event) => {
+        if (ws.current.readyState === WebSocket.OPEN) {
+          ws.current.send(event.data);
+        }
+      };
+
+      mediaRecorder.start(100);
+      setIsListening(true);
+      setStatus('Listening...');
+    } catch (error) {
+      console.error('Error accessing microphone:', error);
+      setStatus('Microphone access denied.');
+    }
+  };
+
+  const stopListening = () => {
+    if (ws.current.readyState === WebSocket.OPEN) {
+      ws.current.close();
+    }
+    setIsListening(false);
+    setStatus('Recording stopped.');
+  };
+
+  return (
+    <div className="bg-white p-8 rounded-2xl shadow-xl text-center">
+      <h3 className="text-2xl font-semibold text-teal-800 mb-4">AI Assistant</h3>
+      <p className="text-gray-600 mb-4">{status}</p>
+      <div className="flex justify-center space-x-4">
+        {!isListening ? (
+          <button
+            onClick={startListening}
+            className="bg-teal-600 text-white p-4 rounded-full hover:bg-teal-700 transition-colors duration-200"
+          >
+            <FaMicrophone className="w-6 h-6" />
+          </button>
+        ) : (
+          <button
+            onClick={stopListening}
+            className="bg-red-600 text-white p-4 rounded-full hover:bg-red-700 transition-colors duration-200"
+          >
+            <FaStop className="w-6 h-6" />
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// The main App component
 const App = () => {
   return (
-    <div className={` bg-teal-50 text-gray-800`}>
+    <div className={`bg-teal-50 text-gray-800`}>
       {/* Header */}
       <header className="w-full bg-white shadow-md z-50">
         <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
           <a href="#" className="flex items-center space-x-2">
-            <img src='logo.png' className="w-30 h-33 text-teal-700" />
+            <img src='logo.png' className="w-30 h-33 text-teal-700" alt="MedLock Logo" />
             <span className="text-2xl font-bold text-teal-900">MedLock</span>
           </a>
           <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
@@ -18,9 +104,7 @@ const App = () => {
             <a href="#" className="hover:text-teal-600 transition-colors duration-200">Services</a>
             <a href="#" className="hover:text-teal-600 transition-colors duration-200">About Us</a>
             <a href="#" className="hover:text-teal-600 transition-colors duration-200">Contact</a>
-            {/* <a href="#" className="bg-teal-600 text-white px-4 py-2 rounded-full hover:bg-teal-700 transition-colors duration-200">Patient Portal</a> */}
           </div>
-          {/* Mobile Menu Button */}
           <button className="md:hidden text-teal-600">
             <FaBars className="w-6 h-6" />
           </button>
@@ -41,8 +125,7 @@ const App = () => {
         <div className="absolute top-0 left-0 w-full h-full bg-teal-800 opacity-40"></div>
         <div className="relative z-10">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">Good Health is in your hands</h1><br></br>
-          {/* <p className="text-xl md:text-2xl font-light mb-8">Providing compassionate and expert care for all your health needs.</p> */}
-          <a href="#" className=" rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300 bg-white text-teal-600 font-bold py-3 px-8 rounded-full shadow-lg  transition-colors duration-200 ">Book an Appointment</a>
+          <a href="#" className="rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300 bg-white text-teal-600 font-bold py-3 px-8 rounded-full shadow-lg transition-colors duration-200 ">Book an Appointment</a>
         </div>
       </div>
 
@@ -50,20 +133,15 @@ const App = () => {
       <main className="container mx-auto px-6 py-12">
         {/* Three Icon Cards Section */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-8 -mt-20 relative z-20">
-        {/* Patient Portal Card */}
-          <div  className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
-            <img src="PATIENT.png"  alt="Patient and Doctor Icon" className="w-24 h-24 mb-4" />
+          {/* Patient Portal Card */}
+          <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
+            <img src="PATIENT.png" alt="Patient and Doctor Icon" className="w-24 h-24 mb-4" />
             <h3 className="text-2xl font-semibold text-teal-800">Patient Portal</h3>
             <p className="text-gray-600 mt-2">Manage your appointments, records, and more.</p>
-          </div> 
-
-          {/* AI Assistant Card */}
-          <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300 );
-">
-            <img src="AI.png" alt="AI Assistant Icon" className="w-24 h-24 mb-4" />
-            <h3 className="text-2xl font-semibold text-teal-800">AI Assistant</h3>
-            <p className="text-gray-600 mt-2">Get quick answers to your health questions.</p>
           </div>
+
+          {/* AI Assistant Card - Replaced with the new component */}
+          <VoiceAssistant />
 
           {/* Our Hospital Card */}
           <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">

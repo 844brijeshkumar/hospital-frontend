@@ -21,7 +21,7 @@ const App = () => {
   // State to store chat messages
   const [messages, setMessages] = useState([{
     sender: 'bot',
-    text: "Hello! I am a large language model, trained by Google. I can help answer your medical questions, but I'm not a medical professional. Always consult a qualified doctor for advice. What can I help you with today?",
+    text: "Hello! I can help answer your medical questions, but I'm not a medical professional. Always consult a qualified doctor for advice. What can I help you with today?",
   }]);
   // State for the user's input message
   const [input, setInput] = useState('');
@@ -374,7 +374,7 @@ const App = () => {
       {messageBox.visible && <MessageBox message={messageBox.message} onClose={() => setMessageBox({ visible: false, message: '' })} />}
 
       {/* Disclaimer section */}
-      <div className="bg-red-600 text-white p-3 rounded-xl mb-4 text-sm font-medium text-center shadow-md">
+      <div className="bg-white text-red-600 p-3 rounded-xl mb-4 font-medium text-center">
         Disclaimer: This is an AI assistant and not a substitute for professional medical advice. Always consult a qualified healthcare provider.
       </div>
 
