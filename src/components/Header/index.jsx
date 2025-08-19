@@ -24,8 +24,8 @@ const Header = ({ activeView, onViewChange, patientName }) => {
               onClick={() => onViewChange("dashboard")}
               className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
                 activeView === "dashboard"
-                  ? "bg-white/20 text-white shadow-lg backdrop-blur-sm border border-white/30"
-                  : "text-stone-100 hover:text-white hover:bg-white/10"
+                  ? "bg-[#d1e8e5] text-[#0b4f4a] shadow-lg backdrop-blur-sm"
+                  : "text-[#0b4f4a] hover:bg-[#e0f1ef]"
               }`}
             >
               <User className="inline h-4 w-4 mr-2" />
