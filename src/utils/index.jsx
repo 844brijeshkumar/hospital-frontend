@@ -1,6 +1,6 @@
 export const mockPatient = {
   id: "1",
-  name: "Rahul Sharma",
+  name: "Brijesh Maurya",
   email: "rahul.sharma@email.com",
   phone: "+91 98765 43210",
   dateOfBirth: new Date("1985-06-15"),

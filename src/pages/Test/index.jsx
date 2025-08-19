@@ -49,7 +49,7 @@ const index = () => {
               Secure • Reliable • Always Accessible
             </p>
             <div className="mt-4 pt-4 border-t border-slate-600 text-xs text-slate-400">
-              © 2025 MediVault. All rights reserved. | Privacy Policy | Terms of
+              © 2023 MedLock. All rights reserved. | Privacy Policy | Terms of
               Service
             </div>
           </div>
