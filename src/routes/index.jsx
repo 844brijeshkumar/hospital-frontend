@@ -6,6 +6,7 @@ import NotFound from "../pages/NotFound";
 import Test from "../pages/Test";
 import Loginp from "../login/patient"
 import Loginh from "../login/hospital"
+import LoginA from "../login/aiAssistent"
 // const PageNotFound = lazy(() => import("../component/PageNotFound"));
 
 const router = createBrowserRouter([
@@ -29,7 +30,10 @@ const router = createBrowserRouter([
     path:"/loginh",
     element:<Loginh/>
   },
-  
+  {
+    path: "/logina",
+    element:<LoginA/>
+  },
 ]);
 
 export default router;
