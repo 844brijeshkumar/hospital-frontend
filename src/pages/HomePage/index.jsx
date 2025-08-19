@@ -58,7 +58,7 @@ const App = () => {
           </div> 
 
           {/* AI Assistant Card */}
-          <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300);
+          <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300 );
 ">
             <img src="AI.png" alt="AI Assistant Icon" className="w-24 h-24 mb-4" />
             <h3 className="text-2xl font-semibold text-teal-800">AI Assistant</h3>
