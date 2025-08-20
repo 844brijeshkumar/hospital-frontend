@@ -8,6 +8,7 @@ import Loginp from "../login/patient"
 import Loginh from "../login/hospital"
 import LoginA from "../login/aiAssistent"
 import LoginD from "../login/doctor"
+import HomeH from "../pages/HospitalPage"
 // const PageNotFound = lazy(() => import("../component/PageNotFound"));
 
 const router = createBrowserRouter([
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: "/logind",
     element:<LoginD/>
+  },
+  {
+    path: "/homeh",
+    element:<HomeH/>
   },
 ]);
 
