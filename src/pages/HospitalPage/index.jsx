@@ -1,23 +1,39 @@
+import React, { useState } from 'react';
 
-import React from "react";
+// The main App component that renders the complete page,
+// including the responsive header and the portal cards.
+const App = () => {
+  // useState hook to manage the state of the mobile menu (open or closed).
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-// This new page component displays only the Doctor and Hospital portal cards.
-// It reuses the header and footer from your original App component.
-// I have removed the import for react-icons/fa and react-router-dom/Link to make the code self-contained and resolve the compilation error.
-const NewPage = () => {
+  // A function to toggle the state of the menu.
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <div className={`bg-teal-50 text-gray-800`}>
-      {/* Header - Reusing the header from the original App component */}
-      <header className="w-full bg-white shadow-md z-50">
+    <div className={`font-sans antialiased text-gray-800 bg-teal-50 min-h-screen`}>
+      {/* Header component with a drop shadow */}
+      <header className="w-full bg-white shadow-lg z-50 fixed top-0 left-0">
         <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
+          {/* Logo and site title */}
           <a href="#" className="flex items-center space-x-2">
-            <img
-              src="logo.png"
-              className="w-30 h-33 text-teal-700"
-              alt="MedLock Logo"
-            />
-            <span className="text-2xl font-bold text-teal-900">MedLock</span>
+            {/* Using an inline SVG for the logo for a self-contained component */}
+            <div className="flex items-center space-x-3">
+             <div>
+               <img src="logo.png" className="h-25 w-23" alt="MedLock Logo" />
+             </div>
+             <div>
+               <h1 className="text-2xl font-bold text-[#0b4f4a]">MedLock</h1>
+               <p className="text-xs text-[#0b4f4a]">
+                 Centralized Medical Reports
+               </p>
+             </div>
+          </div>
+            {/* <span className="text-2xl font-bold text-teal-900">MedLock</span> */}
           </a>
+
+          {/* Desktop navigation menu - visible on medium screens and up */}
           <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
             <a
               href="#"
@@ -44,8 +60,13 @@ const NewPage = () => {
               Contact
             </a>
           </div>
-          <button className="md:hidden text-teal-600">
-            {/* Using an inline SVG to replace FaBars for a self-contained component */}
+
+          {/* Mobile menu button - visible on small screens */}
+          <button
+            onClick={toggleMenu}
+            className="md:hidden text-teal-600 focus:outline-none"
+          >
+            {/* Using an inline SVG for the menu icon */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-6 h-6"
@@ -64,16 +85,70 @@ const NewPage = () => {
         </nav>
       </header>
 
+      {/* Mobile navigation menu - conditionally rendered */}
+      <div
+        className={`fixed top-0 left-0 h-full w-64 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out md:hidden ${
+          isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <div className="p-6 flex flex-col items-start space-y-4">
+          {/* Close button for the mobile menu */}
+          <button
+            onClick={toggleMenu}
+            className="self-end text-gray-500 hover:text-gray-900 focus:outline-none"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+
+          {/* Mobile navigation links */}
+          <a
+            href="#"
+            className="text-gray-700 font-medium hover:text-teal-600 transition-colors duration-200 w-full text-left"
+          >
+            Home
+          </a>
+          <a
+            href="#"
+            className="text-gray-700 font-medium hover:text-teal-600 transition-colors duration-200 w-full text-left"
+          >
+            Services
+          </a>
+          <a
+            href="#"
+            className="text-gray-700 font-medium hover:text-teal-600 transition-colors duration-200 w-full text-left"
+          >
+            About Us
+          </a>
+          <a
+            href="#"
+            className="text-gray-700 font-medium hover:text-teal-600 transition-colors duration-200 w-full text-left"
+          >
+            Contact
+          </a>
+        </div>
+      </div>
       {/* Main content container */}
-      <main className="container mx-auto px-6 py-12">
+      <main className="container  mx-auto px-6 py-12 pt-50">
         <h1 className="text-4xl md:text-5xl font-bold text-center text-teal-900 mb-12">
           Welcome Back Hospital Hands
         </h1>
         {/* Two Card Section, centered and responsive */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
           {/* Doctor Card */}
-          {/* A new card for the Doctor Portal */}
-          {/* Using an anchor tag instead of Link to avoid the react-router-dom dependency */}
+          {/* Using a placeholder image for the card icon */}
           <a href="#" className="w-full max-w-sm">
             <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300 h-full">
               <img
@@ -91,8 +166,7 @@ const NewPage = () => {
           </a>
 
           {/* Hospital Card */}
-          {/* This card is taken from your original page */}
-          {/* Using an anchor tag instead of Link to avoid the react-router-dom dependency */}
+          {/* Using a placeholder image for the card icon */}
           <a href="#" className="w-full max-w-sm">
             <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300 h-full">
               <img
@@ -121,4 +195,4 @@ const NewPage = () => {
   );
 };
 
-export default NewPage;
+export default App;

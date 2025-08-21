@@ -5,10 +5,12 @@ import {
   FaBars,
   FaMicrophone,
   FaStop,
+  FaTimes, // <-- Imported the close icon
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import FallBack from "../../components/fallBack"
-// The new VoiceAssistant component
+import FallBack from "../../components/fallBack";
+
+// The VoiceAssistant component (remains unchanged)
 const VoiceAssistant = () => {
   const [isListening, setIsListening] = useState(false);
   const [status, setStatus] = useState("Press the mic to start talking.");
@@ -97,68 +99,100 @@ const VoiceAssistant = () => {
     </div>
   );
 };
-const nav =[{
-  id:1,
-  link:"/",
-  name:"Home"
-},
-{
-  id:2,
-  link:"/test",
-  name:"Services"
-},
-{
-  id:3,
-  link:"/about",
-  name:"About Us"
-},
-{
-  id:4,
-  link:"/contact",
-  name:"Contact"
-},
-]
+
+const nav = [
+  {
+    id: 1,
+    link: "/",
+    name: "Home",
+  },
+  {
+    id: 2,
+    link: "/test",
+    name: "Services",
+  },
+  {
+    id: 3,
+    link: "/about",
+    name: "About Us",
+  },
+  {
+    id: 4,
+    link: "/contact",
+    name: "Contact",
+  },
+];
 
 // The main App component
 const App = () => {
+  // State to manage mobile menu visibility
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Function to toggle the menu state
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className={`bg-teal-50 text-gray-800`}>
-      {/* Header */}
-      {/* <FallBack/> */}
-      <header className="w-full bg-white shadow-md z-50">
+      <header className="w-full bg-white shadow-md z-50 relative">
         <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
-          
           <Link to="/" className="flex items-center space-x-2">
             <div className="flex items-center space-x-3">
-             <div>
-               <img src="logo.png" className="h-25 w-23" alt="MedLock Logo" />
-             </div>
-             <div>
-               <h1 className="text-2xl font-bold text-[#0b4f4a]">MedLock</h1>
-               <p className="text-xs text-[#0b4f4a]">
-                 Centralized Medical Reports
-               </p>
-             </div>
-          </div>
+              <div>
+                <img src="logo.png" className="h-25 w-23" alt="MedLock Logo" />
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-[#0b4f4a]">MedLock</h1>
+                <p className="text-xs text-[#0b4f4a]">
+                  Centralized Medical Reports
+                </p>
+              </div>
+            </div>
           </Link>
+
+          {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
-           {
-            nav?.map((page,index)=>{
-              return(
-              <Link
-              to={page.link}
-              key={index}
-              className="hover:text-teal-600 transition-colors duration-200"
-            >
-              {page.name}
-            </Link>)
-            })
-          }
+            {nav?.map((page, index) => {
+              return (
+                <Link
+                  to={page.link}
+                  key={index}
+                  className="hover:text-teal-600 transition-colors duration-200"
+                >
+                  {page.name}
+                </Link>
+              );
+            })}
           </div>
-          <button className="md:hidden text-teal-600">
-            <FaBars className="w-6 h-6" />
+
+          {/* Mobile Menu Button */}
+          <button onClick={toggleMenu} className="md:hidden text-teal-600">
+            {isMenuOpen ? (
+              <FaTimes className="w-6 h-6" />
+            ) : (
+              <FaBars className="w-6 h-6" />
+            )}
           </button>
         </nav>
+
+        {/* Mobile Menu Dropdown */}
+        {isMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-4">
+            <div className="flex flex-col items-center space-y-4">
+              {nav?.map((page, index) => (
+                <Link
+                  to={page.link}
+                  key={index}
+                  onClick={toggleMenu} // Close menu on link click
+                  className="hover:text-teal-600 transition-colors duration-200 text-lg"
+                >
+                  {page.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </header>
 
       {/* Hero Section */}
@@ -206,21 +240,14 @@ const App = () => {
             </p>
           </div>
 
-          {/* AI Assistant Card - Replaced with the new component */}
-          {/* <VoiceAssistant /> */}
+          {/* AI Assistant Card */}
           <Link to="/logina">
             <div className="bg-white h-full p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
               <img src="AI.png" alt="AI Icon" className="w-24 h-24 mb-4" />
               <h3 className="text-2xl font-semibold text-teal-800">
                 AI Assistant
               </h3>
-              {/* <p className="text-gray-600 mt-2">
-                Manage your appointments, records, and more.
-              </p> */}
-              <div
-                // onClick={startListening}
-                className="bg-teal-600 text-white p-2 rounded-full hover:bg-teal-700 transition-colors duration-200"
-              >
+              <div className="bg-teal-600 text-white p-2 rounded-full hover:bg-teal-700 transition-colors duration-200">
                 <FaMicrophone className="w-4 h-4" />
               </div>{" "}
             </div>
