@@ -7,7 +7,7 @@ import {
   FaStop,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import FallBack from "../../components/fallBack"
 // The new VoiceAssistant component
 const VoiceAssistant = () => {
   const [isListening, setIsListening] = useState(false);
@@ -124,16 +124,22 @@ const App = () => {
   return (
     <div className={`bg-teal-50 text-gray-800`}>
       {/* Header */}
+      {/* <FallBack/> */}
       <header className="w-full bg-white shadow-md z-50">
         <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
           
           <Link to="/" className="flex items-center space-x-2">
-            <img
-              src="logo.png"
-              className="w-30 h-33 text-teal-700"
-              alt="MedLock Logo"
-            />
-            <span className="text-2xl font-bold text-teal-900">MedLock</span>
+            <div className="flex items-center space-x-3">
+             <div>
+               <img src="logo.png" className="h-25 w-23" alt="MedLock Logo" />
+             </div>
+             <div>
+               <h1 className="text-2xl font-bold text-[#0b4f4a]">MedLock</h1>
+               <p className="text-xs text-[#0b4f4a]">
+                 Centralized Medical Reports
+               </p>
+             </div>
+          </div>
           </Link>
           <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
            {
