@@ -1,15 +1,14 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { lazy } from "react";
-// const Home = lazy(() => import("../pages/home"));
-import HomePage from "../pages/HomePage";
-import NotFound from "../pages/NotFound";
-import Test from "../pages/Test";
-import Loginp from "../login/patient"
-import Loginh from "../login/hospital"
-import LoginA from "../login/aiAssistent"
-import LoginD from "../login/doctor"
-import HomeH from "../pages/HospitalPage"
-// const PageNotFound = lazy(() => import("../component/PageNotFound"));
+
+const HomePage = lazy(() => import("../pages/HomePage"));
+const NotFound = lazy(() => import("../pages/NotFound"));
+const Test = lazy(() => import("../pages/Test"));
+const Loginp = lazy(() => import("../login/patient"));
+const Loginh = lazy(() => import("../login/hospital"));
+const LoginA = lazy(() => import("../login/aiAssistent"));
+const LoginD = lazy(() => import("../login/doctor"));
+const HomeH = lazy(() => import("../pages/HospitalPage"));
 
 const router = createBrowserRouter([
   {

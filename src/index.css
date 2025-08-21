@@ -20,50 +20,67 @@ body {
   box-sizing: border-box;
 }
 
-/* a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.spinner {
+  margin: auto;
+  width: 50px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.spinner > div {
+  background: #195fd2;
+  height: 100%;
+  width: 2px;
+  float: left;
+  margin: 0 1px;
+  animation: stretch 2s infinite;
+  animation-timing-function: cubic-bezier(0.62, 0.28, 0.23, 0.99);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.spinner .r1 {
+  animation-delay: -1s;
+}
+
+.spinner .r2 {
+  animation-delay: -0.9s;
+}
+
+.spinner .r3 {
+  animation-delay: -0.8s;
+}
+
+.spinner .r4 {
+  animation-delay: -0.7s;
+}
+
+.spinner .r5 {
+  animation-delay: -0.6s;
+}
+
+@keyframes stretch {
+  0%,
+  20%,
+  49% {
+    transform: scaleY(0.4);
+    background-color: #195fd2;
   }
-  a:hover {
-    color: #747bff;
+
+  10% {
+    transform: scaleY(1);
   }
-  button {
-    background-color: #f9f9f9;
+
+  50%,
+  70%,
+  100% {
+    transform: scaleY(0.4);
+    background-color: #1882b0;
   }
-} */
+
+  60% {
+    transform: scaleY(1);
+    background-color: #1882b0;
+  }
+}

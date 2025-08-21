@@ -97,6 +97,27 @@ const VoiceAssistant = () => {
     </div>
   );
 };
+const nav =[{
+  id:1,
+  link:"/",
+  name:"Home"
+},
+{
+  id:2,
+  link:"/test",
+  name:"Services"
+},
+{
+  id:3,
+  link:"/about",
+  name:"About Us"
+},
+{
+  id:4,
+  link:"/contact",
+  name:"Contact"
+},
+]
 
 // The main App component
 const App = () => {
@@ -105,39 +126,28 @@ const App = () => {
       {/* Header */}
       <header className="w-full bg-white shadow-md z-50">
         <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <a href="#" className="flex items-center space-x-2">
+          
+          <Link to="/" className="flex items-center space-x-2">
             <img
               src="logo.png"
               className="w-30 h-33 text-teal-700"
               alt="MedLock Logo"
             />
             <span className="text-2xl font-bold text-teal-900">MedLock</span>
-          </a>
+          </Link>
           <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
-            <a
-              href="#"
+           {
+            nav?.map((page,index)=>{
+              return(
+              <Link
+              to={page.link}
+              key={index}
               className="hover:text-teal-600 transition-colors duration-200"
             >
-              Home
-            </a>
-            <a
-              href="#"
-              className="hover:text-teal-600 transition-colors duration-200"
-            >
-              Services
-            </a>
-            <a
-              href="#"
-              className="hover:text-teal-600 transition-colors duration-200"
-            >
-              About Us
-            </a>
-            <a
-              href="#"
-              className="hover:text-teal-600 transition-colors duration-200"
-            >
-              Contact
-            </a>
+              {page.name}
+            </Link>)
+            })
+          }
           </div>
           <button className="md:hidden text-teal-600">
             <FaBars className="w-6 h-6" />
