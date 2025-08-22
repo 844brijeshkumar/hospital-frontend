@@ -18,8 +18,7 @@ const index = () => {
         return <PatientDashboard patient={mockPatient} reports={reports} />;
       case "reports":
         return <MedicalHistory reports={reports} />;
-      case "upload":
-        return <ReportUpload onUpload={handleUploadReport} />;
+
       default:
         return <PatientDashboard patient={mockPatient} reports={reports} />;
     }
@@ -31,6 +30,7 @@ const index = () => {
         activeView={activeView}
         onViewChange={setActiveView}
         patientName={mockPatient.name}
+        dashboard="patient"
       />
       <main>{renderActiveView()}</main>
 

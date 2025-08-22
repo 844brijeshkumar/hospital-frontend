@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React from "react";
 import {
   Users,
   Calendar,
@@ -14,7 +13,7 @@ import {
 const DoctorDashboard = ({ doctor, appointments, patients }) => {
   // Filter for today's appointments
   const today = new Date();
-  const todaysAppointments = appointments.filter((appt) => {
+  const todaysAppointments = appointments?.filter((appt) => {
     const apptDate = new Date(appt.date);
     return (
       apptDate.getDate() === today.getDate() &&
@@ -102,7 +101,9 @@ const DoctorDashboard = ({ doctor, appointments, patients }) => {
                 <div>
                   {/* This is a static number for now */}
                   <p className="text-3xl font-bold text-amber-800">12</p>
-                  <p className="text-amber-700 font-medium">Reports to Review</p>
+                  <p className="text-amber-700 font-medium">
+                    Reports to Review
+                  </p>
                 </div>
                 <div className="bg-amber-500 p-3 rounded-xl shadow-md">
                   <FileText className="h-8 w-8 text-white" />
@@ -174,8 +175,10 @@ const DoctorDashboard = ({ doctor, appointments, patients }) => {
                       </p>
                     </div>
                     <div className="relative w-full pl-6 border-l-2 border-indigo-200 group-hover:border-indigo-400 transition-colors">
-                       <div className="absolute -left-[11px] top-1 h-5 w-5 bg-indigo-500 rounded-full border-4 border-white group-hover:bg-indigo-600 transition-colors"></div>
-                      <h3 className="font-medium text-gray-800">{appt.patientName}</h3>
+                      <div className="absolute -left-[11px] top-1 h-5 w-5 bg-indigo-500 rounded-full border-4 border-white group-hover:bg-indigo-600 transition-colors"></div>
+                      <h3 className="font-medium text-gray-800">
+                        {appt.patientName}
+                      </h3>
                       <p className="text-sm text-gray-500">{appt.reason}</p>
                     </div>
                   </div>
@@ -189,9 +192,9 @@ const DoctorDashboard = ({ doctor, appointments, patients }) => {
                 </div>
               )}
             </div>
-             <button className="w-full mt-8 text-indigo-600 hover:text-white text-sm font-medium bg-indigo-50 px-4 py-3 rounded-lg hover:bg-indigo-600 transition-colors flex items-center justify-center">
-                View Full Schedule <ArrowRight className="h-4 w-4 ml-2" />
-              </button>
+            <button className="w-full mt-8 text-indigo-600 hover:text-white text-sm font-medium bg-indigo-50 px-4 py-3 rounded-lg hover:bg-indigo-600 transition-colors flex items-center justify-center">
+              View Full Schedule <ArrowRight className="h-4 w-4 ml-2" />
+            </button>
           </div>
         </div>
       </div>

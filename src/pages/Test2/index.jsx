@@ -1,10 +1,13 @@
-
 import { useState } from "react";
 import Header2 from "../../components/Header2";
-import DoctorDash from "../../components/DortorDash"
+import DoctorDash from "../../components/DortorDash";
+// import Assign from "../../components/assign";
 import Assign from "../../components/assign";
+import PatientDashboard from "../../components/PatientDashboard";
+import MedicalHistory from "../../components/MedicalHistory";
 import ReportUpload from "../../components/ReportUpload";
 import { mockPatient, mockReports } from "../../utils";
+import Header from "../../components/Header";
 const index = () => {
   const [activeView, setActiveView] = useState("dashboard");
   const [reports, setReports] = useState(mockReports);
@@ -16,9 +19,9 @@ const index = () => {
   const renderActiveView = () => {
     switch (activeView) {
       case "Dashboard":
-        return <PatientDashboard patient={mockPatient} reports={reports} />;
+        return <DoctorDash patient={mockPatient} reports={reports} />;
       case "Assign":
-        return <MedicalHistory reports={reports} />;
+        return <Assign reports={reports} />;
       case "Add Report":
         return <ReportUpload onUpload={handleUploadReport} />;
       default:
@@ -28,10 +31,11 @@ const index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50">
-      <Header
+      <Header2
         activeView={activeView}
         onViewChange={setActiveView}
         patientName={mockPatient.name}
+        dashboard="hospital"
       />
       <main>{renderActiveView()}</main>
 
