@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import { Activity, User, FileText, Search, LogOut } from "lucide-react";
 
-const Header = ({ activeView, onViewChange, patientName }) => {
+const Header = ({ activeView, onViewChange, patientName, dashboard }) => {
   return (
     <header className="bg-white shadow-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,46 +20,75 @@ const Header = ({ activeView, onViewChange, patientName }) => {
           </div>
 
           {/* Navigation */}
-          <nav className="hidden md:flex space-x-1">
-            <button
-              onClick={() => onViewChange("dashboard")}
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                activeView === "dashboard"
-                  ? "bg-[#d1e8e5] text-[#0b4f4a] shadow-lg backdrop-blur-sm"
-                  : "text-[#0b4f4a] hover:bg-[#e0f1ef]"
-              }`}
-            >
-              <User className="inline h-4 w-4 mr-2" />
-              Dashboard
-            </button>
-            <button
-              onClick={() => onViewChange("reports")}
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                activeView === "reports"
-                  ? "bg-[#d1e8e5] text-[#0b4f4a] shadow-lg backdrop-blur-sm"
-                  : "text-[#0b4f4a] hover:bg-[#e0f1ef]"
-              }`}
-            >
-              <FileText className="inline h-4 w-4 mr-2" />
-              My Reports
-            </button>
-            <button
-              onClick={() => onViewChange("upload")}
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                activeView === "upload"
-                  ? "bg-[#d1e8e5] text-[#0b4f4a] shadow-lg backdrop-blur-sm"
-                  : "text-[#0b4f4a] hover:bg-[#e0f1ef]"
-              }`}
-            >
-              <Search className="inline h-4 w-4 mr-2" />
-              Upload Report
-            </button>
-          </nav>
+          {dashboard == "hospital" ? (
+            <nav className="hidden md:flex space-x-1">
+              <button
+                onClick={() => onViewChange("dashboard")}
+                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                  activeView === "dashboard"
+                    ? "bg-[#d1e8e5] text-[#0b4f4a] shadow-lg backdrop-blur-sm"
+                    : "text-[#0b4f4a] hover:bg-[#e0f1ef]"
+                }`}
+              >
+                <User className="inline h-4 w-4 mr-2" />
+                Dashboard
+              </button>
+              <button
+                onClick={() => onViewChange("Assign")}
+                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                  activeView === "Assign"
+                    ? "bg-[#d1e8e5] text-[#0b4f4a] shadow-lg backdrop-blur-sm"
+                    : "text-[#0b4f4a] hover:bg-[#e0f1ef]"
+                }`}
+              >
+                <FileText className="inline h-4 w-4 mr-2" />
+                My Reports
+              </button>
+              <button
+                onClick={() => onViewChange("Add Report")}
+                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                  activeView === "Add Report"
+                    ? "bg-[#d1e8e5] text-[#0b4f4a] shadow-lg backdrop-blur-sm"
+                    : "text-[#0b4f4a] hover:bg-[#e0f1ef]"
+                }`}
+              >
+                <Search className="inline h-4 w-4 mr-2" />
+                Upload Report
+              </button>
+            </nav>
+          ) : (
+            <nav className="hidden md:flex space-x-1">
+              <button
+                onClick={() => onViewChange("dashboard")}
+                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                  activeView === "dashboard"
+                    ? "bg-[#d1e8e5] text-[#0b4f4a] shadow-lg backdrop-blur-sm"
+                    : "text-[#0b4f4a] hover:bg-[#e0f1ef]"
+                }`}
+              >
+                <User className="inline h-4 w-4 mr-2" />
+                Dashboard
+              </button>
+              <button
+                onClick={() => onViewChange("reports")}
+                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                  activeView === "reports"
+                    ? "bg-[#d1e8e5] text-[#0b4f4a] shadow-lg backdrop-blur-sm"
+                    : "text-[#0b4f4a] hover:bg-[#e0f1ef]"
+                }`}
+              >
+                <FileText className="inline h-4 w-4 mr-2" />
+                My Reports
+              </button>
+            </nav>
+          )}
 
           {/* User Profile */}
           <div className="flex items-center space-x-4">
             <div className="text-right hidden sm:block">
-              <p className="text-sm font-medium text-[#0b4f4a]">{patientName}</p>
+              <p className="text-sm font-medium text-[#0b4f4a]">
+                {patientName}
+              </p>
               <p className="text-xs text-[#0b4f4a]">Patient ID: #001</p>
             </div>
             <div className="bg-[#d1e8e5] p-2 rounded-full border border-transparent">

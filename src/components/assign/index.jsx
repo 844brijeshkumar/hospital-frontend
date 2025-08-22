@@ -1,4 +1,3 @@
-
 import { useState, useMemo } from "react";
 import {
   Search,
@@ -11,12 +10,12 @@ import {
   User, // Added for patient icon
   ClipboardCheck, // Added for the new "Assign" button
 } from "lucide-react";
-import index from "../../login/patient";
+// import index from "../../login/patient";
 
 // NOTE: This component is now designed for the "Assign Reports" view.
 // It assumes the `reports` prop is an array of report objects,
 // where each object now includes `patientName` and `patientId`.
-const AssignReports = ({ reports }) => {
+const index = ({ reports }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedPriority, setSelectedPriority] = useState("all");
@@ -42,13 +41,13 @@ const AssignReports = ({ reports }) => {
 
   // Use useMemo to filter and sort reports efficiently
   const filteredAndSortedReports = useMemo(() => {
-    let filtered = reports.filter((report) => {
+    let filtered = reports?.filter((report) => {
       // Updated search to include patientName
       const matchesSearch =
-        report.patientName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        report.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        report.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        report.hospital.toLowerCase().includes(searchTerm.toLowerCase());
+        report.patientName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        report.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        report.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        report.hospital?.toLowerCase().includes(searchTerm.toLowerCase());
 
       const matchesCategory =
         selectedCategory === "all" || report.category === selectedCategory;
