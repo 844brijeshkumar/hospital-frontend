@@ -142,7 +142,7 @@ const Header = ({
                 <div>
                   <h1 className="text-2xl font-bold text-[#0b4f4a]">MedLock</h1>
                   <p className="text-xs text-[#0b4f4a]">
-                    Centralized Medical Reports
+                    Pateint's Portal
                   </p>
                 </div>
               </div>
