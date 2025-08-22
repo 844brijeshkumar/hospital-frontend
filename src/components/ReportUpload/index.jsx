@@ -140,7 +140,7 @@ const Index = ({ onUpload }) => {
       )}
 
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#8FBEB9] to-[#7aa9a4] rounded-2xl shadow-2xl p-8 mb-8 text-white">
+      <div className="bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94] rounded-2xl shadow-2xl p-8 mb-8 text-white">
         <h1 className="text-4xl font-bold mb-3">Add Patient Report</h1>
         <p className="text-gray-100 text-lg">
           Fill in the details to add a new medical report to the patient's

@@ -8,9 +8,79 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-// This is the new Dashboard component for the Doctor's view.
-// It takes the doctor's details, a list of their appointments, and their patients as props.
-const index = ({ doctor, appointments, patients }) => {
+// --- SAMPLE DATA DEFINITIONS ---
+// Here we define the mock data directly in the file.
+
+const today = new Date(); // Use the current date to ensure filtering works
+const yesterday = new Date();
+yesterday.setDate(today.getDate() - 1);
+const tomorrow = new Date();
+tomorrow.setDate(today.getDate() + 1);
+
+// 1. Doctor's Details
+const doctorData = {
+  name: "Priya Sharma",
+};
+
+// 2. List of all patients
+const patientsData = [
+  {
+    id: "PAT451",
+    name: "Aarav Singh",
+    // Activity from earlier today
+    lastActivityDate: new Date(new Date().setHours(14, 30, 0)).toISOString(),
+  },
+  {
+    id: "PAT452",
+    name: "Saanvi Gupta",
+    // Activity from this morning
+    lastActivityDate: new Date(new Date().setHours(9, 15, 0)).toISOString(),
+  },
+  {
+    id: "PAT453",
+    name: "Vihaan Mehta",
+    lastActivityDate: new Date(new Date().setHours(8, 0, 0)).toISOString(),
+  },
+  {
+    id: "PAT454",
+    name: "Myra Reddy",
+    lastActivityDate: new Date(yesterday.setHours(17, 0, 0)).toISOString(),
+  },
+];
+
+// 3. List of all appointments
+const appointmentsData = [
+  // Appointments for Today
+  {
+    id: "APT789",
+    patientName: "Aarav Singh",
+    reason: "Post-op Follow-up",
+    date: new Date(new Date().setHours(10, 0, 0)).toISOString(),
+  },
+  {
+    id: "APT790",
+    patientName: "Saanvi Gupta",
+    reason: "Annual Physical Exam",
+    date: new Date(new Date().setHours(11, 30, 0)).toISOString(),
+  },
+  {
+    id: "APT791",
+    patientName: "Ananya Desai",
+    reason: "Consultation for fever",
+    date: new Date(new Date().setHours(15, 0, 0)).toISOString(),
+  },
+  // Appointment for tomorrow (will be filtered out)
+  {
+    id: "APT792",
+    patientName: "Vihaan Mehta",
+    reason: "Vaccination",
+    date: new Date(tomorrow.setHours(9, 0, 0)).toISOString(),
+  },
+];
+
+// --- DASHBOARD UI COMPONENT ---
+// This is your original component that displays the data.
+const DashboardUI = ({ doctor, appointments, patients }) => {
   // Filter for today's appointments
   const today = new Date();
   const todaysAppointments = appointments?.filter((appt) => {
@@ -22,7 +92,7 @@ const index = ({ doctor, appointments, patients }) => {
     );
   });
 
-  // Get recent patient activity (e.g., last 3 patients with new reports)
+  // Get recent patient activity
   const recentActivity = patients?.slice(0, 3);
 
   // Helper function to format time
@@ -64,7 +134,7 @@ const index = ({ doctor, appointments, patients }) => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Main Content: Schedule and Activity */}
+        {/* Main Content */}
         <div className="lg:col-span-2">
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -99,7 +169,6 @@ const index = ({ doctor, appointments, patients }) => {
             <div className="bg-gradient-to-br from-amber-100 to-white rounded-2xl shadow-lg p-6 border border-amber-200">
               <div className="flex items-center justify-between">
                 <div>
-                  {/* This is a static number for now */}
                   <p className="text-3xl font-bold text-amber-800">12</p>
                   <p className="text-amber-700 font-medium">
                     Reports to Review
@@ -202,4 +271,16 @@ const index = ({ doctor, appointments, patients }) => {
   );
 };
 
-export default index;
+// --- MAIN COMPONENT TO RENDER ---
+// This component passes the sample data to the UI component.
+const DoctorDashboard = () => {
+  return (
+    <DashboardUI
+      doctor={doctorData}
+      appointments={appointmentsData}
+      patients={patientsData}
+    />
+  );
+};
+
+export default DoctorDashboard;

@@ -64,7 +64,7 @@ const Dashboard = ({ patient, reports }) => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Welcome Section with the new gradient */}
-      <div className="bg-gradient-to-r from-[#6B9691] via-[#8FBEB9] to-[#B5E3E0] rounded-2xl p-8 text-white mb-8 shadow-2xl">
+      <div className="bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94] rounded-2xl p-8 text-white mb-8 shadow-2xl">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between">
           <div>
             <h1 className="text-3xl font-bold mb-2">
