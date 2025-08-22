@@ -4,6 +4,7 @@ import { lazy } from "react";
 const HomePage = lazy(() => import("../pages/HomePage"));
 const NotFound = lazy(() => import("../pages/NotFound"));
 const Test = lazy(() => import("../pages/Test"));
+const Test2 = lazy(() => import("../pages/Test2"));
 const Loginp = lazy(() => import("../login/patient"));
 const Loginh = lazy(() => import("../login/hospital"));
 const LoginA = lazy(() => import("../login/aiAssistent"));
@@ -18,6 +19,9 @@ const router = createBrowserRouter([
   {
     path: "/test",
     element: <Test />,
+  },
+  {path: "/test2",
+    element: <Test2/>
   },
   {
     path: "*",
