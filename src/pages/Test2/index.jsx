@@ -20,18 +20,18 @@ const index = () => {
     switch (activeView) {
       case "Dashboard":
         return <DoctorDash patient={mockPatient} reports={reports} />;
-      case "Assign":
+      case "assignReports":
         return <Assign reports={reports} />;
-      case "Add Report":
+      case "addReport":
         return <ReportUpload onUpload={handleUploadReport} />;
       default:
-        return <PatientDashboard patient={mockPatient} reports={reports} />;
+        return <DoctorDash patient={mockPatient} reports={reports} />;
     }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50">
-      <Header2
+      <Header
         activeView={activeView}
         onViewChange={setActiveView}
         patientName={mockPatient.name}

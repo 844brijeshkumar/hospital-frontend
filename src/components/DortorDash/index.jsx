@@ -10,7 +10,7 @@ import {
 
 // This is the new Dashboard component for the Doctor's view.
 // It takes the doctor's details, a list of their appointments, and their patients as props.
-const DoctorDashboard = ({ doctor, appointments, patients }) => {
+const index = ({ doctor, appointments, patients }) => {
   // Filter for today's appointments
   const today = new Date();
   const todaysAppointments = appointments?.filter((appt) => {
@@ -23,7 +23,7 @@ const DoctorDashboard = ({ doctor, appointments, patients }) => {
   });
 
   // Get recent patient activity (e.g., last 3 patients with new reports)
-  const recentActivity = patients.slice(0, 3);
+  const recentActivity = patients?.slice(0, 3);
 
   // Helper function to format time
   const formatTime = (date) => {
@@ -41,7 +41,7 @@ const DoctorDashboard = ({ doctor, appointments, patients }) => {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between">
           <div>
             <h1 className="text-3xl font-bold mb-2">
-              Welcome back, Dr. {doctor.name}!
+              Welcome back, Dr. {doctor?.name || "booyah"}!
             </h1>
             <p className="text-stone-100">
               Here's a summary of your activities for today,{" "}
@@ -72,7 +72,7 @@ const DoctorDashboard = ({ doctor, appointments, patients }) => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-3xl font-bold text-blue-800">
-                    {patients.length}
+                    {patients?.length}
                   </p>
                   <p className="text-blue-700 font-medium">Total Patients</p>
                 </div>
@@ -85,7 +85,7 @@ const DoctorDashboard = ({ doctor, appointments, patients }) => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-3xl font-bold text-emerald-800">
-                    {todaysAppointments.length}
+                    {todaysAppointments?.length}
                   </p>
                   <p className="text-emerald-700 font-medium">
                     Today's Appointments
@@ -124,7 +124,7 @@ const DoctorDashboard = ({ doctor, appointments, patients }) => {
               </button>
             </div>
             <div className="space-y-4">
-              {recentActivity.map((patient) => (
+              {recentActivity?.map((patient) => (
                 <div
                   key={patient.id}
                   className="border border-gray-200 rounded-xl p-4 hover:bg-gray-50 transition-all duration-200"
@@ -163,8 +163,8 @@ const DoctorDashboard = ({ doctor, appointments, patients }) => {
               Today's Schedule
             </h2>
             <div className="space-y-5">
-              {todaysAppointments.length > 0 ? (
-                todaysAppointments.map((appt) => (
+              {todaysAppointments?.length > 0 ? (
+                todaysAppointments?.map((appt) => (
                   <div
                     key={appt.id}
                     className="flex items-start space-x-4 group"
@@ -202,4 +202,4 @@ const DoctorDashboard = ({ doctor, appointments, patients }) => {
   );
 };
 
-export default DoctorDashboard;
+export default index;
