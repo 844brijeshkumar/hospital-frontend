@@ -214,16 +214,6 @@ const Header = ({
                 >
                   Reports
                 </button>
-                <button
-                  onClick={() => onViewChange("upload")}
-                  className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                    activeView === "upload"
-                      ? "bg-[#d1e8e5] text-[#0b4f4a]"
-                      : "text-[#0b4f4a] hover:bg-[#e0f1ef]"
-                  }`}
-                >
-                  Upload
-                </button>
               </div>
             </div>
           </div>
