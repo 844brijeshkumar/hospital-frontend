@@ -93,7 +93,14 @@ export default function index() {
     };
 
     return (
-        <div className="bg-gradient-to-br from-[#7DB1AD] to-white min-h-screen flex justify-center items-center p-4 text-black">
+        <div className="bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94] min-h-screen flex flex-col justify-center items-center p-4 text-black">
+            
+                {/* --- LOGO MOVED HERE --- */}
+            <div className="flex justify-center mb-6 ">
+                <img src="./home-logo.png" alt="App Logo" className="w-26 h-24" />
+            </div>
+                {/* --- END OF LOGO SECTION --- */}
+
             <div className="w-full max-w-lg bg-white rounded-2xl shadow-xl p-8 space-y-6">
                 {/* Tab Navigation */}
                 <div className="flex border-b border-gray-200">

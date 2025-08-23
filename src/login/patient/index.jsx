@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // The main App component that renders the authentication page.
-export default function index() {
+export default function Index() {
   // State to toggle between the Login and Signup forms.
   const [isLogin, setIsLogin] = useState(true);
   // State to hold and display messages to the user (e.g., success or error).
@@ -26,24 +26,7 @@ export default function index() {
     });
 
     // --- START OF BACKEND INTEGRATION POINT ---
-    // In a real application, you would make an API call here to your backend.
-    // Your backend would then store this data in your Neon PostgreSQL database.
-    // You would need to handle hashing the password on the server-side before storing it.
     try {
-      // Placeholder for a successful API call
-      // const response = await fetch('/api/signup', {
-      //     method: 'POST',
-      //     headers: { 'Content-Type': 'application/json' },
-      //     body: JSON.stringify({ name, phone, gmail, aadhaar, password })
-      // });
-      // const result = await response.json();
-
-      // if (response.ok) {
-      //     // Handle success
-      // } else {
-      //     // Handle error
-      // }
-
       // Simulate a successful registration
       setMessage({
         text: "Registration successful! You can now log in.",
@@ -74,27 +57,7 @@ export default function index() {
     console.log("Attempting to log in with:", { aadhaar, password });
 
     // --- START OF BACKEND INTEGRATION POINT ---
-    // Here, you would make an API call to your backend to verify the user's credentials.
-    // On the backend, you would:
-    // 1. Check if the Aadhaar number exists in your Neon PostgreSQL database.
-    // 2. Compare the provided password with the stored hashed password.
-    // 3. If credentials are valid, generate and send an OTP to the user's registered phone and Gmail.
-    // 4. Return a response to the front end indicating success and a pending OTP verification.
     try {
-      // Placeholder for a successful API call
-      // const response = await fetch('/api/login', {
-      //     method: 'POST',
-      //     headers: { 'Content-Type': 'application/json' },
-      //     body: JSON.stringify({ aadhaar, password })
-      // });
-      // const result = await response.json();
-
-      // if (response.ok) {
-      //     // Handle success, maybe show a new form for OTP
-      // } else {
-      //     // Handle error
-      // }
-
       // Simulate a successful login and OTP request
       setMessage({
         text: "Login successful! OTP sent to your registered Gmail and Phone number.",
@@ -111,21 +74,28 @@ export default function index() {
     // --- END OF BACKEND INTEGRATION POINT ---
   };
 
-    return (
-        <div className="bg-gradient-to-br from-[#7DB1AD] to-white min-h-screen flex justify-center items-center p-4 text-black">
-            <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 space-y-6">
-                {/* Tab Navigation */}
-                <div className="flex border-b border-gray-200">
-                    <button
-                        onClick={() => {
-                            setIsLogin(true);
-                            setMessage({ text: '', type: '' });
-                        }}
-                        className={`py-2 px-4 text-center font-semibold focus:outline-none transition-colors duration-200 border-b-2
-                            ${isLogin
-                                ? 'text-gray-700 border-indigo-600'
-                                : 'text-gray-400 border-transparent hover:text-indigo-600'
-                            }`}
+  return (
+    <div className="bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94] min-h-screen flex flex-col justify-center items-center p-4 text-black">
+      
+      {/* --- LOGO MOVED HERE --- */}
+      <div className="flex justify-center mb-6 ">
+        <img src="./home-logo.png" alt="App Logo" className="w-26 h-24" />
+      </div>
+      {/* --- END OF LOGO SECTION --- */}
+
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 space-y-6">
+        {/* Tab Navigation */}
+        <div className="flex border-b border-gray-200">
+          <button
+            onClick={() => {
+              setIsLogin(true);
+              setMessage({ text: '', type: '' });
+            }}
+            className={`w-1/2 py-2 px-4 text-center font-semibold focus:outline-none transition-colors duration-200 border-b-2 ${
+              isLogin
+                ? 'text-gray-700 border-[#6B9E99]'
+                : 'text-gray-400 border-transparent hover:text-[#6B9E99]'
+            }`}
           >
             Login
           </button>
@@ -134,12 +104,11 @@ export default function index() {
               setIsLogin(false);
               setMessage({ text: "", type: "" });
             }}
-            className={`py-2 px-4 text-center font-semibold focus:outline-none transition-colors duration-200 border-b-2
-                            ${
-                              !isLogin
-                                ? "text-gray-700 border-indigo-600"
-                                : "text-gray-400 border-transparent hover:text-indigo-600"
-                            }`}
+            className={`w-1/2 py-2 px-4 text-center font-semibold focus:outline-none transition-colors duration-200 border-b-2 ${
+              !isLogin
+                ? "text-gray-700 border-[#6B9E99]"
+                : "text-gray-400 border-transparent hover:text-[#6B9E99]"
+            }`}
           >
             Sign Up
           </button>

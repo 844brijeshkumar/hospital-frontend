@@ -59,7 +59,13 @@ export default function App() {
 
   // Render the login form or a success message based on login state
   return (
-    <div className="bg-gradient-to-br from-[#7DB1AD] to-white min-h-screen flex justify-center items-center p-4 text-black">
+    <div className="bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94] min-h-screen flex flex-col justify-center items-center p-4 text-black">
+      {/* --- LOGO MOVED HERE --- */}
+      <div className="flex justify-center mb-6 ">
+        <img src="./home-logo.png" alt="App Logo" className="w-26 h-24" />
+      </div>
+      {/* --- END OF LOGO SECTION --- */}
+
       <div className="w-full max-w-md p-8 m-4 space-y-8 bg-white rounded-xl shadow-2xl">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight">

@@ -206,7 +206,7 @@ const App = () => {
           position: "relative",
         }}
       >
-        <div className="absolute top-0 left-0 w-full h-full bg-teal-800 opacity-40"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94] "></div>
         <div className="relative z-10">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Good Health is in your hands
