@@ -108,7 +108,7 @@ const nav = [
   },
   {
     id: 2,
-    link: "/test",
+    link: "/services",
     name: "Services",
   },
   {
@@ -124,7 +124,7 @@ const nav = [
 ];
 
 // The main App component
-const App = () => {
+const Home = () => {
   // State to manage mobile menu visibility
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -214,7 +214,7 @@ const App = () => {
           <br></br>
           <a
             href="#"
-            className="rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300 bg-white text-teal-600 font-bold py-3 px-8 rounded-full shadow-lg transition-colors duration-200 "
+            className="rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300 bg-white text-teal-600 font-bold py-3 px-8  "
           >
             Book an Appointment
           </a>
@@ -226,19 +226,21 @@ const App = () => {
         {/* Three Icon Cards Section */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-8 -mt-20 relative z-20">
           {/* Patient Portal Card */}
-          <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
-            <img
-              src="PATIENT.png"
-              alt="Patient and Doctor Icon"
-              className="w-24 h-24 mb-4"
-            />
-            <h3 className="text-2xl font-semibold text-teal-800">
-              Patient Portal
-            </h3>
-            <p className="text-gray-600 mt-2">
-              Manage your appointments, records, and more.
-            </p>
-          </div>
+          <Link to="/patient-dashboard">
+            <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
+              <img
+                src="PATIENT.png"
+                alt="Patient and Doctor Icon"
+                className="w-24 h-24 mb-4"
+              />
+              <h3 className="text-2xl font-semibold text-teal-800">
+                Patient Portal
+              </h3>
+              <p className="text-gray-600 mt-2">
+                Manage your appointments, records, and more.
+              </p>
+            </div>
+          </Link>
 
           {/* AI Assistant Card */}
           <Link to="/logina">
@@ -254,19 +256,22 @@ const App = () => {
           </Link>
 
           {/* Our Hospital Card */}
-          <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
-            <img
-              src="HOSPITAL.png"
-              alt="Hospital Icon"
-              className="w-24 h-24 mb-4"
-            />
-            <h3 className="text-2xl font-semibold text-teal-800">
-              Hospital Portal
-            </h3>
-            <p className="text-gray-600 mt-2">
-              Learn about our mission and team of experts.
-            </p>
-          </div>
+
+          <Link to="/hospital">
+            <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
+              <img
+                src="HOSPITAL.png"
+                alt="Hospital Icon"
+                className="w-24 h-24 mb-4"
+              />
+              <h3 className="text-2xl font-semibold text-teal-800">
+                Hospital Portal
+              </h3>
+              <p className="text-gray-600 mt-2">
+                Learn about our mission and team of experts.
+              </p>
+            </div>
+          </Link>
         </section>
 
         {/* Services Section */}
@@ -342,4 +347,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;

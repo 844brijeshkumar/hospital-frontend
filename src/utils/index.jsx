@@ -100,3 +100,70 @@ export const mockDoctors = [
     phone: "+91 98765 00002",
   },
 ];
+
+// Helper function to get the appropriate emoji icon for a report category
+export const getCategoryIcon = (category) => {
+  switch (category) {
+    case "lab":
+      return "🧪";
+    case "imaging":
+      return "�";
+    case "prescription":
+      return "💊";
+    case "consultation":
+      return "👨‍⚕️";
+    case "surgery":
+      return "🏥";
+    case "vaccination":
+      return "💉";
+    default:
+      return "📄";
+  }
+};
+
+// Helper function to format the date
+export const formatDate = (date) => {
+  return new Intl.DateTimeFormat("en-IN", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  }).format(new Date(date));
+};
+
+export const formatTime = (date) => {
+  return new Intl.DateTimeFormat("en-IN", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  }).format(new Date(date));
+};
+// Helper function to calculate the patient's age
+export const getAge = (patient) => {
+  console.log(patient);
+  const today = new Date();
+  const birthDate = new Date(patient.dateOfBirth);
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && today.getDate() < birthDate.getDate())
+  ) {
+    age--;
+  }
+  return age;
+};
+
+export const getPriorityColor = (priority) => {
+  switch (priority) {
+    case "critical":
+      return "bg-red-100 text-red-800 border-red-200";
+    case "high":
+      return "bg-orange-100 text-orange-800 border-orange-200";
+    case "medium":
+      return "bg-yellow-100 text-yellow-800 border-yellow-200";
+    case "low":
+      return "bg-emerald-100 text-emerald-800 border-emerald-200";
+    default:
+      return "bg-gray-100 text-gray-800 border-gray-200";
+  }
+};

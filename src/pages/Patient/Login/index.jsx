@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // The main App component that renders the authentication page.
-export default function Index() {
+export default function Login() {
   // State to toggle between the Login and Signup forms.
   const [isLogin, setIsLogin] = useState(true);
   // State to hold and display messages to the user (e.g., success or error).
@@ -76,7 +76,6 @@ export default function Index() {
 
   return (
     <div className="bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94] min-h-screen flex flex-col justify-center items-center p-4 text-black">
-      
       {/* --- LOGO MOVED HERE --- */}
       <div className="flex justify-center mb-6 ">
         <img src="./home-logo.png" alt="App Logo" className="w-26 h-24" />
@@ -89,12 +88,12 @@ export default function Index() {
           <button
             onClick={() => {
               setIsLogin(true);
-              setMessage({ text: '', type: '' });
+              setMessage({ text: "", type: "" });
             }}
             className={`w-1/2 py-2 px-4 text-center font-semibold focus:outline-none transition-colors duration-200 border-b-2 ${
               isLogin
-                ? 'text-gray-700 border-[#6B9E99]'
-                : 'text-gray-400 border-transparent hover:text-[#6B9E99]'
+                ? "text-gray-700 border-[#6B9E99]"
+                : "text-gray-400 border-transparent hover:text-[#6B9E99]"
             }`}
           >
             Login

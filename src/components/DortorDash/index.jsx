@@ -7,6 +7,7 @@ import {
   UserPlus,
   ArrowRight,
 } from "lucide-react";
+import { formatTime } from "../../utils";
 
 // --- SAMPLE DATA DEFINITIONS ---
 // Here we define the mock data directly in the file.
@@ -94,15 +95,6 @@ const DashboardUI = ({ doctor, appointments, patients }) => {
 
   // Get recent patient activity
   const recentActivity = patients?.slice(0, 3);
-
-  // Helper function to format time
-  const formatTime = (date) => {
-    return new Intl.DateTimeFormat("en-IN", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    }).format(new Date(date));
-  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-gray-50/50">

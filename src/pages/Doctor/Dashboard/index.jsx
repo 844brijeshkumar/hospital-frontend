@@ -1,10 +1,14 @@
 import { useState } from "react";
-import Header from "../../components/Header";
-import PatientDashboard from "../../components/PatientDashboard";
-import MedicalHistory from "../../components/MedicalHistory";
-import ReportUpload from "../../components/ReportUpload";
-import { mockPatient, mockReports } from "../../utils";
-const index = () => {
+
+import DoctorDash from "../../../components/DortorDash";
+// import Assign from "../../components/assign";
+import Assign from "../../../components/assign";
+import PatientDashboard from "../../../components/PatientDashboard";
+import MedicalHistory from "../../../components/MedicalHistory";
+import ReportUpload from "../../../components/ReportUpload";
+import { mockPatient, mockReports } from "../../../utils";
+import Header from "../../../components/Header";
+const Dashboard = () => {
   const [activeView, setActiveView] = useState("dashboard");
   const [reports, setReports] = useState(mockReports);
 
@@ -14,13 +18,14 @@ const index = () => {
 
   const renderActiveView = () => {
     switch (activeView) {
-      case "dashboard":
-        return <PatientDashboard patient={mockPatient} reports={reports} />;
-      case "reports":
-        return <MedicalHistory reports={reports} />;
-
+      case "Dashboard":
+        return <DoctorDash patient={mockPatient} reports={reports} />;
+      case "assignReports":
+        return <Assign reports={reports} />;
+      case "addReport":
+        return <ReportUpload onUpload={handleUploadReport} />;
       default:
-        return <PatientDashboard patient={mockPatient} reports={reports} />;
+        return <DoctorDash patient={mockPatient} reports={reports} />;
     }
   };
 
@@ -30,7 +35,7 @@ const index = () => {
         activeView={activeView}
         onViewChange={setActiveView}
         patientName={mockPatient.name}
-        dashboard="patient"
+        dashboard="hospital"
       />
       <main>{renderActiveView()}</main>
 
@@ -42,13 +47,13 @@ const index = () => {
               <img src="home-logo.png" className=" h-24 w-26" />
               <h3 className="text-lg font-bold text-white">MedLock</h3>
             </div>
-            <p className=" mb-2">
+            <p className="mb-2">
               Your trusted centralized medical report system
             </p>
             <p className="text-sm text-emerald-400">
               Secure • Reliable • Always Accessible
             </p>
-            <div className="mt-4 pt-4 border-t border-slate-600 text-xs ">
+            <div className="mt-4 pt-4 border-t border-slate-600">
               © 2023 MedLock. All rights reserved. | Privacy Policy | Terms of
               Service
             </div>
@@ -59,4 +64,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Dashboard;

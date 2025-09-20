@@ -10,11 +10,8 @@ import {
   User, // Added for patient icon
   ClipboardCheck, // Added for the new "Assign" button
 } from "lucide-react";
-// import index from "../../login/patient";
+import { getCategoryIcon, formatDate, getPriorityColor } from "../../utils";
 
-// NOTE: This component is now designed for the "Assign Reports" view.
-// It assumes the `reports` prop is an array of report objects,
-// where each object now includes `patientName` and `patientId`.
 const index = ({ reports }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -83,53 +80,6 @@ const index = ({ reports }) => {
     sortBy,
     sortOrder,
   ]);
-
-  // Helper function to get the appropriate emoji icon for a report category
-  const getCategoryIcon = (category) => {
-    switch (category) {
-      case "lab":
-        return "🧪";
-      case "imaging":
-        return "📊";
-      case "prescription":
-        return "💊";
-      case "consultation":
-        return "👨‍⚕️";
-      case "surgery":
-        return "🔪";
-      case "vaccination":
-        return "💉";
-      default:
-        return "📄";
-    }
-  };
-
-  // Helper function to format the date
-  const formatDate = (date) => {
-    return new Intl.DateTimeFormat("en-IN", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    }).format(new Date(date));
-  };
-
-  // Helper function to get the Tailwind CSS classes for priority color
-  const getPriorityColor = (priority) => {
-    switch (priority) {
-      case "critical":
-        return "bg-red-100 text-red-800 border-red-200";
-      case "high":
-        return "bg-orange-100 text-orange-800 border-orange-200";
-      case "medium":
-        return "bg-yellow-100 text-yellow-800 border-yellow-200";
-      case "low":
-        return "bg-emerald-100 text-emerald-800 border-emerald-200";
-      default:
-        return "bg-gray-100 text-gray-800 border-gray-200";
-    }
-  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
