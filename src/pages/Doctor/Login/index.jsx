@@ -1,21 +1,20 @@
-
-import { useState } from 'react';
+import { useState } from "react";
 
 // Main App component
-export default function App() {
+export default function Login() {
   // Mock data for the doctor list. In a real application, you would fetch this from your database.
   const doctors = [
-    { id: '', name: 'Select a Doctor' },
-    { id: 'dr_jones', name: 'Dr. Jane Jones' },
-    { id: 'dr_smith', name: 'Dr. John Smith' },
-    { id: 'dr_lee', name: 'Dr. David Lee' },
-    { id: 'dr_wong', name: 'Dr. Emily Wong' },
+    { id: "", name: "Select a Doctor" },
+    { id: "dr_jones", name: "Dr. Jane Jones" },
+    { id: "dr_smith", name: "Dr. John Smith" },
+    { id: "dr_lee", name: "Dr. David Lee" },
+    { id: "dr_wong", name: "Dr. Emily Wong" },
   ];
 
   // State variables for form inputs and UI messages
-  const [selectedDoctorId, setSelectedDoctorId] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [selectedDoctorId, setSelectedDoctorId] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,12 +33,12 @@ export default function App() {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrorMessage('');
+    setErrorMessage("");
     setIsLoading(true);
 
     // Basic validation to ensure a doctor is selected
     if (!selectedDoctorId) {
-      setErrorMessage('Please select a doctor and enter your password.');
+      setErrorMessage("Please select a doctor and enter your password.");
       setIsLoading(false);
       return;
     }
@@ -47,11 +46,11 @@ export default function App() {
     // Simulate an API call with a delay
     setTimeout(() => {
       // Mock login logic. Replace this with your actual API call.
-      if (selectedDoctorId === 'dr_jones' && password === 'password123') {
+      if (selectedDoctorId === "dr_jones" && password === "password123") {
         setIsLoggedIn(true);
-        setErrorMessage('');
+        setErrorMessage("");
       } else {
-        setErrorMessage('Invalid credentials. Please try again.');
+        setErrorMessage("Invalid credentials. Please try again.");
       }
       setIsLoading(false);
     }, 1500); // 1.5-second delay to simulate network latency
@@ -68,9 +67,7 @@ export default function App() {
 
       <div className="w-full max-w-md p-8 m-4 space-y-8 bg-white rounded-xl shadow-2xl">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight">
-            Login
-          </h2>
+          <h2 className="text-3xl font-bold tracking-tight">Login</h2>
           <p className="mt-2 text-sm text-gray-600">
             Welcome back to the portal.
           </p>
@@ -79,7 +76,9 @@ export default function App() {
         {isLoggedIn ? (
           // Success message after successful login
           <div className="text-center">
-            <h3 className="text-2xl font-semibold text-green-600">Login Successful!</h3>
+            <h3 className="text-2xl font-semibold text-green-600">
+              Login Successful!
+            </h3>
             <p className="mt-2">Welcome back!</p>
           </div>
         ) : (
@@ -87,7 +86,10 @@ export default function App() {
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             {/* Dropdown for Doctor Name */}
             <div>
-              <label htmlFor="doctorName" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="doctorName"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Doctor Name
               </label>
               <div className="mt-1">
@@ -110,7 +112,10 @@ export default function App() {
 
             {/* Dropdown for Doctor ID */}
             <div>
-              <label htmlFor="doctorId" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="doctorId"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Doctor ID
               </label>
               <div className="mt-1">
@@ -133,7 +138,10 @@ export default function App() {
 
             {/* Input field for Password */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Password
               </label>
               <div className="mt-1">
@@ -152,9 +160,7 @@ export default function App() {
 
             {/* Display error message if present */}
             {errorMessage && (
-              <p className="text-sm font-medium text-red-600">
-                {errorMessage}
-              </p>
+              <p className="text-sm font-medium text-red-600">{errorMessage}</p>
             )}
 
             {/* Submit button with loading indicator */}
@@ -162,9 +168,11 @@ export default function App() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className={`group relative flex w-full justify-center rounded-md border border-transparent bg-gradient-to-br from-[#8FBEB9] to-[#7FB0A8] py-2 px-4 text-sm font-medium text-white shadow-sm transition-all duration-300 hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-[#8FBEB9] focus:ring-offset-2 ${isLoading ? 'cursor-not-allowed opacity-50' : ''}`}
+                className={`group relative flex w-full justify-center rounded-md border border-transparent bg-gradient-to-br from-[#8FBEB9] to-[#7FB0A8] py-2 px-4 text-sm font-medium text-white shadow-sm transition-all duration-300 hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-[#8FBEB9] focus:ring-offset-2 ${
+                  isLoading ? "cursor-not-allowed opacity-50" : ""
+                }`}
               >
-                {isLoading ? 'Logging in...' : 'Sign in'}
+                {isLoading ? "Logging in..." : "Sign in"}
               </button>
             </div>
           </form>

@@ -9,6 +9,7 @@ import {
   Clock,
 } from "lucide-react";
 
+import { getCategoryIcon, formatDate, getAge } from "../../utils";
 const Dashboard = ({ patient, reports }) => {
   // Slice the reports to show only the 3 most recent
   const recentReports = reports.slice(0, 3);
@@ -16,50 +17,6 @@ const Dashboard = ({ patient, reports }) => {
   const criticalReports = reports.filter(
     (r) => r.priority === "critical" || r.priority === "high"
   );
-
-  // Helper function to get the appropriate emoji icon for a report category
-  const getCategoryIcon = (category) => {
-    switch (category) {
-      case "lab":
-        return "🧪";
-      case "imaging":
-        return "�";
-      case "prescription":
-        return "💊";
-      case "consultation":
-        return "👨‍⚕️";
-      case "surgery":
-        return "🏥";
-      case "vaccination":
-        return "💉";
-      default:
-        return "📄";
-    }
-  };
-
-  // Helper function to format the date
-  const formatDate = (date) => {
-    return new Intl.DateTimeFormat("en-IN", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    }).format(new Date(date));
-  };
-
-  // Helper function to calculate the patient's age
-  const getAge = () => {
-    const today = new Date();
-    const birthDate = new Date(patient.dateOfBirth);
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    if (
-      monthDiff < 0 ||
-      (monthDiff === 0 && today.getDate() < birthDate.getDate())
-    ) {
-      age--;
-    }
-    return age;
-  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -70,7 +27,9 @@ const Dashboard = ({ patient, reports }) => {
             <h1 className="text-3xl font-bold mb-2">
               Welcome back, {patient.name}!
             </h1>
-            <p className="text-stone-100">Your complete medical history at a glance</p>
+            <p className="text-stone-100">
+              Your complete medical history at a glance
+            </p>
           </div>
           <div className="mt-4 md:mt-0">
             <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/30">
@@ -88,7 +47,7 @@ const Dashboard = ({ patient, reports }) => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Patient Info */}
         <div className="lg:col-span-1">
-          <div className="bg-white rounded-2xl shadow-xl p-6 mb-6 border border-rose-100">
+          <div className="bg-white text-black rounded-2xl shadow-xl p-6 mb-6 border border-rose-100">
             <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
               <Heart className="h-6 w-6 text-rose-500 mr-3" />
               Personal Information
@@ -96,7 +55,7 @@ const Dashboard = ({ patient, reports }) => {
             <div className="space-y-4">
               <div className="flex justify-between">
                 <span className="text-gray-600">Age:</span>
-                <span className="font-medium">{getAge()} years</span>
+                <span className="font-medium">{getAge(patient)} years</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Blood Group:</span>

@@ -1,5 +1,32 @@
-import React, { useState } from 'react';
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
+const nav = [
+  {
+    id: 1,
+    name: "Home",
+    icon: "",
+    path: "/",
+  },
+  {
+    id: 2,
+    name: "Services",
+    icon: "",
+    path: "/services",
+  },
+  {
+    id: 3,
+    name: "About Us",
+    icon: "",
+    path: "/about-us",
+  },
+  {
+    id: 4,
+    name: "Contact",
+    icon: "",
+    path: "/contact",
+  },
+];
 // The main App component that renders the complete page,
 // including the responsive header and the portal cards.
 const App = () => {
@@ -12,53 +39,39 @@ const App = () => {
   };
 
   return (
-    <div className={`font-sans antialiased text-gray-800 bg-teal-50 min-h-screen`}>
+    <div
+      className={`font-sans antialiased text-gray-800 bg-teal-50 min-h-screen`}
+    >
       {/* Header component with a drop shadow */}
       <header className="w-full bg-white shadow-lg z-50 fixed top-0 left-0">
         <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
           {/* Logo and site title */}
-          <a href="#" className="flex items-center space-x-2">
-            {/* Using an inline SVG for the logo for a self-contained component */}
+          <Link to="/" className="flex items-center space-x-2">
             <div className="flex items-center space-x-3">
-             <div>
-               <img src="logo.png" className="h-25 w-23" alt="MedLock Logo" />
-             </div>
-             <div>
-               <h1 className="text-2xl font-bold text-[#0b4f4a]">MedLock</h1>
-               <p className="text-xs text-[#0b4f4a]">
-                 Centralized Medical Reports
-               </p>
-             </div>
-          </div>
-            {/* <span className="text-2xl font-bold text-teal-900">MedLock</span> */}
-          </a>
+              <div>
+                <img src="logo.png" className="h-25 w-23" alt="MedLock Logo" />
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-[#0b4f4a]">MedLock</h1>
+                <p className="text-xs text-[#0b4f4a]">
+                  Centralized Medical Reports
+                </p>
+              </div>
+            </div>
+          </Link>
 
           {/* Desktop navigation menu - visible on medium screens and up */}
           <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
-            <a
-              href="#"
-              className="hover:text-teal-600 transition-colors duration-200"
-            >
-              Home
-            </a>
-            <a
-              href="#"
-              className="hover:text-teal-600 transition-colors duration-200"
-            >
-              Services
-            </a>
-            <a
-              href="#"
-              className="hover:text-teal-600 transition-colors duration-200"
-            >
-              About Us
-            </a>
-            <a
-              href="#"
-              className="hover:text-teal-600 transition-colors duration-200"
-            >
-              Contact
-            </a>
+            {nav.map((page, index) => {
+              return (
+                <Link
+                  href={page.path}
+                  className="hover:text-teal-600 transition-colors duration-200"
+                >
+                  {page.name}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Mobile menu button - visible on small screens */}
@@ -88,7 +101,7 @@ const App = () => {
       {/* Mobile navigation menu - conditionally rendered */}
       <div
         className={`fixed top-0 left-0 h-full w-64 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out md:hidden ${
-          isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div className="p-6 flex flex-col items-start space-y-4">
@@ -149,7 +162,7 @@ const App = () => {
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
           {/* Doctor Card */}
           {/* Using a placeholder image for the card icon */}
-          <a href="#" className="w-full max-w-sm">
+          <Link to="/login-doctor" className="w-full max-w-sm">
             <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300 h-full">
               <img
                 src="PATIENT.png"
@@ -163,11 +176,12 @@ const App = () => {
                 Access patient records and manage.
               </p>
             </div>
-          </a>
+          </Link>
 
           {/* Hospital Card */}
           {/* Using a placeholder image for the card icon */}
-          <a href="#" className="w-full max-w-sm">
+          <Link to="/login-hospital" className="w-full max-w-sm">
+            {" "}
             <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300 h-full">
               <img
                 src="HOSPITAL.png"
@@ -181,7 +195,7 @@ const App = () => {
                 Learn about our mission and team of experts.
               </p>
             </div>
-          </a>
+          </Link>
         </section>
       </main>
 

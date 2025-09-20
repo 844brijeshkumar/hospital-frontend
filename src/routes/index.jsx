@@ -1,51 +1,57 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { lazy } from "react";
+import Contact from "../pages/ContactUs";
+import About from "../pages/AboutUs";
 
-const HomePage = lazy(() => import("../pages/HomePage"));
+const Home = lazy(() => import("../pages/Home"));
 const NotFound = lazy(() => import("../pages/NotFound"));
-const Test = lazy(() => import("../pages/Test"));
-const Test2 = lazy(() => import("../pages/Test2"));
-const Loginp = lazy(() => import("../login/patient"));
-const Loginh = lazy(() => import("../login/hospital"));
+const PatientDashboard = lazy(() => import("../pages/Patient/Dashboard"));
+const DoctorDashboard = lazy(() => import("../pages/Doctor/Dashboard"));
+const HospitalDashboard = lazy(() => import("../pages/Hospital/Dashboard"));
+
+const LoginPatient = lazy(() => import("../pages/Patient/Login"));
+const LoginHospital = lazy(() => import("../pages/Hospital/Login"));
 const LoginA = lazy(() => import("../login/aiAssistent"));
-const LoginD = lazy(() => import("../login/doctor"));
-const HomeH = lazy(() => import("../pages/HospitalPage"));
+const LoginDoctor = lazy(() => import("../pages/Doctor/Login"));
+const HospitalHomePage = lazy(() => import("../pages/Hospital/Home"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: <Home />,
   },
   {
-    path: "/test",
-    element: <Test />,
+    path: "/patient-dashboard",
+    element: <PatientDashboard />,
   },
-  {path: "/test2",
-    element: <Test2/>
-  },
+  { path: "/doctor-dashboard", element: <DoctorDashboard /> },
+  { path: "/hospital-dashboard", element: <HospitalDashboard /> },
+  { path: "/contact", element: <Contact /> },
+  { path: "/about", element: <About /> },
+
   {
     path: "*",
     element: <NotFound />,
   },
   {
-    path:"/loginp",
-    element:<Loginp/>,
+    path: "/login-patient",
+    element: <LoginPatient />,
   },
   {
-    path:"/loginh",
-    element:<Loginh/>
+    path: "/login-hospital",
+    element: <LoginHospital />,
   },
   {
     path: "/logina",
-    element:<LoginA/>
+    element: <LoginA />,
   },
   {
-    path: "/logind",
-    element:<LoginD/>
+    path: "/login-doctor",
+    element: <LoginDoctor />,
   },
   {
-    path: "/homeh",
-    element:<HomeH/>
+    path: "/hospital",
+    element: <HospitalHomePage />,
   },
 ]);
 
