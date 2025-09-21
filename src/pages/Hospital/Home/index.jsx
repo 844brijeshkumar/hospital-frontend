@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/footer";
+// import Footer from "../../../components/Footer";
 
 // The main App component that renders the complete page,
 // including the responsive header and the portal cards.
@@ -123,6 +124,8 @@ const App = () => {
       </main>
 
       {/* Footer - Reusing the footer from the original App component */}
+      {/* <Footer /> */}
+
       <Footer />
     </div>
   );
