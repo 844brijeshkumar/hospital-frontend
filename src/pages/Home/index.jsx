@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import FallBack from "../../components/fallBack";
 import Footer from "../../components/footer";
 import MedicalFactMarquee from "../../components/Fact";
-import Navbar from "../../components/navbar";
+import Navbar from "../../components/Navbar";
 
 // The VoiceAssistant component (remains unchanged)
 const VoiceAssistant = () => {
