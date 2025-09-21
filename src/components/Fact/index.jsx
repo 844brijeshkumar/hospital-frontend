@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+
+import { useState, useEffect, useRef } from 'react';
 
 // === CSS for the Marquee Effect (remains the same) ===
 const marqueeStyles = `
@@ -238,7 +239,8 @@ const MedicalFactMarquee = () => {
         { code: 'S06.0X0A', emoji: '🧠' }, // Concussion
         { code: 'S93.409A', emoji: '🦶' }, // Ankle Sprain
         { code: 'S52.90XA', emoji: '💪' }, // Arm Fracture
-        { code:- 'G56.00', emoji: '🖐️' }, // Carpal Tunnel Syndrome
+        // **SYNTAX FIX HERE**: Corrected 'code:-' to 'code:'
+        { code: 'G56.00', emoji: '🖐️' }, // Carpal Tunnel Syndrome 
         { code: 'M72.2', emoji: '👣' }, // Plantar Fasciitis
         { code: 'M41.9', emoji: 'Spine' }, // Scoliosis
         { code: 'M51.26', emoji: '💿' }, // Herniated Disc
@@ -275,19 +277,32 @@ const MedicalFactMarquee = () => {
         { code: 'A37.90', emoji: '😷' } // Whooping Cough (Pertussis)
       ];
 
-
       const system = '2.16.840.1.113883.6.90';
 
       try {
         const randomTopic = medicalTopics[Math.floor(Math.random() * medicalTopics.length)];
-        const apiUrl = `/api/medlineplus/service?mainSearchCriteria.v.c=${randomTopic.code}&mainSearchCriteria.v.cs=${system}&knowledgeResponseType=application/json`;
+        
+        // ===================================================================
+        // **CODE FIX**: Replaced relative URL with the full, absolute API URL
+        // This is the key change that makes it work when deployed.
+        // ===================================================================
+        const baseUrl = 'https://connect.medlineplus.gov/service';
+        const params = new URLSearchParams({
+            'mainSearchCriteria.v.c': randomTopic.code,
+            'mainSearchCriteria.v.cs': system,
+            'knowledgeResponseType': 'application/json'
+        });
+        const apiUrl = `${baseUrl}?${params.toString()}`;
+
         const response = await fetch(apiUrl);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
         const data = await response.json();
         if (data && data.feed && data.feed.entry && data.feed.entry.length > 0) {
           const entry = data.feed.entry[0];
           const title = entry.title?._value || 'Medical Information';
           const summary = entry.summary?._value || entry.content?._value;
+          
           if (summary) {
             let cleanSummary = summary.replace(/<[^>]*>/g, '');
             setFact(`${randomTopic.emoji} ${title}: ${cleanSummary}`);
@@ -305,6 +320,7 @@ const MedicalFactMarquee = () => {
         setIsLoading(false);
       }
     };
+
     fetchMedicalFact();
     const interval = setInterval(fetchMedicalFact, 45000);
     return () => clearInterval(interval);
