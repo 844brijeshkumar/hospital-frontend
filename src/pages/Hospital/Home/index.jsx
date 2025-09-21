@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../../../components/navbar";
+import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/footer";
-
+// import Footer from "../../../components/Footer";
 
 // The main App component that renders the complete page,
 // including the responsive header and the portal cards.
@@ -20,7 +20,7 @@ const App = () => {
       className={`font-sans antialiased text-gray-800 bg-teal-50 min-h-screen`}
     >
       {/* Header component with a drop shadow */}
-      <Navbar/>
+      <Navbar />
 
       {/* Mobile navigation menu - conditionally rendered */}
       <div
@@ -124,7 +124,9 @@ const App = () => {
       </main>
 
       {/* Footer - Reusing the footer from the original App component */}
-      <Footer/>
+      {/* <Footer /> */}
+
+      <Footer />
     </div>
   );
 };
