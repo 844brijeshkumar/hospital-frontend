@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import FallBack from "../../components/fallBack";
 import Footer from "../../components/footer";
 import MedicalFactMarquee from "../../components/Fact";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/navbar";
 
 // The VoiceAssistant component (remains unchanged)
 const VoiceAssistant = () => {
@@ -174,7 +174,7 @@ const Home = () => {
           {/* Our Hospital Card */}
 
           <Link to="/hospital">
-            <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
+            <div className="bg-white h-full p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
               <img
                 src="HOSPITAL.png"
                 alt="Hospital Icon"

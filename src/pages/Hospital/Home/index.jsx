@@ -1,32 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "../../../components/navbar";
+import Footer from "../../../components/footer";
 
-const nav = [
-  {
-    id: 1,
-    name: "Home",
-    icon: "",
-    path: "/",
-  },
-  {
-    id: 2,
-    name: "Services",
-    icon: "",
-    path: "/services",
-  },
-  {
-    id: 3,
-    name: "About Us",
-    icon: "",
-    path: "/about-us",
-  },
-  {
-    id: 4,
-    name: "Contact",
-    icon: "",
-    path: "/contact",
-  },
-];
+
 // The main App component that renders the complete page,
 // including the responsive header and the portal cards.
 const App = () => {
@@ -43,60 +20,7 @@ const App = () => {
       className={`font-sans antialiased text-gray-800 bg-teal-50 min-h-screen`}
     >
       {/* Header component with a drop shadow */}
-      <header className="w-full bg-white shadow-lg z-50 fixed top-0 left-0">
-        <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
-          {/* Logo and site title */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="flex items-center space-x-3">
-              <div>
-                <img src="logo.png" className="h-25 w-23" alt="MedLock Logo" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold text-[#0b4f4a]">MedLock</h1>
-                <p className="text-xs text-[#0b4f4a]">
-                  Centralized Medical Reports
-                </p>
-              </div>
-            </div>
-          </Link>
-
-          {/* Desktop navigation menu - visible on medium screens and up */}
-          <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
-            {nav.map((page, index) => {
-              return (
-                <Link
-                  href={page.path}
-                  className="hover:text-teal-600 transition-colors duration-200"
-                >
-                  {page.name}
-                </Link>
-              );
-            })}
-          </div>
-
-          {/* Mobile menu button - visible on small screens */}
-          <button
-            onClick={toggleMenu}
-            className="md:hidden text-teal-600 focus:outline-none"
-          >
-            {/* Using an inline SVG for the menu icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16m-7 6h7"
-              />
-            </svg>
-          </button>
-        </nav>
-      </header>
+      <Navbar/>
 
       {/* Mobile navigation menu - conditionally rendered */}
       <div
@@ -200,26 +124,7 @@ const App = () => {
       </main>
 
       {/* Footer - Reusing the footer from the original App component */}
-      <footer className="bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94] border-t border-slate-600 py-8 mt-16 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="flex items-center justify-center space-x-1 mb-2">
-              <img src="home-logo.png" className=" h-24 w-26" />
-              <h3 className="text-lg font-bold text-white">MedLock</h3>
-            </div>
-            <p className=" mb-2">
-              Your trusted centralized medical report system
-            </p>
-            <p className="text-sm text-emerald-400">
-              Secure • Reliable • Always Accessible
-            </p>
-            <div className="mt-4 pt-4 border-t border-slate-600 text-xs ">
-              © 2023 MedLock. All rights reserved. | Privacy Policy | Terms of
-              Service
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   );
 };
