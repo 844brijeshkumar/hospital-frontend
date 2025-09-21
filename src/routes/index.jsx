@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import { lazy } from "react";
 import Contact from "../pages/ContactUs";
 import About from "../pages/AboutUs";
+import Service from "../pages/Services";
 
 const Home = lazy(() => import("../pages/Home"));
 const NotFound = lazy(() => import("../pages/NotFound"));
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
   { path: "/hospital-dashboard", element: <HospitalDashboard /> },
   { path: "/contact", element: <Contact /> },
   { path: "/about", element: <About /> },
+  { path: "/services", element: <Service /> },
 
   {
     path: "*",
