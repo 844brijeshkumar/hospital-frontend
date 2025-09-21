@@ -10,6 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import FallBack from "../../components/fallBack";
 import Footer from "../../components/footer";
+import MedicalFactMarquee from "../../components/Fact";
 
 // The VoiceAssistant component (remains unchanged)
 const VoiceAssistant = () => {
@@ -207,7 +208,10 @@ const Home = () => {
           position: "relative",
         }}
       >
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94] "></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94] ">
+          <br></br>
+          <MedicalFactMarquee/>
+        </div>
         <div className="relative z-10">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Good Health is in your hands
