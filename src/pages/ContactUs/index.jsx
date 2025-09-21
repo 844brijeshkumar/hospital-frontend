@@ -11,10 +11,10 @@ import {
   X,
 } from "lucide-react";
 import Footer from "../../components/footer";
+import Navbar from "../../components/Navbar";
 
 // The main App component containing all logic and UI
 const App = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,33 +23,6 @@ const App = () => {
     message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const nav = [
-  {
-    id: 1,
-    link: "/",
-    name: "Home",
-  },
-  {
-    id: 2,
-    link: "/services",
-    name: "Services",
-  },
-  {
-    id: 3,
-    link: "/about",
-    name: "About Us",
-  },
-  {
-    id: 4,
-    link: "/contact",
-    name: "Contact",
-  },
-];
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -70,121 +43,13 @@ const App = () => {
     });
   };
 
-  // Custom CSS classes and animations are defined here
-  const customStyles = `
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-    
-    * {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    }
-    
-    .gradient-bg {
-      background: linear-gradient(135deg, #0f766e 0%, #14b8a6 25%, #5eead4 50%, #14b8a6 75%, #0f766e 100%);
-      background-size: 400% 400%;
-      animation: gradientShift 8s ease infinite;
-    }
-    
-    .gradient-text {
-      background: linear-gradient(135deg, #0f766e, #14b8a6, #5eead4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .medical-shadow {
-      box-shadow: 0 20px 25px -5px rgba(15, 118, 110, 0.1), 0 10px 10px -5px rgba(15, 118, 110, 0.04);
-    }
-    
-    .btn-primary {
-      background: linear-gradient(135deg, #0f766e, #14b8a6);
-    }
-    
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #134e4a, #0f766e);
-      box-shadow: 0 20px 25px -5px rgba(15, 118, 110, 0.3);
-    }
-
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
-    .form-input-focus:focus {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 25px -5px rgba(15, 118, 110, 0.2);
-    }
-
-  `;
-
   return (
     <>
-      <style>{customStyles}</style>
+      <Navbar />
       <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-50 text-gray-800">
-        <header className="w-full bg-white shadow-md z-50 relative">
-          <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#" className="flex items-center space-x-2">
-              <div className="flex items-center space-x-3">
-                {/* Placeholder for the logo image */}
-                <div className="flex items-center justify-center h-12 w-12 rounded-full bg-teal-500 text-white font-bold text-xl">
-                  ML
-                </div>
-                <div>
-                  <h1 className="text-2xl font-bold text-[#0b4f4a]">MedLock</h1>
-                  <p className="text-xs text-[#0b4f4a]">
-                    Centralized Medical Reports
-                  </p>
-                </div>
-              </div>
-            </a>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
-              {nav?.map((page, index) => {
-                return (
-                  <a
-                    href={page.link}
-                    key={index}
-                    className="hover:text-teal-600 transition-colors duration-200"
-                  >
-                    {page.name}
-                  </a>
-                );
-              })}
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button onClick={toggleMenu} className="md:hidden text-teal-600">
-              {isMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
-          </nav>
-
-          {/* Mobile Menu Dropdown */}
-          {isMenuOpen && (
-            <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-4">
-              <div className="flex flex-col items-center space-y-4">
-                {nav?.map((page, index) => (
-                  <a
-                    href={page.link}
-                    key={index}
-                    onClick={toggleMenu}
-                    className="hover:text-teal-600 transition-colors duration-200 text-lg"
-                  >
-                    {page.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
-        </header>
-
         {/* Contact Section */}
-        <main className="container mx-auto px-6 py-12">
-          <div className="max-w-5xl mx-auto bg-white/95 backdrop-blur-md p-10 md:p-16 rounded-3xl medical-shadow border border-white/20">
+        <main className="container mx-auto px-3 sm:px-6 py-12">
+          <div className="max-w-5xl mx-auto bg-white/95 backdrop-blur-md p-5 md:p-16 rounded-3xl medical-shadow border border-white/20">
             <div className="text-center mb-12">
               <h2 className="text-5xl font-bold gradient-text mb-4 tracking-tight">
                 Contact Us
@@ -209,8 +74,12 @@ const App = () => {
                         <Phone className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-800 text-lg">Phone</h4>
-                        <p className="text-gray-600 text-lg">+1 (123) 456-7890</p>
+                        <h4 className="font-bold text-gray-800 text-lg">
+                          Phone
+                        </h4>
+                        <p className="text-gray-600 text-lg">
+                          +1 (123) 456-7890
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-center space-x-4 group">
@@ -218,7 +87,9 @@ const App = () => {
                         <Mail className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-800 text-lg">Email</h4>
+                        <h4 className="font-bold text-gray-800 text-lg">
+                          Email
+                        </h4>
                         <p className="text-gray-600 text-lg">
                           contact@medlock.dev
                         </p>
@@ -262,7 +133,7 @@ const App = () => {
               </div>
 
               {/* Contact Form */}
-              <div className="bg-white/50 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
+              <div className="bg-white/50 backdrop-blur-sm sm:p-8 rounded-2xl border border-white/20">
                 <h3 className="text-2xl font-bold text-teal-900 mb-6">
                   Send us a Message
                 </h3>
@@ -455,7 +326,10 @@ const App = () => {
                     ></textarea>
                   </div>
                   <div>
-                    <button type="submit" className="btn-primary w-full flex justify-center items-center py-4 px-6 border border-transparent rounded-xl shadow-lg text-base font-semibold text-white transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                    <button
+                      type="submit"
+                      className="btn-primary w-full flex justify-center items-center py-4 px-6 border border-transparent rounded-xl shadow-lg text-base font-semibold text-white transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+                    >
                       <Send className="mr-3 w-5 h-5" />
                       Send Message
                     </button>
@@ -491,7 +365,7 @@ const App = () => {
         </main>
 
         {/* Footer */}
-        <Footer/>
+        <Footer />
       </div>
     </>
   );

@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import FallBack from "../../components/fallBack";
 import Footer from "../../components/footer";
 import MedicalFactMarquee from "../../components/Fact";
+import Navbar from "../../components/Navbar";
 
 // The VoiceAssistant component (remains unchanged)
 const VoiceAssistant = () => {
@@ -102,101 +103,11 @@ const VoiceAssistant = () => {
   );
 };
 
-const nav = [
-  {
-    id: 1,
-    link: "/",
-    name: "Home",
-  },
-  {
-    id: 2,
-    link: "/services",
-    name: "Services",
-  },
-  {
-    id: 3,
-    link: "/about",
-    name: "About Us",
-  },
-  {
-    id: 4,
-    link: "/contact",
-    name: "Contact",
-  },
-];
-
 // The main App component
 const Home = () => {
-  // State to manage mobile menu visibility
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // Function to toggle the menu state
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
     <div className={`bg-teal-50 text-gray-800`}>
-      <header className="w-full bg-white shadow-md z-50 relative">
-        <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="flex items-center space-x-3">
-              <div>
-                <img src="logo.png" className="h-25 w-23" alt="MedLock Logo" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold text-[#0b4f4a]">MedLock</h1>
-                <p className="text-xs text-[#0b4f4a]">
-                  Centralized Medical Reports
-                </p>
-              </div>
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
-            {nav?.map((page, index) => {
-              return (
-                <Link
-                  to={page.link}
-                  key={index}
-                  className="hover:text-teal-600 transition-colors duration-200"
-                >
-                  {page.name}
-                </Link>
-              );
-            })}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button onClick={toggleMenu} className="md:hidden text-teal-600">
-            {isMenuOpen ? (
-              <FaTimes className="w-6 h-6" />
-            ) : (
-              <FaBars className="w-6 h-6" />
-            )}
-          </button>
-        </nav>
-
-        {/* Mobile Menu Dropdown */}
-        {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-4">
-            <div className="flex flex-col items-center space-y-4">
-              {nav?.map((page, index) => (
-                <Link
-                  to={page.link}
-                  key={index}
-                  onClick={toggleMenu} // Close menu on link click
-                  className="hover:text-teal-600 transition-colors duration-200 text-lg"
-                >
-                  {page.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
-      </header>
-
+      <Navbar />
       {/* Hero Section */}
       <div
         className="text-white flex items-center justify-center text-center py-20 px-4 md:py-32 lg:py-48"
@@ -210,7 +121,7 @@ const Home = () => {
       >
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94] ">
           <br></br>
-          <MedicalFactMarquee/>
+          <MedicalFactMarquee />
         </div>
         <div className="relative z-10">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
@@ -328,7 +239,7 @@ const Home = () => {
       </main>
 
       {/* Footer */}
-      <Footer/>
+      <Footer />
     </div>
   );
 };
