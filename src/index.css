@@ -56,7 +56,7 @@ body {
   --color-card-text: #f0f0f0;
   --color-card-secondary-text: #a0a0a0;
   --color-border: #333333;
-  --color-shadow: 0 4px 6px rgb(173, 173, 157); /* White shadow for dark mode */
+  --color-shadow: 0 4px 6px rgba(173, 173, 157,0.5); /* White shadow for dark mode */
 }
 
 .gradient-bg {
