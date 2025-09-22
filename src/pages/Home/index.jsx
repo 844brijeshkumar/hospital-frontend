@@ -5,13 +5,14 @@ import {
   FaBars,
   FaMicrophone,
   FaStop,
-  FaTimes, // <-- Imported the close icon
+  FaTimes,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import FallBack from "../../components/fallBack";
 import Footer from "../../components/footer";
 import MedicalFactMarquee from "../../components/Fact";
 import Navbar from "../../components/Navbar";
+import CompanyCarousel from "../../components/CompanyCarousel";
 
 // The VoiceAssistant component (remains unchanged)
 const VoiceAssistant = () => {
@@ -119,21 +120,19 @@ const Home = () => {
           position: "relative",
         }}
       >
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94] ">
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94]">
           <br></br>
           <MedicalFactMarquee />
         </div>
         <div className="relative z-10">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+          <h1 className="text-4xl md:text-6xl font-bold mb-8">
             Good Health is in your hands
           </h1>
+          
+          {/* Company Carousel replacing Book Appointment button */}
           <br></br>
-          <a
-            href="#"
-            className="rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300 bg-white text-teal-600 font-bold py-3 px-8  "
-          >
-            Book an Appointment
-          </a>
+          <br></br>
+          <CompanyCarousel />
         </div>
       </div>
 
@@ -172,7 +171,6 @@ const Home = () => {
           </Link>
 
           {/* Our Hospital Card */}
-
           <Link to="/hospital">
             <div className="bg-white h-full p-8 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300">
               <img
@@ -180,7 +178,7 @@ const Home = () => {
                 alt="Hospital Icon"
                 className="w-24 h-24 mb-4"
               />
-              <h3 className="text-2xl font-semibold text-teal-800">
+              <h3 className="text-2xl font-semibent text-teal-800">
                 Hospital Portal
               </h3>
               <p className="text-gray-600 mt-2">

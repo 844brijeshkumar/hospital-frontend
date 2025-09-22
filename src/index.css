@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+@keyframes scroll-infinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll-infinite {
+  animation: scroll-infinite 30s linear infinite;
+  width: 300%;
+}
+
+.animate-scroll-infinite:hover {
+  animation-play-state: paused;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -134,3 +152,4 @@ body {
     background-color: #91b4e6;
   }
 }
+
