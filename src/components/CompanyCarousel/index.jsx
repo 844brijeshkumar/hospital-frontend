@@ -5,7 +5,7 @@ const CarouselItem = ({ company, index }) => {
   return (
     <div
       key={`${company.id}-${index}`}
-      className="flex-shrink-0 w-72 bg-[var(--color-bg)] rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 hover:shadow-xl"
+      className="flex-shrink-0 w-72 bg-[var(--color-card-bg)] rounded-xl shadow-[var(--color-shadow)] overflow-hidden transform hover:scale-105 transition-all duration-300 hover:shadow-xl"
     >
       <div className={`h-2 bg-gradient-to-r ${company.color}`}></div>
       <div className="p-6">
@@ -14,14 +14,14 @@ const CarouselItem = ({ company, index }) => {
             <img
               src={company.logo}
               alt={`${company.name} logo`}
-              className="w-16 h-16 rounded-full object-cover border-4 border-gray-100 shadow-md"
+              className="w-16 h-16 rounded-full object-cover border-4 border-[var(--color-border)] shadow-md"
             />
           </div>
           <div className="flex-1 min-w-0">
-            <h4 className="text-lg font-bold text-[var(--color-text)] truncate">
+            <h4 className="text-lg font-bold text-[var(--color-card-text)] truncate">
               {company.name}
             </h4>
-            <p className="text-sm text-gray-600 mt-1 leading-relaxed">
+            <p className="text-sm text-[var(--color-card-secondary-text)] mt-1 leading-relaxed">
               {company.description}
             </p>
           </div>
@@ -31,14 +31,14 @@ const CarouselItem = ({ company, index }) => {
             {[...Array(5)].map((_, i) => (
               <svg
                 key={i}
-                className="w-4 h-4 text-yellow-400 fill-current"
+                className="w-4 h-4 text-[var(--color-primary)] fill-current"
                 viewBox="0 0 20 20"
               >
                 <path d="M10 15l-5.878 3.09 1.123-6.545L0 6.91l6.564-.954L10 0l3.436 5.956L20 6.91l-5.245 4.635 1.123 6.545z" />
               </svg>
             ))}
           </div>
-          <span className="text-xs text-gray-500 font-medium">
+          <span className="text-xs text-[var(--color-card-secondary-text)] font-medium">
             Trusted Partner
           </span>
         </div>
@@ -112,12 +112,12 @@ const CompanyCarousel = () => {
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      <div className="relative overflow-hidden bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/20">
+      <div className="relative overflow-hidden bg-[var(--color-card-bg)] backdrop-blur-sm rounded-2xl p-6 shadow-[var(--color-shadow)] border-[var(--color-border)]">
         <div className="mb-4 text-center">
-          <h3 className="text-xl font-bold text-white mb-2">
+          <h3 className="text-xl font-bold text-[var(--color-card-text)] mb-2">
             Our Trusted Healthcare Partners
           </h3>
-          <p className="text-white/90 text-sm">
+          <p className="text-[var(--color-card-secondary-text)] text-sm">
             Working together for your well-being
           </p>
         </div>
@@ -135,8 +135,8 @@ const CompanyCarousel = () => {
         </div>
 
         {/* Gradient overlays for smooth fade effect */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white/20 to-transparent pointer-events-none"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white/20 to-transparent pointer-events-none"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[var(--color-card-bg)] to-transparent pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[var(--color-card-bg)] to-transparent pointer-events-none"></div>
       </div>
     </div>
   );

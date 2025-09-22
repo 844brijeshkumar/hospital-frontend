@@ -38,15 +38,25 @@ body {
   --color-primary: #3b82f6;
   --color-secondary: #06b6d4;
   --color-hover: #059669;
+  --color-card-bg: #ffffff;
+  --color-card-text: #1f2937;
+  --color-card-secondary-text: #6b7280;
+  --color-border: #e5e7eb;
+  --color-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Black shadow for light mode */
 }
 
 /* Dark Theme */
 .theme-dark {
-  --color-bg: #1f2937;
-  --color-text: #ffffff;
+  --color-bg: #121212;
+  --color-text: #e0e0e0;
   --color-primary: #10b981;
-  --color-secondary: #2563eb;
+  --color-secondary: #3b82f6;
   --color-hover: #059669;
+  --color-card-bg: #1e1e1e;
+  --color-card-text: #f0f0f0;
+  --color-card-secondary-text: #a0a0a0;
+  --color-border: #333333;
+  --color-shadow: 0 4px 6px rgb(173, 173, 157); /* White shadow for dark mode */
 }
 
 .gradient-bg {

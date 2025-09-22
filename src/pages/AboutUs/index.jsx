@@ -27,19 +27,19 @@ const teamMembers = [
 
 const coreValues = [
   {
-    icon: <ShieldCheck className="w-10 h-10 text-teal-600 mb-4" />,
+    icon: <ShieldCheck className="w-10 h-10 text-[var(--color-primary)] mb-4" />,
     title: "Security & Privacy",
     description:
       "Your health data is your most personal information. We use bank-grade security and encryption, adhering to Indian data laws.",
   },
   {
-    icon: <Globe className="w-10 h-10 text-teal-600 mb-4" />,
+    icon: <Globe className="w-10 h-10 text-[var(--color-primary)] mb-4" />,
     title: "Nationwide Access",
     description:
       "Your health records should be accessible anywhere, from a clinic in Kerala to a hospital in Kashmir.",
   },
   {
-    icon: <Users className="w-10 h-10 text-teal-600 mb-4" />,
+    icon: <Users className="w-10 h-10 text-[var(--color-primary)] mb-4" />,
     title: "Citizen Empowerment",
     description:
       "We put you in control. Manage, view, and securely share your complete medical history with any doctor you choose.",
@@ -50,13 +50,12 @@ const AboutUs = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-[var(--color-bg)] text-gray-800">
+      <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)]">
         <main className="container mx-auto px-4 sm:px-6 py-12">
           {/* --- New Hero Section with your Gradient --- */}
-          <div className="relative text-center overflow-hidden rounded-3xl py-20 md:py-28 mb-16 shadow-2xl">
+          <div className="relative text-center overflow-hidden rounded-3xl py-20 md:py-28 mb-16 shadow-[var(--color-shadow)]">
             {/* Gradient Overlay */}
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94]"></div>
-
             {/* Content on top of the gradient */}
             <div className="relative z-10 px-4">
               <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight drop-shadow-lg">
@@ -73,12 +72,12 @@ const AboutUs = () => {
           <div className="max-w-6xl mx-auto">
             {/* --- Mission and Vision Section --- */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-              <div className="relative p-8 bg-white/60 backdrop-blur-md rounded-3xl medical-shadow border border-white/30">
-                <Target className="w-12 h-12 text-cyan-600 absolute -top-6 -left-6" />
-                <h2 className="text-3xl font-bold text-teal-900 mb-4">
+              <div className="relative p-8 bg-[var(--color-card-bg)] rounded-3xl shadow-[var(--color-shadow)] border-[var(--color-border)]">
+                <Target className="w-12 h-12 text-[var(--color-secondary)] absolute -top-6 -left-6" />
+                <h2 className="text-3xl font-bold text-[var(--color-card-text)] mb-4">
                   Our Mission
                 </h2>
-                <p className="text-gray-700 leading-loose">
+                <p className="text-[var(--color-card-secondary-text)] leading-loose">
                   To create a <strong>single, unified health repository</strong>{" "}
                   for every citizen of India. We eliminate scattered physical
                   files and fragmented digital reports, enabling patients and
@@ -86,12 +85,12 @@ const AboutUs = () => {
                   securely and instantly.
                 </p>
               </div>
-              <div className="relative p-8 bg-white/60 backdrop-blur-md rounded-3xl medical-shadow border border-white/30">
-                <Lightbulb className="w-12 h-12 text-teal-500 absolute -top-6 -right-6" />
-                <h2 className="text-3xl font-bold text-teal-900 mb-4">
+              <div className="relative p-8 bg-[var(--color-card-bg)] rounded-3xl shadow-[var(--color-shadow)] border-[var(--color-border)]">
+                <Lightbulb className="w-12 h-12 text-[var(--color-secondary)] absolute -top-6 -right-6" />
+                <h2 className="text-3xl font-bold text-[var(--color-card-text)] mb-4">
                   Our Vision
                 </h2>
-                <p className="text-gray-700 leading-loose">
+                <p className="text-[var(--color-card-secondary-text)] leading-loose">
                   We envision a future of{" "}
                   <strong>"One Nation, One Health Record."</strong> A future
                   where your vital health information is available to an
@@ -104,10 +103,10 @@ const AboutUs = () => {
             {/* --- Core Values Section --- */}
             <div className="mb-20">
               <div className="text-center mb-12">
-                <h2 className="text-4xl font-bold text-teal-900">
+                <h2 className="text-4xl font-bold text-[var(--color-text)]">
                   Our Guiding Principles
                 </h2>
-                <p className="text-lg text-gray-500 mt-2">
+                <p className="text-lg text-[var(--color-card-secondary-text)] mt-2">
                   The foundation upon which MedLock is built.
                 </p>
               </div>
@@ -115,13 +114,15 @@ const AboutUs = () => {
                 {coreValues.map((value, index) => (
                   <div
                     key={index}
-                    className="bg-white/70 backdrop-blur-sm p-8 rounded-2xl text-center border border-white/40 medical-shadow-light hover:scale-105 hover:shadow-xl transition-transform duration-300"
+                    className="bg-[var(--color-card-bg)] p-8 rounded-2xl text-center border-[var(--color-border)] shadow-[var(--color-shadow)] hover:scale-105 hover:shadow-xl transition-transform duration-300"
                   >
                     {value.icon}
-                    <h3 className="text-2xl font-bold text-gray-800 mb-3">
+                    <h3 className="text-2xl font-bold text-[var(--color-card-text)] mb-3">
                       {value.title}
                     </h3>
-                    <p className="text-gray-600">{value.description}</p>
+                    <p className="text-[var(--color-card-secondary-text)]">
+                      {value.description}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -130,8 +131,8 @@ const AboutUs = () => {
             {/* --- Meet the Team Section --- */}
             <div>
               <div className="text-center mb-12">
-                <h2 className="text-4xl font-bold text-teal-900">The Team</h2>
-                <p className="text-lg text-gray-500 mt-2">
+                <h2 className="text-4xl font-bold text-[var(--color-text)]">The Team</h2>
+                <p className="text-lg text-[var(--color-card-secondary-text)] mt-2">
                   The passionate minds driving India's healthcare revolution.
                 </p>
               </div>
@@ -139,7 +140,7 @@ const AboutUs = () => {
                 {teamMembers.map((member, index) => (
                   <div
                     key={index}
-                    className="bg-white rounded-2xl overflow-hidden medical-shadow group"
+                    className="bg-[var(--color-card-bg)] rounded-2xl overflow-hidden shadow-[var(--color-shadow)] group"
                   >
                     <div className="relative">
                       <img
@@ -154,7 +155,7 @@ const AboutUs = () => {
                       </div>
                     </div>
                     <div className="p-6">
-                      <p className="text-gray-600">{member.bio}</p>
+                      <p className="text-[var(--color-card-secondary-text)]">{member.bio}</p>
                     </div>
                   </div>
                 ))}

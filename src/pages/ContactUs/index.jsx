@@ -7,8 +7,6 @@ import {
   User,
   Stethoscope,
   Building2,
-  Menu,
-  X,
 } from "lucide-react";
 import Footer from "../../components/footer";
 import Navbar from "../../components/Navbar";
@@ -46,16 +44,16 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-[var(--color-bg)] text-gray-800">
+      <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)]">
         {/* Contact Section */}
         <main className="container mx-auto px-3 sm:px-6 py-12">
-          <div className="max-w-5xl mx-auto bg-white/95 backdrop-blur-md p-5 md:p-16 rounded-3xl medical-shadow border border-white/20">
+          <div className="max-w-5xl mx-auto bg-[var(--color-card-bg)] backdrop-blur-md p-5 md:p-16 rounded-3xl shadow-[var(--color-shadow)] border border-[var(--color-border)]">
             <div className="text-center mb-12">
               <h2 className="text-5xl font-bold gradient-text mb-4 tracking-tight">
                 Contact Us
               </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-teal-500 to-cyan-500 mx-auto mb-6 rounded-full"></div>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              <div className="w-24 h-1 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] mx-auto mb-6 rounded-full"></div>
+              <p className="text-xl text-[var(--color-card-secondary-text)] max-w-2xl mx-auto leading-relaxed">
                 We'd love to hear from you. Reach out to our team for any
                 inquiries about our medical report system.
               </p>
@@ -64,46 +62,46 @@ const App = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Contact Information */}
               <div className="space-y-8">
-                <div className="bg-gradient-to-br from-teal-50 to-cyan-50 p-8 rounded-2xl border border-teal-100">
-                  <h3 className="text-2xl font-bold text-teal-900 mb-6">
+                <div className="p-8 rounded-2xl border border-[var(--color-border)] bg-[var(--color-card-bg)]">
+                  <h3 className="text-2xl font-bold text-[var(--color-card-text)] mb-6">
                     Get in Touch
                   </h3>
                   <div className="space-y-6">
                     <div className="flex items-center space-x-4 group">
-                      <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-12 h-12 bg-[var(--color-secondary)] rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                         <Phone className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-800 text-lg">
+                        <h4 className="font-bold text-[var(--color-card-text)] text-lg">
                           Phone
                         </h4>
-                        <p className="text-gray-600 text-lg">
+                        <p className="text-[var(--color-card-secondary-text)] text-lg">
                           +1 (123) 456-7890
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center space-x-4 group">
-                      <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-12 h-12 bg-[var(--color-secondary)] rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                         <Mail className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-800 text-lg">
+                        <h4 className="font-bold text-[var(--color-card-text)] text-lg">
                           Email
                         </h4>
-                        <p className="text-gray-600 text-lg">
+                        <p className="text-[var(--color-card-secondary-text)] text-lg">
                           contact@medlock.dev
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center space-x-4 group">
-                      <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-12 h-12 bg-[var(--color-secondary)] rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                         <MapPin className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-800 text-lg">
+                        <h4 className="font-bold text-[var(--color-card-text)] text-lg">
                           Address
                         </h4>
-                        <p className="text-gray-600 text-lg">
+                        <p className="text-[var(--color-card-secondary-text)] text-lg">
                           456 Tech Lane, Suite 789
                           <br />
                           Dev City, 54321
@@ -113,14 +111,14 @@ const App = () => {
                   </div>
                 </div>
 
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                <div className="relative overflow-hidden rounded-2xl shadow-[var(--color-shadow)]">
                   {/* Placeholder for the medical team image */}
                   <img
-                    src="https://placehold.co/800x600/f0fdfa/0f766e?text=Medical+Team"
+                    src="https://placehold.co/800x600/60a5fa/ffffff?text=Medical+Team"
                     alt="Medical team working together"
                     className="w-full h-64 object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-teal-900/50 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 text-white">
                     <p className="text-lg font-semibold">
                       Professional Medical Care
@@ -133,15 +131,15 @@ const App = () => {
               </div>
 
               {/* Contact Form */}
-              <div className="bg-white/50 backdrop-blur-sm sm:p-8 rounded-2xl border border-white/20">
-                <h3 className="text-2xl font-bold text-teal-900 mb-6">
+              <div className="bg-[var(--color-card-bg)] sm:p-8 rounded-2xl border border-[var(--color-border)]">
+                <h3 className="text-2xl font-bold text-[var(--color-card-text)] mb-6">
                   Send us a Message
                 </h3>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-bold text-gray-700 mb-2"
+                      className="block text-sm font-bold text-[var(--color-card-text)] mb-2"
                     >
                       Your Name
                     </label>
@@ -152,14 +150,14 @@ const App = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300 bg-white/80 backdrop-blur-sm form-input-focus"
+                      className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all duration-300 bg-[var(--color-card-bg)]"
                       placeholder="Enter your full name"
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-bold text-gray-700 mb-2"
+                      className="block text-sm font-bold text-[var(--color-card-text)] mb-2"
                     >
                       Email Address
                     </label>
@@ -170,12 +168,12 @@ const App = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300 bg-white/80 backdrop-blur-sm form-input-focus"
+                      className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all duration-300 bg-[var(--color-card-bg)]"
                       placeholder="your.email@example.com"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-3">
+                    <label className="block text-sm font-bold text-[var(--color-card-text)] mb-3">
                       I am a...
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -191,23 +189,23 @@ const App = () => {
                         <div
                           className={`p-4 rounded-xl border-2 transition-all duration-300 ${
                             formData.userType === "user"
-                              ? "border-teal-500 bg-teal-50 shadow-lg"
-                              : "border-gray-200 bg-white hover:border-teal-300"
+                              ? "border-[var(--color-primary)] bg-[var(--color-border)] shadow-lg"
+                              : "border-[var(--color-border)] bg-[var(--color-card-bg)] hover:border-[var(--color-primary)]"
                           }`}
                         >
                           <div className="flex flex-col items-center space-y-2">
                             <User
                               className={`w-6 h-6 ${
                                 formData.userType === "user"
-                                  ? "text-teal-600"
-                                  : "text-gray-400"
+                                  ? "text-[var(--color-primary)]"
+                                  : "text-[var(--color-card-secondary-text)]"
                               }`}
                             />
                             <span
                               className={`font-semibold ${
                                 formData.userType === "user"
-                                  ? "text-teal-700"
-                                  : "text-gray-600"
+                                  ? "text-[var(--color-primary)]"
+                                  : "text-[var(--color-card-secondary-text)]"
                               }`}
                             >
                               User
@@ -227,23 +225,23 @@ const App = () => {
                         <div
                           className={`p-4 rounded-xl border-2 transition-all duration-300 ${
                             formData.userType === "doctor"
-                              ? "border-teal-500 bg-teal-50 shadow-lg"
-                              : "border-gray-200 bg-white hover:border-teal-300"
+                              ? "border-[var(--color-primary)] bg-[var(--color-border)] shadow-lg"
+                              : "border-[var(--color-border)] bg-[var(--color-card-bg)] hover:border-[var(--color-primary)]"
                           }`}
                         >
                           <div className="flex flex-col items-center space-y-2">
                             <Stethoscope
                               className={`w-6 h-6 ${
                                 formData.userType === "doctor"
-                                  ? "text-teal-600"
-                                  : "text-gray-400"
+                                  ? "text-[var(--color-primary)]"
+                                  : "text-[var(--color-card-secondary-text)]"
                               }`}
                             />
                             <span
                               className={`font-semibold ${
                                 formData.userType === "doctor"
-                                  ? "text-teal-700"
-                                  : "text-gray-600"
+                                  ? "text-[var(--color-primary)]"
+                                  : "text-[var(--color-card-secondary-text)]"
                               }`}
                             >
                               Doctor
@@ -263,23 +261,23 @@ const App = () => {
                         <div
                           className={`p-4 rounded-xl border-2 transition-all duration-300 ${
                             formData.userType === "hospital"
-                              ? "border-teal-500 bg-teal-50 shadow-lg"
-                              : "border-gray-200 bg-white hover:border-teal-300"
+                              ? "border-[var(--color-primary)] bg-[var(--color-border)] shadow-lg"
+                              : "border-[var(--color-border)] bg-[var(--color-card-bg)] hover:border-[var(--color-primary)]"
                           }`}
                         >
                           <div className="flex flex-col items-center space-y-2">
                             <Building2
                               className={`w-6 h-6 ${
                                 formData.userType === "hospital"
-                                  ? "text-teal-600"
-                                  : "text-gray-400"
+                                  ? "text-[var(--color-primary)]"
+                                  : "text-[var(--color-card-secondary-text)]"
                               }`}
                             />
                             <span
                               className={`font-semibold ${
                                 formData.userType === "hospital"
-                                  ? "text-teal-700"
-                                  : "text-gray-600"
+                                  ? "text-[var(--color-primary)]"
+                                  : "text-[var(--color-card-secondary-text)]"
                               }`}
                             >
                               Hospital
@@ -292,7 +290,7 @@ const App = () => {
                   <div>
                     <label
                       htmlFor="subject"
-                      className="block text-sm font-bold text-gray-700 mb-2"
+                      className="block text-sm font-bold text-[var(--color-card-text)] mb-2"
                     >
                       Subject
                     </label>
@@ -303,14 +301,14 @@ const App = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300 bg-white/80 backdrop-blur-sm form-input-focus"
+                      className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all duration-300 bg-[var(--color-card-bg)]"
                       placeholder="What can we help you with?"
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="message"
-                      className="block text-sm font-bold text-gray-700 mb-2"
+                      className="block text-sm font-bold text-[var(--color-card-text)] mb-2"
                     >
                       Message
                     </label>
@@ -321,23 +319,23 @@ const App = () => {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300 bg-white/80 backdrop-blur-sm form-input-focus resize-none"
+                      className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all duration-300 bg-[var(--color-card-bg)] resize-none"
                       placeholder="Tell us more about your inquiry..."
                     ></textarea>
                   </div>
                   <div>
                     <button
                       type="submit"
-                      className="btn-primary w-full flex justify-center items-center py-4 px-6 border border-transparent rounded-xl shadow-lg text-base font-semibold text-white transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+                      className="btn-primary w-full flex justify-center items-center py-4 px-6 border border-transparent rounded-xl shadow-[var(--color-shadow)] text-base font-semibold text-white transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-primary)] bg-[var(--color-primary)] hover:bg-[var(--color-hover)]"
                     >
                       <Send className="mr-3 w-5 h-5" />
                       Send Message
                     </button>
                   </div>
                   {isSubmitted && (
-                    <div className="mt-6 p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl">
+                    <div className="mt-6 p-6 bg-[var(--color-border)] border-2 border-[var(--color-primary)] rounded-2xl">
                       <div className="flex items-center justify-center space-x-3">
-                        <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                        <div className="w-8 h-8 bg-[var(--color-primary)] rounded-full flex items-center justify-center">
                           <svg
                             className="w-5 h-5 text-white"
                             fill="none"
@@ -352,7 +350,7 @@ const App = () => {
                             ></path>
                           </svg>
                         </div>
-                        <p className="text-green-700 font-bold text-lg">
+                        <p className="text-[var(--color-card-text)] font-bold text-lg">
                           Thank you! Your message has been sent successfully.
                         </p>
                       </div>

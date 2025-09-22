@@ -78,7 +78,7 @@ const Services = () => {
             {/* --- Core Services Section --- */}
             <div className="mb-20">
               <div className="text-center mb-12">
-                <h2 className="text-4xl font-bold text-teal-900">
+                <h2 className="text-4xl font-bold text-[var(--color-text)]">
                   What We Offer
                 </h2>
                 <p className="text-lg text-gray-500 mt-2">
