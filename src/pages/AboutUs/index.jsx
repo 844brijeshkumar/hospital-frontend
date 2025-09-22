@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  ShieldCheck,
-  Users,
-  Lightbulb,
-  Target,
-  Globe,
-} from "lucide-react";
+import { ShieldCheck, Users, Lightbulb, Target, Globe } from "lucide-react";
 import Footer from "../../components/footer";
 import Navbar from "../../components/Navbar";
 
@@ -56,7 +50,7 @@ const AboutUs = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-50 text-gray-800">
+      <div className="min-h-screen bg-[var(--color-bg)] text-gray-800">
         <main className="container mx-auto px-4 sm:px-6 py-12">
           {/* --- New Hero Section with your Gradient --- */}
           <div className="relative text-center overflow-hidden rounded-3xl py-20 md:py-28 mb-16 shadow-2xl">
@@ -70,9 +64,8 @@ const AboutUs = () => {
               </h1>
               <div className="w-24 h-1.5 bg-white/50 mx-auto mb-6 rounded-full"></div>
               <p className="text-xl text-teal-100 max-w-3xl mx-auto leading-relaxed">
-                <strong>MedLock</strong> is building a
-                secure, centralized repository for every Indian's medical
-                history.
+                <strong>MedLock</strong> is building a secure, centralized
+                repository for every Indian's medical history.
               </p>
             </div>
           </div>
@@ -137,9 +130,7 @@ const AboutUs = () => {
             {/* --- Meet the Team Section --- */}
             <div>
               <div className="text-center mb-12">
-                <h2 className="text-4xl font-bold text-teal-900">
-                  The Team
-                </h2>
+                <h2 className="text-4xl font-bold text-teal-900">The Team</h2>
                 <p className="text-lg text-gray-500 mt-2">
                   The passionate minds driving India's healthcare revolution.
                 </p>
