@@ -46,7 +46,7 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-50 text-gray-800">
+      <div className="min-h-screen bg-[var(--color-bg)] text-gray-800">
         {/* Contact Section */}
         <main className="container mx-auto px-3 sm:px-6 py-12">
           <div className="max-w-5xl mx-auto bg-white/95 backdrop-blur-md p-5 md:p-16 rounded-3xl medical-shadow border border-white/20">

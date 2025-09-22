@@ -54,7 +54,7 @@ const Services = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-50 text-gray-800">
+      <div className="min-h-screen bg-[var(--color-bg)] text-gray-800">
         <main className="container mx-auto px-4 sm:px-6 py-12">
           {/* --- Hero Section --- */}
           <div className="relative text-center overflow-hidden rounded-3xl py-20 md:py-28 mb-16 shadow-2xl">
@@ -68,8 +68,8 @@ const Services = () => {
               </h1>
               <div className="w-24 h-1.5 bg-white/50 mx-auto mb-6 rounded-full"></div>
               <p className="text-xl text-teal-100 max-w-3xl mx-auto leading-relaxed">
-                Empowering every Indian with secure and seamless access to
-                their complete medical history.
+                Empowering every Indian with secure and seamless access to their
+                complete medical history.
               </p>
             </div>
           </div>
