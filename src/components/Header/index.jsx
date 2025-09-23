@@ -6,6 +6,7 @@ import {
   FilePlus2,
   Stethoscope,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Header = ({
   activeView,
@@ -21,19 +22,24 @@ const Header = ({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               {/* Logo */}
-              <div className="flex items-center space-x-3">
-                <div>
-                  <img
-                    src="logo.png"
-                    className="h-22 w-20"
-                    alt="MedLock Logo"
-                  />
+              <Link to="/hospital-home">
+                {" "}
+                <div className="flex items-center space-x-3">
+                  <div>
+                    <img
+                      src="logo.png"
+                      className="h-22 w-20"
+                      alt="MedLock Logo"
+                    />
+                  </div>
+                  <div>
+                    <h1 className="text-2xl font-bold text-[#0b4f4a]">
+                      MedLock
+                    </h1>
+                    <p className="text-xs text-[#0b4f4a]">Doctor's Portal</p>
+                  </div>
                 </div>
-                <div>
-                  <h1 className="text-2xl font-bold text-[#0b4f4a]">MedLock</h1>
-                  <p className="text-xs text-[#0b4f4a]">Doctor's Portal</p>
-                </div>
-              </div>
+              </Link>
 
               {/* Navigation */}
               <nav className="hidden md:flex space-x-1">
@@ -131,21 +137,23 @@ const Header = ({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               {/* Logo */}
-              <div className="flex items-center space-x-3">
-                <div>
-                  <img
-                    src="logo.png"
-                    className="h-22 w-20"
-                    alt="MedLock Logo"
-                  />
+              <Link to="/">
+                <div className="flex items-center space-x-3">
+                  <div>
+                    <img
+                      src="logo.png"
+                      className="h-22 w-20"
+                      alt="MedLock Logo"
+                    />
+                  </div>
+                  <div>
+                    <h1 className="text-2xl font-bold text-[#0b4f4a]">
+                      MedLock
+                    </h1>
+                    <p className="text-xs text-[#0b4f4a]">Pateint's Portal</p>
+                  </div>
                 </div>
-                <div>
-                  <h1 className="text-2xl font-bold text-[#0b4f4a]">MedLock</h1>
-                  <p className="text-xs text-[#0b4f4a]">
-                    Pateint's Portal
-                  </p>
-                </div>
-              </div>
+              </Link>
 
               {/* Navigation */}
 

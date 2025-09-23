@@ -104,7 +104,7 @@ const Services = () => {
             </div>
 
             {/* --- How It Works Section --- */}
-            <div className="bg-white/60 backdrop-blur-md p-8 md:p-12 rounded-3xl medical-shadow border border-white/30">
+            <div className="bg-[var(--color-bg)] backdrop-blur-md p-8 md:p-12 rounded-3xl medical-shadow border border-white/30">
               <div className="text-center mb-12">
                 <h2 className="text-4xl font-bold text-teal-900">
                   Simple Steps to Get Started
