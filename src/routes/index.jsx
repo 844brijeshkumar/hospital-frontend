@@ -8,7 +8,7 @@ const Home = lazy(() => import("../pages/Home"));
 const NotFound = lazy(() => import("../pages/NotFound"));
 const PatientDashboard = lazy(() => import("../pages/Patient/Dashboard"));
 const DoctorDashboard = lazy(() => import("../pages/Doctor/Dashboard"));
-const HospitalDashboard = lazy(() => import("../pages/Hospital/Dashboard"));
+const HospitalDashboard = lazy(() => import("../pages/Hospital/Dashboard/index"));
 
 const LoginPatient = lazy(() => import("../pages/Patient/Login"));
 const LoginHospital = lazy(() => import("../pages/Hospital/Login"));
