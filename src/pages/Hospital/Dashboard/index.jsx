@@ -4,7 +4,13 @@ import DoctorsSection from "./DoctorSection";
 import ReportsSection from "./ReportSection";
 import ProfileSection from "./ProfileSection";
 import { hospitalData, doctorsData, reportsData } from "../../../utils/index";
-import { LayoutDashboard, Stethoscope, FileText, User, LogOut } from "lucide-react";
+import {
+  LayoutDashboard,
+  Stethoscope,
+  FileText,
+  User,
+  LogOut,
+} from "lucide-react";
 import Footer from "../../../components/footer";
 
 const HospitalDashboard = () => {
@@ -30,7 +36,8 @@ const HospitalDashboard = () => {
           ? {
               ...doc,
               ...updatedDoctor,
-              specialty: updatedDoctor.specialization || updatedDoctor.specialty,
+              specialty:
+                updatedDoctor.specialization || updatedDoctor.specialty,
               contact: updatedDoctor.email || updatedDoctor.contact,
             }
           : doc
@@ -49,7 +56,13 @@ const HospitalDashboard = () => {
   const renderContent = () => {
     switch (activeTab) {
       case "dashboard":
-        return <DashboardOverview hospital={hospital} doctors={doctors} reports={reportsData} />;
+        return (
+          <DashboardOverview
+            hospital={hospital}
+            doctors={doctors}
+            reports={reportsData}
+          />
+        );
       case "doctors":
         return (
           <DoctorsSection
@@ -62,7 +75,12 @@ const HospitalDashboard = () => {
       case "reports":
         return <ReportsSection reports={reportsData} doctors={doctors} />;
       case "profile":
-        return <ProfileSection hospital={hospital} onUpdateHospital={updateHospital} />;
+        return (
+          <ProfileSection
+            hospital={hospital}
+            onUpdateHospital={updateHospital}
+          />
+        );
       default:
         return null;
     }
@@ -109,7 +127,9 @@ const HospitalDashboard = () => {
             {/* Doctor Profile / Logout */}
             <div className="flex items-center space-x-4">
               <div className="text-right hidden sm:block">
-                <p className="text-sm font-medium text-[#0b4f4a]">Hospital Name</p>
+                <p className="text-sm font-medium text-[#0b4f4a]">
+                  Hospital Name
+                </p>
                 <p className="text-xs text-[#0b4f4a]">Hospital ID: #D001</p>
               </div>
               <div className="bg-[#d1e8e5] p-2 rounded-full">
@@ -129,7 +149,9 @@ const HospitalDashboard = () => {
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                    activeTab === tab ? "bg-[#d1e8e5] text-[#0b4f4a]" : "text-[#0b4f4a] hover:bg-[#e0f1ef]"
+                    activeTab === tab
+                      ? "bg-[#d1e8e5] text-[#0b4f4a]"
+                      : "text-[#0b4f4a] hover:bg-[#e0f1ef]"
                   }`}
                 >
                   {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -141,8 +163,8 @@ const HospitalDashboard = () => {
       </header>
 
       {/* Active Tab Content */}
-      <div>{renderContent()}</div>
-      <Footer/>
+      <div className="p-5">{renderContent()}</div>
+      <Footer />
     </div>
   );
 };

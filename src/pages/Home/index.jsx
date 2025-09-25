@@ -4,6 +4,8 @@ import Footer from "../../components/footer";
 import MedicalFactMarquee from "../../components/Fact";
 import Navbar from "../../components/Navbar";
 import CompanyCarousel from "../../components/CompanyCarousel";
+import { useEffect } from "react";
+import { getUsers } from "../../api/user";
 
 const Home = () => {
   return (
@@ -41,7 +43,7 @@ const Home = () => {
         {/* Three Icon Cards Section */}
         <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 -mt-8 sm:-mt-16 relative z-20 lg:gap-8">
           {/* Patient Portal Card */}
-          <Link to="/patient-dashboard" className="block">
+          <Link to="/login/patient" className="block">
             <div className="bg-[var(--color-card-bg)] p-6 sm:p-8 rounded-2xl shadow-[var(--color-shadow)] flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300 h-full">
               <img
                 src="PATIENT.png"

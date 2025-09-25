@@ -1,4 +1,5 @@
 import { ShieldCheck, Users, Globe } from "lucide-react";
+import { Navigate } from "react-router-dom";
 
 export const mockPatient = {
   id: "1",
@@ -323,7 +324,6 @@ export const doctorsData = [
   },
 ];
 
-
 export const reportsData = [
   {
     id: "REP201",
@@ -418,7 +418,6 @@ export const reportsData = [
   },
 ];
 
-
 export const initialDoctorForm = {
   name: "",
   email: "",
@@ -428,4 +427,35 @@ export const initialDoctorForm = {
   address: "",
   specialization: "",
   npi_id: hospitalData.npi_id,
+};
+
+export const PrivateRoute = ({ children, allowedRoles, redirectTo }) => {
+  // Example: check token in localStorage
+  const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role"); // "patient" | "doctor" | "hospital"
+
+  if (!token) {
+    // Not logged in → redirect to login page
+    return <Navigate to={redirectTo || "/login/patient"} replace />;
+  }
+  if (allowedRoles && !allowedRoles.includes(role)) {
+    // Logged in but not authorized → go to their dashboard or home
+    if (role === "doctor") return <Navigate to="/doctor/dashboard" replace />;
+    if (role === "hospital")
+      return <Navigate to="/hospital/dashboard" replace />;
+    return <Navigate to="/patient/dashboard" replace />;
+  }
+  // If logged in → show the protected page
+  return children;
+};
+
+export const PublicRoute = ({ children }) => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    // Already logged in → go to dashboard
+    return <Navigate to="/patient/dashboard" replace />;
+  }
+
+  return children;
 };

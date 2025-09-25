@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { Eye, EyeClosed } from "lucide-react";
+import { loginHospital, registerHospital } from "../../../api/auth";
+import { useNavigate } from "react-router-dom";
 
-// The main App component that renders the hospital authentication page.
 export default function Login() {
-  // State to toggle between the Login and Signup forms.
   const [isLogin, setIsLogin] = useState(true);
-  // State to hold and display messages to the user (e.g., success or error).
   const [message, setMessage] = useState({ text: "", type: "" });
-  // State to store the generated NPI ID and Password after signup.
-  const [generatedCredentials, setGeneratedCredentials] = useState(null);
-  // State to hold the selected organization from the single-select dropdown.
   const [selectedOrganization, setSelectedOrganization] = useState("");
+  const [eyePassword, setEyePassword] = useState(false);
+  const navigate = useNavigate();
 
   // List of example organizations for the dropdown.
   const organizations = [
@@ -20,98 +19,68 @@ export default function Login() {
     "Global Health Council",
   ];
 
-  // Handle form submission for the Signup form.
   const handleSignup = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const hospitalName = formData.get("signup-hospital-name");
-    const hospitalId = formData.get("signup-hospital-id");
-    const selectedOrg = selectedOrganization; // Get the state directly.
 
-    console.log("Attempting to sign up with:", {
-      hospitalName,
-      selectedOrg,
-      hospitalId,
-    });
-
-    // --- START OF BACKEND INTEGRATION POINT ---
-    // In a real application, you would make an API call here to your backend.
-    // The backend would handle storing this data and GENERATING a unique NPI ID and a secure password.
+    const credentials = {
+      name: formData.get("signup-hospital-name"),
+      org_issued_name: formData.get("signup-organized-where"),
+      hospital_id: formData.get("signup-hospital-id"),
+    };
     try {
-      // Placeholder for a successful API call and generated credentials
-      // const response = await fetch('/api/hospital/signup', {
-      //     method: 'POST',
-      //     headers: { 'Content-Type': 'application/json' },
-      //     body: JSON.stringify({ hospitalName, selectedOrg, hospitalId })
-      // });
-      // const result = await response.json();
+      const data = await registerHospital(credentials);
 
-      // Simulate a successful registration with generated credentials
-      const newNpiId = `NPI-${Math.floor(Math.random() * 90000) + 10000}`;
-      const newPassword = Math.random().toString(36).slice(-8); // Simple random password for simulation
-
-      setGeneratedCredentials({ npiId: newNpiId, password: newPassword });
-      setMessage({
-        text: "Registration successful! Your credentials have been generated.",
-        type: "success",
-      });
-
-      e.target.reset(); // Reset form fields
-      setSelectedOrganization(""); // Clear selected organization
-      setTimeout(() => {
-        setMessage({ text: "", type: "" });
-      }, 5000);
+      if (data.error) {
+        setMessage({ text: data.error, type: "error" });
+      } else {
+        setMessage({
+          text: "Hospital registered successfully!",
+          type: "success",
+        });
+      }
     } catch (error) {
-      console.error("Signup failed:", error);
+      console.error(error);
       setMessage({
-        text: "Registration failed. Please try again.",
+        text: error.response?.data?.error || "Login failed",
         type: "error",
       });
-      setGeneratedCredentials(null);
     }
-    // --- END OF BACKEND INTEGRATION POINT ---
   };
-
-  // Handle form submission for the Login form.
   const handleLogin = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const npiId = formData.get("login-npi-id");
-    const password = formData.get("login-password");
 
-    console.log("Attempting to log in with:", { npiId, password });
+    const credentials = {
+      npi_id: formData.get("login-npi-id"),
+      password: formData.get("login-password"),
+    };
 
-    // --- START OF BACKEND INTEGRATION POINT ---
-    // Here, you would make an API call to your backend to verify the hospital's credentials.
     try {
-      // Placeholder for a successful API call
-      // const response = await fetch('/api/hospital/login', {
-      //     method: 'POST',
-      //     headers: { 'Content-Type': 'application/json' },
-      //     body: JSON.stringify({ npiId, password })
-      // });
-      // const result = await response.json();
+      const data = await loginHospital(credentials);
 
-      // Simulate a successful login and OTP request
-      setMessage({
-        text: "Login successful! OTP sent to your registered contact.",
-        type: "success",
-      });
+      if (data.error) {
+        setMessage({ text: data.error, type: "error" });
+      } else {
+        setMessage({
+          text: "Hospital logged in successfully!",
+          type: "success",
+        });
+      }
     } catch (error) {
-      console.error("Login failed:", error);
+      console.error("Login error:", error);
       setMessage({
-        text: "Invalid NPI ID or password. Please try again.",
+        text: error.response?.data?.error || "Login failed",
         type: "error",
       });
     }
-    // --- END OF BACKEND INTEGRATION POINT ---
   };
 
   return (
     <div className="bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94] min-h-screen flex flex-col justify-center items-center p-4 text-black">
       {/* --- LOGO MOVED HERE --- */}
       <div className="flex justify-center mb-6 ">
-        <img src="./home-logo.png" alt="App Logo" className="w-26 h-24" />
+        <img src="/home-logo.png" alt="App Logo" className="w-26 h-24" />
       </div>
       {/* --- END OF LOGO SECTION --- */}
 
@@ -122,7 +91,6 @@ export default function Login() {
             onClick={() => {
               setIsLogin(true);
               setMessage({ text: "", type: "" });
-              setGeneratedCredentials(null);
             }}
             className={`py-2 px-4 text-center font-semibold focus:outline-none transition-colors duration-200 border-b-2
                             ${
@@ -137,7 +105,6 @@ export default function Login() {
             onClick={() => {
               setIsLogin(false);
               setMessage({ text: "", type: "" });
-              setGeneratedCredentials(null);
             }}
             className={`py-2 px-4 text-center font-semibold focus:outline-none transition-colors duration-200 border-b-2
                             ${
@@ -174,7 +141,7 @@ export default function Login() {
                   required
                 />
               </div>
-              <div>
+              <div className="relative">
                 <label
                   htmlFor="login-password"
                   className="block text-sm font-medium text-gray-700"
@@ -182,13 +149,26 @@ export default function Login() {
                   Password
                 </label>
                 <input
-                  type="password"
+                  type={eyePassword ? "text" : "password"}
                   id="login-password"
                   name="login-password"
                   placeholder="Enter your password"
                   className="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-[#7DB1AD] focus:border-[#7DB1AD] transition-colors duration-200"
                   required
                 />
+                <div className="absolute right-3 top-8 z-10">
+                  {eyePassword ? (
+                    <Eye
+                      onClick={() => setEyePassword(!eyePassword)}
+                      className=" h-5 w-5 text-gray-400 cursor-pointer"
+                    />
+                  ) : (
+                    <EyeClosed
+                      onClick={() => setEyePassword(!eyePassword)}
+                      className=" h-5 w-5 text-gray-400 cursor-pointer"
+                    />
+                  )}
+                </div>
               </div>
               {message.text && (
                 <div
@@ -282,29 +262,7 @@ export default function Login() {
                   {message.text}
                 </div>
               )}
-              {generatedCredentials && (
-                <div className="bg-indigo-50 p-4 rounded-lg space-y-2">
-                  <p className="text-sm font-medium text-gray-700">
-                    Your Generated Credentials:
-                  </p>
-                  <p className="font-mono text-xs text-gray-900">
-                    NPI ID:{" "}
-                    <span className="font-bold">
-                      {generatedCredentials.npiId}
-                    </span>
-                  </p>
-                  <p className="font-mono text-xs text-gray-900">
-                    Password:{" "}
-                    <span className="font-bold">
-                      {generatedCredentials.password}
-                    </span>
-                  </p>
-                  <p className="text-xs text-gray-500 mt-2">
-                    Please save these credentials securely. You can now use them
-                    to log in.
-                  </p>
-                </div>
-              )}
+
               <button
                 type="submit"
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-[#7DB1AD] hover:bg-[#6B9E99] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7DB1AD] transition-colors duration-200"
