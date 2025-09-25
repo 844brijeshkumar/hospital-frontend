@@ -31,8 +31,6 @@ const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "");
   const location = useLocation();
 
-  console.log(location.pathname);
-
   // Toggle mobile menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -48,9 +46,9 @@ const Navbar = () => {
 
   const getLogoSrc = () => {
     if (theme === "theme-dark") {
-      return "home-logo.png";
+      return "/home-logo.png";
     }
-    return "logo.png";
+    return "/logo.png";
   };
 
   return (
@@ -61,11 +59,11 @@ const Navbar = () => {
           className="flex items-center space-x-2"
           onClick={isMenuOpen ? toggleMenu : undefined}
         >
-          <div className="flex items-center space-x-3">
-            <div>
+          <div className="flex items-center space-x-3 ">
+            <div className="h-25 w-23 flex items-center justify-center">
               <img
-                src={getLogoSrc()}
-                className="h-25 w-23"
+                src={theme == "theme-dark" ? "/home-logo.png" : "/logo.png"}
+                className={theme == "theme-dark" ? "h-17 w-18" : "h-22 w-20"}
                 alt="MedLock Logo"
               />
             </div>

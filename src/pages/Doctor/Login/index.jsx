@@ -1,3 +1,4 @@
+import { Eye, EyeClosed } from "lucide-react";
 import { useState } from "react";
 
 // Main App component
@@ -17,7 +18,7 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [eyePassword, setEyePassword] = useState(false);
   // Handle changes in the Doctor Name dropdown
   const handleNameChange = (e) => {
     const newId = e.target.value;
@@ -61,7 +62,7 @@ export default function Login() {
     <div className="bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94] min-h-screen flex flex-col justify-center items-center p-4 text-black">
       {/* --- LOGO MOVED HERE --- */}
       <div className="flex justify-center mb-6 ">
-        <img src="./home-logo.png" alt="App Logo" className="w-26 h-24" />
+        <img src="/home-logo.png" alt="App Logo" className="w-26 h-24" />
       </div>
       {/* --- END OF LOGO SECTION --- */}
 
@@ -144,17 +145,30 @@ export default function Login() {
               >
                 Password
               </label>
-              <div className="mt-1">
+              <div className="mt-1 relative">
                 <input
                   id="password"
                   name="password"
-                  type="password"
+                  type={eyePassword ? "text" : "password"}
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   placeholder="Enter your password"
                 />
+                <div className="absolute right-3 top-3 z-10">
+                  {eyePassword ? (
+                    <Eye
+                      onClick={() => setEyePassword(!eyePassword)}
+                      className=" h-5 w-5 text-gray-400 cursor-pointer"
+                    />
+                  ) : (
+                    <EyeClosed
+                      onClick={() => setEyePassword(!eyePassword)}
+                      className=" h-5 w-5 text-gray-400 cursor-pointer"
+                    />
+                  )}
+                </div>
               </div>
             </div>
 

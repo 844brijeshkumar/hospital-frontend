@@ -1,84 +1,97 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { registerUser, loginUser } from "../../../api/auth";
+import { useNavigate } from "react-router-dom";
 
-// The main App component that renders the authentication page.
 export default function Login() {
   // State to toggle between the Login and Signup forms.
   const [isLogin, setIsLogin] = useState(true);
   // State to hold and display messages to the user (e.g., success or error).
   const [message, setMessage] = useState({ text: "", type: "" });
+  const navigate = useNavigate();
 
-  // Handle form submission for the Signup form.
   const handleSignup = async (e) => {
     e.preventDefault();
+
     const formData = new FormData(e.target);
-    const name = formData.get("signup-name");
-    const phone = formData.get("signup-phone");
-    const gmail = formData.get("signup-gmail");
-    const aadhaar = formData.get("signup-aadhaar");
-    const password = formData.get("signup-password");
+    const userData = {
+      name: formData.get("signup-name"),
+      phone_no: formData.get("signup-phone"),
+      gmail: formData.get("signup-gmail"),
+      adhaar_no: formData.get("signup-aadhaar"),
+      password: formData.get("signup-password"),
+    };
 
-    console.log("Attempting to sign up with:", {
-      name,
-      phone,
-      gmail,
-      aadhaar,
-      password,
-    });
-
-    // --- START OF BACKEND INTEGRATION POINT ---
     try {
-      // Simulate a successful registration
-      setMessage({
-        text: "Registration successful! You can now log in.",
-        type: "success",
-      });
-      e.target.reset(); // Reset form fields
-      setTimeout(() => {
-        setIsLogin(true); // Redirect to login after 2 seconds
-        setMessage({ text: "", type: "" });
-      }, 2000);
+      const data = await registerUser(userData);
+
+      // console.log("Registration successful:", data);
+      // Registration successful
+      if (data.status === true) {
+        setMessage({
+          text: "Registration successful! You can now log in.",
+          type: "success",
+        });
+        e.target.reset(); // Reset form fields
+
+        setTimeout(() => {
+          setIsLogin(true); // Redirect to login
+          setMessage({ text: "", type: "" });
+        }, 2000);
+      } else {
+        setMessage({ text: "Registration failed", type: "error" });
+      }
     } catch (error) {
       console.error("Signup failed:", error);
+
+      // Axios errors can be in error.response.data
       setMessage({
-        text: "Registration failed. Please try again.",
+        text: error.response?.data?.error || "Registration failed",
         type: "error",
       });
     }
-    // --- END OF BACKEND INTEGRATION POINT ---
   };
 
-  // Handle form submission for the Login form.
   const handleLogin = async (e) => {
     e.preventDefault();
+
     const formData = new FormData(e.target);
-    const aadhaar = formData.get("login-aadhaar");
-    const password = formData.get("login-password");
+    const credentials = {
+      adhaar_no: formData.get("login-aadhaar"),
+      password: formData.get("login-password"),
+    };
 
-    console.log("Attempting to log in with:", { aadhaar, password });
-
-    // --- START OF BACKEND INTEGRATION POINT ---
     try {
-      // Simulate a successful login and OTP request
-      setMessage({
-        text: "Login successful! OTP sent to your registered Gmail and Phone number.",
-        type: "success",
-      });
-      // In a real app, you would now show a new form for the user to enter the OTP.
+      const data = await loginUser(credentials);
+      if (data.status === true) {
+        // Save JWT token in localStorage
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("role", "patient");
+        // Optionally save patient info
+        localStorage.setItem("patient", JSON.stringify(data.data));
+
+        setMessage({ text: "Login successful!", type: "success" });
+        e.target.reset();
+
+        // Redirect to dashboard
+        setTimeout(() => {
+          navigate("/patient/dashboard"); // or wherever you want
+        }, 1000);
+      } else {
+        setMessage({ text: "Invalid Credentials", type: "error" });
+      }
     } catch (error) {
       console.error("Login failed:", error);
       setMessage({
-        text: "Invalid Aadhaar number or password. Please try again.",
+        text: error.response?.data?.error || "Login failed",
         type: "error",
       });
     }
-    // --- END OF BACKEND INTEGRATION POINT ---
   };
-
   return (
     <div className="bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94] min-h-screen flex flex-col justify-center items-center p-4 text-black">
       {/* --- LOGO MOVED HERE --- */}
       <div className="flex justify-center mb-6 ">
-        <img src="./home-logo.png" alt="App Logo" className="w-26 h-24" />
+        <img src="/home-logo.png" alt="App Logo" className="w-26 h-24" />
       </div>
       {/* --- END OF LOGO SECTION --- */}
 
