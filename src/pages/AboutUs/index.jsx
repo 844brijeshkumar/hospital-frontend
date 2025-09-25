@@ -1,50 +1,7 @@
-import React from "react";
-import { ShieldCheck, Users, Lightbulb, Target, Globe } from "lucide-react";
+import { Lightbulb, Target } from "lucide-react";
 import Footer from "../../components/footer";
 import Navbar from "../../components/Navbar";
-
-// --- (Team member and core values data remains the same) ---
-const teamMembers = [
-  {
-    name: "Brijesh Kumar",
-    role: "Founder & CEO",
-    imageUrl: "https://placehold.co/400x400/e0f2f1/00796b?text=BK",
-    bio: "Visionary with experience in India's digital public infrastructure, aiming to do for healthcare what UPI did for payments.",
-  },
-  {
-    name: "Febin Thomas",
-    role: "Chief Technology Officer",
-    imageUrl: "https://placehold.co/400x400/e0f2f1/00796b?text=FT",
-    bio: "Expert in scalable, secure systems, ensuring every Indian's health data is safe and accessible.",
-  },
-  {
-    name: "Jijo k Jose",
-    role: "Head of Healthcare Alliances",
-    imageUrl: "https://placehold.co/400x400/e0f2f1/00796b?text=JJ",
-    bio: "Dedicated to building a nationwide network of hospitals and labs to create a truly unified health ecosystem.",
-  },
-];
-
-const coreValues = [
-  {
-    icon: <ShieldCheck className="w-10 h-10 text-[var(--color-primary)] mb-4" />,
-    title: "Security & Privacy",
-    description:
-      "Your health data is your most personal information. We use bank-grade security and encryption, adhering to Indian data laws.",
-  },
-  {
-    icon: <Globe className="w-10 h-10 text-[var(--color-primary)] mb-4" />,
-    title: "Nationwide Access",
-    description:
-      "Your health records should be accessible anywhere, from a clinic in Kerala to a hospital in Kashmir.",
-  },
-  {
-    icon: <Users className="w-10 h-10 text-[var(--color-primary)] mb-4" />,
-    title: "Citizen Empowerment",
-    description:
-      "We put you in control. Manage, view, and securely share your complete medical history with any doctor you choose.",
-  },
-];
+import { coreValues, teamMembers } from "../../utils";
 
 const AboutUs = () => {
   return (
@@ -131,7 +88,9 @@ const AboutUs = () => {
             {/* --- Meet the Team Section --- */}
             <div>
               <div className="text-center mb-12">
-                <h2 className="text-4xl font-bold text-[var(--color-text)]">The Team</h2>
+                <h2 className="text-4xl font-bold text-[var(--color-text)]">
+                  The Team
+                </h2>
                 <p className="text-lg text-[var(--color-card-secondary-text)] mt-2">
                   The passionate minds driving India's healthcare revolution.
                 </p>
@@ -155,7 +114,9 @@ const AboutUs = () => {
                       </div>
                     </div>
                     <div className="p-6">
-                      <p className="text-[var(--color-card-secondary-text)]">{member.bio}</p>
+                      <p className="text-[var(--color-card-secondary-text)]">
+                        {member.bio}
+                      </p>
                     </div>
                   </div>
                 ))}

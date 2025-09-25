@@ -1,3 +1,5 @@
+import { ShieldCheck, Users, Globe } from "lucide-react";
+
 export const mockPatient = {
   id: "1",
   name: "Brijesh Maurya",
@@ -101,6 +103,55 @@ export const mockDoctors = [
   },
 ];
 
+export const teamMembers = [
+  {
+    name: "Brijesh Kumar",
+    role: "Founder & CEO",
+    imageUrl: "https://placehold.co/400x400/e0f2f1/00796b?text=BK",
+    bio: "Visionary with experience in India's digital public infrastructure, aiming to do for healthcare what UPI did for payments.",
+  },
+  {
+    name: "Febin Thomas",
+    role: "Chief Technology Officer",
+    imageUrl: "https://placehold.co/400x400/e0f2f1/00796b?text=FT",
+    bio: "Expert in scalable, secure systems, ensuring every Indian's health data is safe and accessible.",
+  },
+  {
+    name: "Jijo k Jose",
+    role: "Head of Healthcare Alliances",
+    imageUrl: "https://placehold.co/400x400/e0f2f1/00796b?text=JJ",
+    bio: "Dedicated to building a nationwide network of hospitals and labs to create a truly unified health ecosystem.",
+  },
+  {
+    name: "Arti Kanwal",
+    role: "Head of Healthcare Alliances",
+    imageUrl: "https://placehold.co/400x400/e0f2f1/00796b?text=AK",
+    bio: "Dedicated to building a nationwide network of hospitals and labs to create a truly unified health ecosystem.",
+  },
+];
+
+export const coreValues = [
+  {
+    icon: (
+      <ShieldCheck className="w-10 h-10 text-[var(--color-primary)] mb-4" />
+    ),
+    title: "Security & Privacy",
+    description:
+      "Your health data is your most personal information. We use bank-grade security and encryption, adhering to Indian data laws.",
+  },
+  {
+    icon: <Globe className="w-10 h-10 text-[var(--color-primary)] mb-4" />,
+    title: "Nationwide Access",
+    description:
+      "Your health records should be accessible anywhere, from a clinic in Kerala to a hospital in Kashmir.",
+  },
+  {
+    icon: <Users className="w-10 h-10 text-[var(--color-primary)] mb-4" />,
+    title: "Citizen Empowerment",
+    description:
+      "We put you in control. Manage, view, and securely share your complete medical history with any doctor you choose.",
+  },
+];
 // Helper function to get the appropriate emoji icon for a report category
 export const getCategoryIcon = (category) => {
   switch (category) {
