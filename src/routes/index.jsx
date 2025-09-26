@@ -5,6 +5,8 @@ import { PrivateRoute, PublicRoute } from "../utils"; // ⬅️ import it
 import Contact from "../pages/ContactUs";
 import About from "../pages/AboutUs";
 import Service from "../pages/Services";
+import PrivacyPolicy from "../pages/Privacy";
+import TermsOfService from "../pages/Terms";
 
 const Home = lazy(() => import("../pages/Home"));
 const NotFound = lazy(() => import("../pages/NotFound"));
@@ -56,6 +58,8 @@ const router = createBrowserRouter([
   { path: "/contact", element: <Contact /> },
   { path: "/about", element: <About /> },
   { path: "/services", element: <Service /> },
+  { path: "/privacy-policy", element: <PrivacyPolicy /> },
+  { path: "/terms-of-service", element: <TermsOfService /> },
   {
     path: "/login/patient",
     element: (
