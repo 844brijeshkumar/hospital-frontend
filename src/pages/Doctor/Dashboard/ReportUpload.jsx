@@ -11,7 +11,7 @@ import {
   X,
 } from "lucide-react";
 
-const Index = ({ onUpload }) => {
+const ReportUpload = ({ onUpload }) => {
   const [formData, setFormData] = useState({
     patientName: "", // New field for the patient's name
     title: "",
@@ -419,4 +419,4 @@ const Index = ({ onUpload }) => {
   );
 };
 
-export default Index;
+export default ReportUpload;

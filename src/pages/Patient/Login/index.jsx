@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { registerUser, loginUser } from "../../../api/auth";
 import { useNavigate } from "react-router-dom";
+import { Eye, EyeClosed } from "lucide-react";
 
 export default function Login() {
-  // State to toggle between the Login and Signup forms.
+  const [eyePassword, setEyePassword] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
-  // State to hold and display messages to the user (e.g., success or error).
   const [message, setMessage] = useState({ text: "", type: "" });
   const navigate = useNavigate();
 
@@ -151,7 +151,7 @@ export default function Login() {
                   pattern="[0-9]{12}"
                 />
               </div>
-              <div>
+              <div className="relative">
                 <label
                   htmlFor="login-password"
                   className="block text-sm font-medium text-gray-700"
@@ -166,6 +166,19 @@ export default function Login() {
                   className="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200"
                   required
                 />
+                <div className="absolute right-3 top-9 z-10">
+                  {eyePassword ? (
+                    <Eye
+                      onClick={() => setEyePassword(!eyePassword)}
+                      className=" h-5 w-5 text-gray-400 cursor-pointer"
+                    />
+                  ) : (
+                    <EyeClosed
+                      onClick={() => setEyePassword(!eyePassword)}
+                      className=" h-5 w-5 text-gray-400 cursor-pointer"
+                    />
+                  )}
+                </div>
               </div>
               {message.text && (
                 <div
@@ -260,7 +273,7 @@ export default function Login() {
                   pattern="[0-9]{12}"
                 />
               </div>
-              <div>
+              <div className="relative">
                 <label
                   htmlFor="signup-password"
                   className="block text-sm font-medium text-gray-700"
@@ -276,6 +289,19 @@ export default function Login() {
                   required
                   minLength="8"
                 />
+                <div className="absolute right-3 top-9 z-10">
+                  {eyePassword ? (
+                    <Eye
+                      onClick={() => setEyePassword(!eyePassword)}
+                      className=" h-5 w-5 text-gray-400 cursor-pointer"
+                    />
+                  ) : (
+                    <EyeClosed
+                      onClick={() => setEyePassword(!eyePassword)}
+                      className=" h-5 w-5 text-gray-400 cursor-pointer"
+                    />
+                  )}
+                </div>
               </div>
               {message.text && (
                 <div

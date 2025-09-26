@@ -1,11 +1,12 @@
 import { useState } from "react";
 
 import Footer from "../../../components/footer";
-import DoctorDash from "../../../components/DortorDash";
-import Assign from "../../../components/assign";
-import ReportUpload from "../../../components/ReportUpload";
+
 import { mockPatient, mockReports } from "../../../utils";
 import Header from "../../../components/Header";
+import DashboardOverview from "./DashboardOverview";
+import AssignReport from "./AssignReport";
+import ReportUpload from "./ReportUpload";
 const Dashboard = () => {
   const [activeView, setActiveView] = useState("dashboard");
   const [reports, setReports] = useState(mockReports);
@@ -17,13 +18,13 @@ const Dashboard = () => {
   const renderActiveView = () => {
     switch (activeView) {
       case "Dashboard":
-        return <DoctorDash patient={mockPatient} reports={reports} />;
+        return <DashboardOverview patient={mockPatient} reports={reports} />;
       case "assignReports":
-        return <Assign reports={reports} />;
+        return <AssignReport reports={reports} />;
       case "addReport":
         return <ReportUpload onUpload={handleUploadReport} />;
       default:
-        return <DoctorDash patient={mockPatient} reports={reports} />;
+        return <DashboardOverview patient={mockPatient} reports={reports} />;
     }
   };
 
