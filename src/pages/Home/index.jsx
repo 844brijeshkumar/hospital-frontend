@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar";
 import CompanyCarousel from "../../components/CompanyCarousel";
 import { useEffect } from "react";
 import { getUsers } from "../../api/user";
+import NewsFeed from "../../components/New";
 
 const Home = () => {
   return (
@@ -99,49 +100,7 @@ const Home = () => {
 
         {/* Services Section */}
         <section className="mt-16 bg-[var(--color-card-bg)] p-6 sm:p-8 rounded-2xl shadow-xl">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="md:w-1/2">
-              <h2 className="text-2xl sm:text-3xl font-bold text-[var(--color-card-text)] mb-4">
-                OUR SERVICES
-              </h2>
-              <ul className="space-y-4 text-sm sm:text-base text-[var(--color-card-secondary-text)]">
-                <li className="flex items-start space-x-3">
-                  <FaCheckCircle className="w-5 h-5 text-[var(--color-primary)] mt-1 flex-shrink-0" />
-                  <span>
-                    Mental Healthcare: Our dedicated team provides compassionate
-                    support for mental well-being.
-                  </span>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <FaCheckCircle className="w-5 h-5 text-[var(--color-primary)] mt-1 flex-shrink-0" />
-                  <span>
-                    Child Health Services: Specialized care for your child's
-                    growth and development.
-                  </span>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <FaCheckCircle className="w-5 h-5 text-[var(--color-primary)] mt-1 flex-shrink-0" />
-                  <span>
-                    Diagnostic Services: State-of-the-art facilities for
-                    accurate and timely diagnoses.
-                  </span>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <FaCheckCircle className="w-5 h-5 text-[var(--color-primary)] mt-1 flex-shrink-0" />
-                  <span>
-                    Emergency Care: 24/7 care for urgent medical needs.
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div className="md:w-1/2 mt-8 md:mt-0">
-              <img
-                src="https://placehold.co/800x600/333333/ffffff?text=Hospital+Staff"
-                alt="Hospital staff in a clean environment"
-                className="rounded-xl shadow-lg w-full"
-              />
-            </div>
-          </div>
+          <NewsFeed/>
         </section>
       </main>
 

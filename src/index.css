@@ -35,9 +35,9 @@ body {
 :root {
   --color-bg: #ffffff;
   --color-text: #1f2937;
-  --color-primary: #3b82f6;
+  --color-primary: #0b4f4a;
   --color-secondary: #06b6d4;
-  --color-hover: #059669;
+  --color-hover: #2a9b94;
   --color-card-bg: #ffffff;
   --color-card-text: #1f2937;
   --color-card-secondary-text: #6b7280;
@@ -49,9 +49,9 @@ body {
 .theme-dark {
   --color-bg: #121212;
   --color-text: #e0e0e0;
-  --color-primary: #10b981;
+  --color-primary: #0b4f4a;
   --color-secondary: #3b82f6;
-  --color-hover: #059669;
+  --color-hover:#2a9b94;
   --color-card-bg: #1e1e1e;
   --color-card-text: #f0f0f0;
   --color-card-secondary-text: #a0a0a0;

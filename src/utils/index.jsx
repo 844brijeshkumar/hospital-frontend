@@ -459,3 +459,150 @@ export const PublicRoute = ({ children }) => {
 
   return children;
 };
+
+
+export const newsData = {
+  "count": 20,
+  "news": [
+    {
+      "heading": "New study reveals sex life impacts are major reasons for contraceptive discontinuation",
+      "link": "https://www.who.int/news/item/26-09-2025-new-study-reveals-sex-life-impacts-are-major-reasons-for-contraceptive-discontinuation",
+      "thumbnail": "https://cdn.who.int/media/images/default-source/topics/womens-childrens-and-adolescent-health/contraception/group-discussing-sexual-reproductive-health.tmb-768v.jpg?sfvrsn=62cb6679_1",
+      "date": "26 September 2025",
+      "category": "Departmental update"
+    },
+    {
+      "heading": "Countries and global leaders recognized for their action to tackle the obesity crisis",
+      "link": "https://www.who.int/news/item/26-09-2025-countries-and-global-leaders-recognized-for-their-action-to-tackle-the-obesity-crisis",
+      "thumbnail": "https://cdn.who.int/media/images/default-source/headquarters/teams/uhc-healthier-populations-(hep)/nutrition-and-food-safety-(nfs)/directors-office-(nfd)/2025-uniatf-awards-group-photo.tmb-768v.jpg?sfvrsn=dce5d8d_2",
+      "date": "26 September 2025",
+      "category": "Departmental update"
+    },
+    {
+      "heading": "Recommendations announced for influenza vaccine composition for the 2026 southern hemisphere influenza season",
+      "link": "https://www.who.int/news/item/26-09-2025-recommendations-announced-for-influenza-vaccine-composition-for-the-2026-southern-hemisphere-influenza-season",
+      "thumbnail": "https://cdn.who.int/media/images/default-source/topics/diseases-and-conditions/vaccines-and-immunization/influenza-vaccination.tmb-768v.jpg?sfvrsn=3fc616c1_1",
+      "date": "26 September 2025",
+      "category": "News release"
+    },
+    {
+      "heading": "Member States advance vital work in support of WHO Pandemic Agreement",
+      "link": "https://www.who.int/news/item/25-09-2025-member-states-advance-vital-work-in-support-of-who-pandemic-agreement",
+      "thumbnail": "https://cdn.who.int/media/images/default-source/topics/emergencies-disasters-and-deliberate-events/pandemic-agreement/first-meeting-of-igwg-2025.tmb-768v.jpg?sfvrsn=7e7172cb_1",
+      "date": "25 September 2025",
+      "category": "News release"
+    },
+    {
+      "heading": "Updated WHO dashboard offers new insights on antimicrobial resistance and use",
+      "link": "https://www.who.int/news/item/25-09-2025-updated-who-dashboard-offers-new-insights-on-antimicrobial-resistance-and-use",
+      "thumbnail": "https://cdn.who.int/media/images/default-source/headquarters/teams/antimicrobial-resistance-division-(amr)/surveillance-prevention-and-control-(spc)/control-and-response-strategies-(csr)/who_data_screen_small.tmb-768v.jpg?sfvrsn=f1540e72_1",
+      "date": "25 September 2025",
+      "category": "News release"
+    },
+    {
+      "heading": "Contraceptive use: a catalyst for women’s health and socioeconomic empowerment",
+      "link": "https://www.who.int/news/item/25-09-2025-contraceptive-use--a-catalyst-for-women-s-health-and-socioeconomic-empowerment",
+      "thumbnail": "https://cdn.who.int/media/images/default-source/topics/womens-childrens-and-adolescent-health/contraception/contraceptive-implant.tmb-768v.jpg?sfvrsn=2ab3975c_1",
+      "date": "25 September 2025",
+      "category": "Departmental update"
+    },
+    {
+      "heading": "Core funders of medical research commit to strengthening clinical trials worldwide",
+      "link": "https://www.who.int/news/item/25-09-2025-core-funders-of-medical-research-commit-to-strengthening-clinical-trials-worldwide",
+      "thumbnail": "https://cdn.who.int/media/images/default-source/topics/health-systems-and-interventions/clinical-trials/rd-emro-visit-to-tunisia.tmb-768v.jpg?sfvrsn=ba4e17fc_1",
+      "date": "25 September 2025",
+      "category": "News release"
+    },
+    {
+      "heading": "WHO Traditional Medicine Global Library to launch in 2025",
+      "link": "https://www.who.int/news/item/25-09-2025-traditional-medicine-global-library-to-launch-in-2025",
+      "thumbnail": "https://www.who.int/images/default-source/wpro/our-work/231205imicams_library_clr23-17.tmb-768v.jpg?Culture=en&sfvrsn=b3ca3d9e_1",
+      "date": "25 September 2025",
+      "category": "News release"
+    },
+    {
+      "heading": "Countries making unprecedented efforts, but billions still lack basic services in health care facilities - WHO/UNICEF new report warns",
+      "link": "https://www.who.int/news/item/24-09-2025-countries-making-unprecedented-efforts-but-billions-still-lack-basic-services-in-health-care-facilities---who-unicef-new-report-warns",
+      "thumbnail": "https://cdn.who.int/media/images/default-source/topics/health-systems-and-interventions/water-sanitation-and-hygiene/uni555089-2000px.tmb-768v.jpg?sfvrsn=69b596b4_1",
+      "date": "24 September 2025",
+      "category": "News release"
+    },
+    {
+      "heading": "WHO statement on autism-related issues",
+      "link": "https://www.who.int/news/item/24-09-2025-who-statement-on-autism-related-issues",
+      "thumbnail": "https://www.who.int/images/default-source/departments/foodborne-diseases/who-hq-logo.tmb-768v.jpg?Culture=en&sfvrsn=a3f00adc_6",
+      "date": "24 September 2025",
+      "category": "News release"
+    },
+    {
+      "heading": "Uncontrolled high blood pressure puts over a billion people at risk",
+      "link": "https://www.who.int/news/item/23-09-2025-uncontrolled-high-blood-pressure-puts-over-a-billion-people-at-risk",
+      "thumbnail": "https://cdn.who.int/media/images/default-source/topics/diseases-and-conditions/hypertension/nurse-checking-blood-pressure-of-a-patient.tmb-768v.jpg?sfvrsn=7fdaced3_6",
+      "date": "23 September 2025",
+      "category": "News release"
+    },
+    {
+      "heading": "EU renews support for WHO’s Universal Health Coverage Partnership",
+      "link": "https://www.who.int/news/item/22-09-2025-eu-renews-support-for-who-s-universal-health-coverage-partnership",
+      "thumbnail": "https://www.who.int/images/default-source/wpro/countries/viet-nam/health-topics/immunization/immunization--viet-nam.tmb-768v.jpg?Culture=en&sfvrsn=11aa1353_3",
+      "date": "22 September 2025",
+      "category": "News release"
+    },
+    {
+      "heading": "Message by the Director of the Department of Immunization, Vaccines and Biologicals at WHO - September 2025",
+      "link": "https://www.who.int/news/item/22-09-2025-message-by-the-director-of-the-department-of-immunization--vaccines-and-biologicals-at-who---september-2025",
+      "thumbnail": "https://cdn.who.int/media/images/default-source/topics/health-and-well-being/disability/blindness-and-vision-impairment/muhammad-cataract-7.tmb-768v.jpg?sfvrsn=48c84421_1",
+      "date": "22 September 2025",
+      "category": "News release"
+    },
+    {
+      "heading": "WHO publishes new R&D landscape analyses highlighting gaps and inequities in cancer research",
+      "link": "https://www.who.int/news/item/22-09-2025-who-publishes-new-r-d-landscape-analyses-highlighting-gaps-and-inequities-in-cancer-research",
+      "thumbnail": "https://cdn.who.int/media/images/default-source/headquarters/initiatives/cervical-cancer-elimination-initiative/who-field-visit-to-the-national-cancer-hospital--afghanistan.tmb-768v.jpg?sfvrsn=b61ae52d_1",
+      "date": "22 September 2025",
+      "category": "News release"
+    },
+    {
+      "heading": "Amended International Health Regulations enter into force",
+      "link": "https://www.who.int/news/item/19-09-2025-amended-international-health-regulations-enter-into-force",
+      "thumbnail": "https://cdn.who.int/media/images/default-source/topics/diseases-and-conditions/coronavirus-disease/who-field-visit-to-covid-19-testing-and-vaccination-centre-bahrain-2021.tmb-768v.jpg?sfvrsn=c26f3aba_6",
+      "date": "19 September 2025",
+      "category": "News release"
+    },
+    {
+      "heading": "WHO publishes full national policy guidance to support, equitable access to controlled medicines",
+      "link": "https://www.who.int/news/item/19-09-2025-who-publishes-full-guideline-report-to-help-countries-ensure-safe--equitable-access-to-controlled-medicines",
+      "thumbnail": "https://cdn.who.int/media/images/default-source/headquarters/teams/access-to-medicines-and-health-products-(mhp)/health-product-policy-and-standards-(hps)/55052.tmb-768v.jpg?sfvrsn=5eb1b84_1",
+      "date": "19 September 2025",
+      "category": "News release"
+    },
+    {
+      "heading": "WHO urges cost effective solutions on NCDs and mental health amidst slowing progress",
+      "link": "https://www.who.int/news/item/18-09-2025-who-urges-cost-effective-solutions-on-ncds-and-mental-health-amidst-slowing-progress",
+      "thumbnail": "https://cdn.who.int/media/images/default-source/imported/russia-cvd-cardiovascular-heart.tmb-768v.jpg?sfvrsn=209a6d60_14",
+      "date": "18 September 2025",
+      "category": "News release"
+    },
+    {
+      "heading": "\"Patient safety from the start!\" — WHO urges global investment in safe paediatric and newborn care",
+      "link": "https://www.who.int/news/item/17-09-2025-patient-safety-from-the-start!----who-urges-global-investment-in-safe-paediatric-and-newborn-care",
+      "thumbnail": "https://cdn.who.int/media/images/default-source/headquarters/campaigns/world-patient-safety-day/2025/wpsd-2025-key-message-4-image.tmb-768v.jpg?sfvrsn=7fba04a3_6",
+      "date": "17 September 2025",
+      "category": "News release"
+    },
+    {
+      "heading": "Cholera kills more people for second consecutive year, while prevention and treatment available",
+      "link": "https://www.who.int/news/item/12-09-2025-cholera-kills-more-people-for-second-consecutive-year-while-prevention-and-treatment-available",
+      "thumbnail": "https://cdn.who.int/media/images/default-source/topics/diseases-and-conditions/cholera/testing-for-cholera.tmb-768v.jpg?sfvrsn=f15cf641_6",
+      "date": "12 September 2025",
+      "category": "News release"
+    },
+    {
+      "heading": "WHO released updated guideline on HIV service delivery",
+      "link": "https://www.who.int/news/item/12-09-2025-who-released-updated-guideline-on-hiv-service-delivery",
+      "thumbnail": "https://cdn.who.int/media/images/default-source/headquarters/teams/uhc---communicable-noncommunicable-diseases-(ucn)/global-hiv-hepatitis-and-stis-programmes-(hhs)/boosting-efforts-to-transform-care-for-ncd-in-sierra-leone.tmb-768v.jpg?sfvrsn=73252117_1",
+      "date": "12 September 2025",
+      "category": "News release"
+    }
+  ]
+};
