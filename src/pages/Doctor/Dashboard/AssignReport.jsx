@@ -10,7 +10,7 @@ import {
   User, // Added for patient icon
   ClipboardCheck, // Added for the new "Assign" button
 } from "lucide-react";
-import { getCategoryIcon, formatDate, getPriorityColor } from "../../utils";
+import { getCategoryIcon, formatDate, getPriorityColor } from "../../../utils";
 
 const AssignReport = ({ reports }) => {
   const [searchTerm, setSearchTerm] = useState("");

@@ -1,6 +1,15 @@
 import { useState, useMemo } from "react";
-import { formatDate } from "../../../utils/index";
-import { FileText, Search, Filter, Download, Eye, Calendar, Tag, Clock } from "lucide-react";
+import { formatDate } from "../../../utils";
+import {
+  FileText,
+  Search,
+  Filter,
+  Download,
+  Eye,
+  Calendar,
+  Tag,
+  Clock,
+} from "lucide-react";
 
 const ReportsSection = ({ reports, doctors }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -32,17 +41,24 @@ const ReportsSection = ({ reports, doctors }) => {
     let filtered = reports
       .map((report) => {
         const doctor = doctors.find((d) => d.id === report.doctor_id);
-        return { ...report, doctorName: doctor ? doctor.name : `Doctor #${report.doctor_id}` };
+        return {
+          ...report,
+          doctorName: doctor ? doctor.name : `Doctor #${report.doctor_id}`,
+        };
       })
       .filter((report) => {
         const matchesSearch =
           report.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          (report.description || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+          (report.description || "")
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase()) ||
           report.doctorName.toLowerCase().includes(searchTerm.toLowerCase()) ||
           report.npi_id.toLowerCase().includes(searchTerm.toLowerCase());
 
-        const matchesCategory = selectedCategory === "all" || report.category === selectedCategory;
-        const matchesPriority = selectedPriority === "all" || report.priority === selectedPriority;
+        const matchesCategory =
+          selectedCategory === "all" || report.category === selectedCategory;
+        const matchesPriority =
+          selectedPriority === "all" || report.priority === selectedPriority;
 
         return matchesSearch && matchesCategory && matchesPriority;
       });
@@ -57,13 +73,23 @@ const ReportsSection = ({ reports, doctors }) => {
         const priorityOrder = { High: 3, Medium: 2, Low: 1 };
         const priorityA = priorityOrder[a.priority] || 0;
         const priorityB = priorityOrder[b.priority] || 0;
-        return sortOrder === "desc" ? priorityB - priorityA : priorityA - priorityB;
+        return sortOrder === "desc"
+          ? priorityB - priorityA
+          : priorityA - priorityB;
       }
       return 0;
     });
 
     return filtered;
-  }, [reports, doctors, searchTerm, selectedCategory, selectedPriority, sortBy, sortOrder]);
+  }, [
+    reports,
+    doctors,
+    searchTerm,
+    selectedCategory,
+    selectedPriority,
+    sortBy,
+    sortOrder,
+  ]);
 
   // Priority color helper
   const getPriorityColor = (priority) => {
@@ -103,7 +129,9 @@ const ReportsSection = ({ reports, doctors }) => {
     <div className="space-y-8">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h2 className="text-3xl font-bold text-[var(--color-text)]">Medical Reports</h2>
+        <h2 className="text-3xl font-bold text-[var(--color-text)]">
+          Medical Reports
+        </h2>
       </div>
 
       {/* Filter Section */}
@@ -180,7 +208,9 @@ const ReportsSection = ({ reports, doctors }) => {
             className="bg-[var(--color-card-bg)] rounded-3xl p-6 shadow-[0_4px_15px_rgba(0,0,0,0.08)] border-[var(--color-border)] hover:scale-105 transition-transform duration-300"
           >
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-semibold text-[var(--color-card-text)]">{report.title}</h3>
+              <h3 className="text-xl font-semibold text-[var(--color-card-text)]">
+                {report.title}
+              </h3>
               <FileText className="h-6 w-6 text-[#0b4f4a]" />
             </div>
 
@@ -202,7 +232,8 @@ const ReportsSection = ({ reports, doctors }) => {
               </p>
             )}
             <p className="text-sm text-gray-500 mb-1">
-              <strong>Priority:</strong> {report.priority || "N/A"}, <strong>Category:</strong> {report.category || "N/A"}
+              <strong>Priority:</strong> {report.priority || "N/A"},{" "}
+              <strong>Category:</strong> {report.category || "N/A"}
             </p>
 
             <span

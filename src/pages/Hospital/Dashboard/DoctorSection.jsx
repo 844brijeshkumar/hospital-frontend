@@ -1,9 +1,21 @@
 import React, { useState, useMemo } from "react";
-import { UserPlus, Edit, Trash2, Stethoscope, Search, Calendar } from "lucide-react";
+import {
+  UserPlus,
+  Edit,
+  Trash2,
+  Stethoscope,
+  Search,
+  Calendar,
+} from "lucide-react";
 import DoctorForm from "./DoctorForm";
-import { initialDoctorForm } from "../../../utils/index";
+import { initialDoctorForm } from "../../../utils";
 
-const DoctorsSection = ({ doctors, onAddDoctor, onUpdateDoctor, onDeleteDoctor }) => {
+const DoctorsSection = ({
+  doctors,
+  onAddDoctor,
+  onUpdateDoctor,
+  onDeleteDoctor,
+}) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [formData, setFormData] = useState(initialDoctorForm);
   const [editingDoctorId, setEditingDoctorId] = useState(null);
@@ -51,12 +63,15 @@ const DoctorsSection = ({ doctors, onAddDoctor, onUpdateDoctor, onDeleteDoctor }
     let filtered = doctors.filter((doc) => {
       const matchesSearch =
         doc.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (doc.specialization || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (doc.specialization || "")
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
         (doc.npi_id || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
         (doc.email || "").toLowerCase().includes(searchTerm.toLowerCase());
 
       const matchesSpecialization =
-        selectedSpecialization === "all" || doc.specialization === selectedSpecialization;
+        selectedSpecialization === "all" ||
+        doc.specialization === selectedSpecialization;
 
       const matchesHospital =
         selectedHospital === "all" || doc.npi_id === selectedHospital;
@@ -78,17 +93,32 @@ const DoctorsSection = ({ doctors, onAddDoctor, onUpdateDoctor, onDeleteDoctor }
     });
 
     return filtered;
-  }, [doctors, searchTerm, selectedSpecialization, selectedHospital, sortBy, sortOrder]);
+  }, [
+    doctors,
+    searchTerm,
+    selectedSpecialization,
+    selectedHospital,
+    sortBy,
+    sortOrder,
+  ]);
 
   // Unique values for dropdown filters
-  const specializations = ["all", ...new Set(doctors.map(d => d.specialization).filter(Boolean))];
-  const hospitals = ["all", ...new Set(doctors.map(d => d.npi_id).filter(Boolean))];
+  const specializations = [
+    "all",
+    ...new Set(doctors.map((d) => d.specialization).filter(Boolean)),
+  ];
+  const hospitals = [
+    "all",
+    ...new Set(doctors.map((d) => d.npi_id).filter(Boolean)),
+  ];
 
   return (
     <div className="space-y-8">
       {/* Header */}
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <h2 className="text-3xl font-bold text-[var(--color-text)]">Doctors List</h2>
+        <h2 className="text-3xl font-bold text-[var(--color-text)]">
+          Doctors List
+        </h2>
         <button
           onClick={handleAddNewClick}
           className="bg-gradient-to-r from-[#0b4f4a] to-[#1a756f] text-white px-6 py-3 rounded-2xl font-medium flex items-center shadow-lg hover:scale-105 transition-transform duration-300"
@@ -118,7 +148,9 @@ const DoctorsSection = ({ doctors, onAddDoctor, onUpdateDoctor, onDeleteDoctor }
             className="px-3 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl focus:ring-2 focus:ring-white/50 focus:border-white/50 text-black"
           >
             {specializations.map((spec) => (
-              <option key={spec} value={spec}>{spec}</option>
+              <option key={spec} value={spec}>
+                {spec}
+              </option>
             ))}
           </select>
 
@@ -128,7 +160,9 @@ const DoctorsSection = ({ doctors, onAddDoctor, onUpdateDoctor, onDeleteDoctor }
             className="px-3 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl focus:ring-2 focus:ring-white/50 focus:border-white/50 text-black"
           >
             {hospitals.map((h) => (
-              <option key={h} value={h}>{h}</option>
+              <option key={h} value={h}>
+                {h}
+              </option>
             ))}
           </select>
 
@@ -172,26 +206,44 @@ const DoctorsSection = ({ doctors, onAddDoctor, onUpdateDoctor, onDeleteDoctor }
             className="bg-[var(--color-card-bg)] rounded-3xl p-6 shadow-[0_4px_15px_rgba(0,0,0,0.08)] border-[var(--color-border)] hover:scale-105 transition-transform duration-300"
           >
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-semibold text-[var(--color-card-text)]">{doctor.name}</h3>
+              <h3 className="text-xl font-semibold text-[var(--color-card-text)]">
+                {doctor.name}
+              </h3>
               <div className="flex gap-2">
-                <button onClick={() => handleEditClick(doctor)} className="text-indigo-600 hover:text-indigo-900">
+                <button
+                  onClick={() => handleEditClick(doctor)}
+                  className="text-indigo-600 hover:text-indigo-900"
+                >
                   <Edit className="h-5 w-5" />
                 </button>
-                <button onClick={() => handleDeleteClick(doctor.doctor_id)} className="text-red-600 hover:text-red-900">
+                <button
+                  onClick={() => handleDeleteClick(doctor.doctor_id)}
+                  className="text-red-600 hover:text-red-900"
+                >
                   <Trash2 className="h-5 w-5" />
                 </button>
               </div>
             </div>
-            <p className="text-sm text-gray-500 mb-1"><strong>Email:</strong> {doctor.email}</p>
-            <p className="text-sm text-gray-500 mb-1"><strong>Specialty:</strong> {doctor.specialization}</p>
-            <p className="text-sm text-gray-500 mb-1"><strong>Contact:</strong> {doctor.phone_no}</p>
+            <p className="text-sm text-gray-500 mb-1">
+              <strong>Email:</strong> {doctor.email}
+            </p>
+            <p className="text-sm text-gray-500 mb-1">
+              <strong>Specialty:</strong> {doctor.specialization}
+            </p>
+            <p className="text-sm text-gray-500 mb-1">
+              <strong>Contact:</strong> {doctor.phone_no}
+            </p>
             <p className="text-sm text-gray-500 flex items-center gap-2">
               <Stethoscope className="h-4 w-4 text-[#0b4f4a]" />
-              <span><strong>Hospital NPI:</strong> {doctor.npi_id}</span>
+              <span>
+                <strong>Hospital NPI:</strong> {doctor.npi_id}
+              </span>
             </p>
             <p className="text-sm text-gray-400 mt-2 flex items-center gap-2">
               <Calendar className="h-4 w-4" />
-              <span>Joined: {new Date(doctor.created_at).toLocaleDateString()}</span>
+              <span>
+                Joined: {new Date(doctor.created_at).toLocaleDateString()}
+              </span>
             </p>
           </div>
         ))}
@@ -199,8 +251,12 @@ const DoctorsSection = ({ doctors, onAddDoctor, onUpdateDoctor, onDeleteDoctor }
         {filteredAndSortedDoctors.length === 0 && (
           <div className="col-span-full text-center text-gray-400 p-12 border border-gray-100 rounded-2xl">
             <Search className="h-16 w-16 mx-auto mb-4" />
-            <h3 className="text-xl font-medium text-gray-900 mb-2">No doctors found</h3>
-            <p>Try adjusting your search criteria or filters to find doctors.</p>
+            <h3 className="text-xl font-medium text-gray-900 mb-2">
+              No doctors found
+            </h3>
+            <p>
+              Try adjusting your search criteria or filters to find doctors.
+            </p>
           </div>
         )}
       </div>

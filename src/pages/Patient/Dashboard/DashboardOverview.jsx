@@ -9,7 +9,7 @@ import {
   Clock,
 } from "lucide-react";
 
-import { getCategoryIcon, formatDate, getAge } from "../../utils";
+import { getCategoryIcon, formatDate, getAge } from "../../../utils";
 const DashboardOverview = ({ patient, reports }) => {
   // Slice the reports to show only the 3 most recent
   const recentReports = reports.slice(0, 3);

@@ -1,10 +1,12 @@
 import React from "react";
 import { Users, Stethoscope, FileText, Building } from "lucide-react";
-import { formatDate } from "../../../utils/index";
+import { formatDate } from "../../../utils";
 
 const DashboardOverview = ({ hospital, doctors, reports }) => {
   const totalDoctors = doctors?.length || 0;
-  const completedReports = reports?.filter((report) => report.status === "Completed");
+  const completedReports = reports?.filter(
+    (report) => report.status === "Completed"
+  );
   const totalReports = completedReports?.length || 0;
   const recentDoctorActivity = doctors?.slice(0, 4) || [];
 
@@ -39,7 +41,9 @@ const DashboardOverview = ({ hospital, doctors, reports }) => {
         <div className="bg-gradient-to-br from-[#d1e8e5] to-white p-6 rounded-3xl shadow-[0_4px_15px_rgba(0,0,0,0.1)] border border-[#d1e8e5] hover:scale-105 transition-transform duration-300">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-4xl font-bold text-[#0b4f4a]">{hospital.name}</p>
+              <p className="text-4xl font-bold text-[#0b4f4a]">
+                {hospital.name}
+              </p>
               <p className="text-[#0b4f4a] font-medium">Hospital Name</p>
             </div>
             <div className="bg-[#0b4f4a] p-4 rounded-xl shadow-md">

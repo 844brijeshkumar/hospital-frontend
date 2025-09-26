@@ -6,7 +6,7 @@ import {
   UserPlus,
   ArrowRight,
 } from "lucide-react";
-import { formatTime } from "../../utils";
+import { formatTime } from "../../../utils";
 
 // --- SAMPLE DATA DEFINITIONS ---
 // Here we define the mock data directly in the file.
