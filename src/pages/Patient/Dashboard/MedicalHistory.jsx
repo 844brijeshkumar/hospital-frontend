@@ -9,7 +9,7 @@ import {
   Clock,
 } from "lucide-react";
 
-const Reports = ({ reports }) => {
+const MedicalHistory = ({ reports }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedPriority, setSelectedPriority] = useState("all");
@@ -305,4 +305,4 @@ const Reports = ({ reports }) => {
   );
 };
 
-export default Reports;
+export default MedicalHistory;

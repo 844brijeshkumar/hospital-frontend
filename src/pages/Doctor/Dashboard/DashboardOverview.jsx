@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Users,
   Calendar,
@@ -265,7 +264,7 @@ const DashboardUI = ({ doctor, appointments, patients }) => {
 
 // --- MAIN COMPONENT TO RENDER ---
 // This component passes the sample data to the UI component.
-const DoctorDashboard = () => {
+const DashboardOverview = () => {
   return (
     <DashboardUI
       doctor={doctorData}
@@ -275,4 +274,4 @@ const DoctorDashboard = () => {
   );
 };
 
-export default DoctorDashboard;
+export default DashboardOverview;

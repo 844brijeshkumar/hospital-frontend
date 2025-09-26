@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 import { getCategoryIcon, formatDate, getAge } from "../../utils";
-const Dashboard = ({ patient, reports }) => {
+const DashboardOverview = ({ patient, reports }) => {
   // Slice the reports to show only the 3 most recent
   const recentReports = reports.slice(0, 3);
   // Filter for high priority reports
@@ -257,4 +257,4 @@ const Dashboard = ({ patient, reports }) => {
   );
 };
 
-export default Dashboard;
+export default DashboardOverview;

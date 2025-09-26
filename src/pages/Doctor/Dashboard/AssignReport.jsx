@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { getCategoryIcon, formatDate, getPriorityColor } from "../../utils";
 
-const index = ({ reports }) => {
+const AssignReport = ({ reports }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedPriority, setSelectedPriority] = useState("all");
@@ -248,4 +248,4 @@ const index = ({ reports }) => {
   );
 };
 
-export default index;
+export default AssignReport;

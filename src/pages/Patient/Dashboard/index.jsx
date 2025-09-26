@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Header from "../../../components/Header";
-import PatientDashboard from "../../../components/PatientDashboard";
-import MedicalHistory from "../../../components/MedicalHistory";
-import ReportUpload from "../../../components/ReportUpload";
+
 import { mockPatient, mockReports } from "../../../utils";
 import Footer from "../../../components/footer";
+import DashboardOverview from "./DashboardOverview";
+import MedicalHistory from "./MedicalHistory";
 const Dashboard = () => {
   const [activeView, setActiveView] = useState("dashboard");
   const [reports, setReports] = useState(mockReports);
@@ -16,12 +16,12 @@ const Dashboard = () => {
   const renderActiveView = () => {
     switch (activeView) {
       case "dashboard":
-        return <PatientDashboard patient={mockPatient} reports={reports} />;
+        return <DashboardOverview patient={mockPatient} reports={reports} />;
       case "reports":
         return <MedicalHistory reports={reports} />;
 
       default:
-        return <PatientDashboard patient={mockPatient} reports={reports} />;
+        return <DashboardOverview patient={mockPatient} reports={reports} />;
     }
   };
 
@@ -36,7 +36,7 @@ const Dashboard = () => {
       <main>{renderActiveView()}</main>
 
       {/* Footer */}
-      <Footer/>
+      <Footer />
     </div>
   );
 };
