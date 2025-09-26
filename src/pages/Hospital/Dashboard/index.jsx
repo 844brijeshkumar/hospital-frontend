@@ -3,7 +3,7 @@ import DashboardOverview from "./DashboardOverview";
 import DoctorsSection from "./DoctorSection";
 import ReportsSection from "./ReportSection";
 import ProfileSection from "./ProfileSection";
-import { hospitalData, doctorsData, reportsData } from "../../../utils/index";
+import { hospitalData, doctorsData, reportsData } from "../../../utils";
 import {
   LayoutDashboard,
   Stethoscope,
