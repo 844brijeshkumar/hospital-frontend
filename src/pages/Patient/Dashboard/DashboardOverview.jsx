@@ -10,8 +10,12 @@ import {
 } from "lucide-react";
 
 import { getCategoryIcon, formatDate, getAge } from "../../../utils";
-const DashboardOverview = ({ patient, reports }) => {
-  // Slice the reports to show only the 3 most recent
+import {useSelector} from "react-redux";
+
+const DashboardOverview = () => {
+  // Get patient and reports data directly from the Redux store
+  const { patient, reports } = useSelector((state) => state.patient);
+  
   const recentReports = reports.slice(0, 3);
   // Filter for high priority reports
   const criticalReports = reports.filter(

@@ -1,27 +1,32 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Header from "../../../components/Header";
-
-import { mockPatient, mockReports } from "../../../utils";
 import Footer from "../../../components/footer";
 import DashboardOverview from "./DashboardOverview";
 import MedicalHistory from "./MedicalHistory";
-const Dashboard = () => {
-  const [activeView, setActiveView] = useState("dashboard");
-  const [reports, setReports] = useState(mockReports);
+import { addReport } from "../../../features/Patient/patientSlice";
 
+const Dashboard = () => {
+  const dispatch = useDispatch();
+  // Get patient data from the Redux store
+  const patient = useSelector((state) => state.patient.patient);
+  
+  // Use a temporary state for UI view management
+  const [activeView, setActiveView] = useState("dashboard");
+
+  // This function is now responsible for dispatching an action.
   const handleUploadReport = (newReport) => {
-    setReports((prevReports) => [newReport, ...prevReports]);
+    dispatch(addReport(newReport));
   };
 
   const renderActiveView = () => {
     switch (activeView) {
       case "dashboard":
-        return <DashboardOverview patient={mockPatient} reports={reports} />;
+        return <DashboardOverview />;
       case "reports":
-        return <MedicalHistory reports={reports} />;
-
+        return <MedicalHistory />;
       default:
-        return <DashboardOverview patient={mockPatient} reports={reports} />;
+        return <DashboardOverview />;
     }
   };
 
@@ -30,7 +35,7 @@ const Dashboard = () => {
       <Header
         activeView={activeView}
         onViewChange={setActiveView}
-        patientName={mockPatient.name}
+        patientName={patient.name}
         dashboard="patient"
       />
       <main>{renderActiveView()}</main>

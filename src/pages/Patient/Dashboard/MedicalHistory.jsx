@@ -1,4 +1,7 @@
+// src/pages/Patient/Dashboard/MedicalHistory.jsx
+
 import { useState, useMemo } from "react";
+import { useSelector } from "react-redux"; // Import useSelector hook
 import {
   Search,
   Filter,
@@ -9,7 +12,56 @@ import {
   Clock,
 } from "lucide-react";
 
-const MedicalHistory = ({ reports }) => {
+// Helper functions (you can keep these in utils or outside the component)
+const getCategoryIcon = (category) => {
+  switch (category) {
+    case "lab":
+      return "🧪";
+    case "imaging":
+      return "📊";
+    case "prescription":
+      return "💊";
+    case "consultation":
+      return "👨‍⚕️";
+    case "surgery":
+      return "🔪"; // Replaced with a more appropriate icon
+    case "vaccination":
+      return "💉";
+    default:
+      return "📄";
+  }
+};
+
+const formatDate = (date) => {
+  return new Intl.DateTimeFormat("en-IN", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(new Date(date));
+};
+
+const getPriorityColor = (priority) => {
+  switch (priority) {
+    case "critical":
+      return "bg-red-100 text-red-800 border-red-200";
+    case "high":
+      return "bg-orange-100 text-orange-800 border-orange-200";
+    case "medium":
+      return "bg-yellow-100 text-yellow-800 border-yellow-200";
+    case "low":
+      return "bg-emerald-100 text-emerald-800 border-emerald-200";
+    default:
+      return "bg-gray-100 text-gray-800 border-gray-200";
+  }
+};
+
+const MedicalHistory = () => {
+  // Get the reports array directly from the Redux store
+  const reports = useSelector((state) => state.patient.reports);
+
+  // All other state for filtering and sorting remains local
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedPriority, setSelectedPriority] = useState("all");
@@ -63,9 +115,9 @@ const MedicalHistory = ({ reports }) => {
         const priorityOrder = { critical: 4, high: 3, medium: 2, low: 1 };
         const priorityA = priorityOrder[a.priority];
         const priorityB = priorityOrder[b.priority];
-        return sortOrder === "desc"
-          ? priorityB - priorityA
-          : priorityA - priorityB;
+        return sortOrder === "desc" ?
+          priorityB - priorityA :
+          priorityA - priorityB;
       }
       return 0;
     });
@@ -79,53 +131,6 @@ const MedicalHistory = ({ reports }) => {
     sortBy,
     sortOrder,
   ]);
-
-  // Helper function to get the appropriate emoji icon for a report category
-  const getCategoryIcon = (category) => {
-    switch (category) {
-      case "lab":
-        return "🧪";
-      case "imaging":
-        return "📊";
-      case "prescription":
-        return "💊";
-      case "consultation":
-        return "👨‍⚕️";
-      case "surgery":
-        return "�";
-      case "vaccination":
-        return "💉";
-      default:
-        return "📄";
-    }
-  };
-
-  // Helper function to format the date
-  const formatDate = (date) => {
-    return new Intl.DateTimeFormat("en-IN", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    }).format(new Date(date));
-  };
-
-  // Helper function to get the Tailwind CSS classes for priority color
-  const getPriorityColor = (priority) => {
-    switch (priority) {
-      case "critical":
-        return "bg-red-100 text-red-800 border-red-200";
-      case "high":
-        return "bg-orange-100 text-orange-800 border-orange-200";
-      case "medium":
-        return "bg-yellow-100 text-yellow-800 border-yellow-200";
-      case "low":
-        return "bg-emerald-100 text-emerald-800 border-emerald-200";
-      default:
-        return "bg-gray-100 text-gray-800 border-gray-200";
-    }
-  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -166,7 +171,7 @@ const MedicalHistory = ({ reports }) => {
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-3 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl focus:ring-2 focus:ring-white/50 focus:border-white/50 text-white"
+            className="px-3 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl focus:ring-2 focus:ring-white/50 focus:border-white/50 text-black"
           >
             {categories.map((cat) => (
               <option key={cat.value} value={cat.value}>
@@ -178,7 +183,7 @@ const MedicalHistory = ({ reports }) => {
           <select
             value={selectedPriority}
             onChange={(e) => setSelectedPriority(e.target.value)}
-            className="px-3 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl focus:ring-2 focus:ring-white/50 focus:border-white/50 text-white"
+            className="px-3 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl focus:ring-2 focus:ring-white/50 focus:border-white/50 text-black"
           >
             {priorities.map((pri) => (
               <option key={pri.value} value={pri.value}>
@@ -194,7 +199,7 @@ const MedicalHistory = ({ reports }) => {
               setSortBy(sort);
               setSortOrder(order);
             }}
-            className="px-3 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl focus:ring-2 focus:ring-white/50 focus:border-white/50 text-white"
+            className="px-3 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl focus:ring-2 focus:ring-white/50 focus:border-white/50 text-black"
           >
             <option value="date-desc">Newest First</option>
             <option value="date-asc">Oldest First</option>
@@ -242,7 +247,7 @@ const MedicalHistory = ({ reports }) => {
                         {report.tags.map((tag, index) => (
                           <span
                             key={index}
-                            className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-gradient-to-r from-[#D5E6E4] to-[#E1F3F1] text-[#4A726E] border border-[#B5D6D3]"
+                            className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-gradient-to-r from-[#D5E6E4] to-[#E1F9F8] text-[#4A726E] border border-[#B5D6D3]"
                           >
                             <Tag className="h-3 w-3 mr-1" />
                             {tag}
