@@ -59,13 +59,22 @@ export default function Login() {
     try {
       const data = await loginHospital(credentials);
 
-      if (data.error) {
-        setMessage({ text: data.error, type: "error" });
+      if (data.status === true) {
+        // Save JWT token in localStorage
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("role", "hospital");
+        // Optionally save patient info
+        localStorage.setItem("patient", JSON.stringify(data.data));
+
+        setMessage({ text: "Login successful!", type: "success" });
+        e.target.reset();
+
+        // Redirect to dashboard
+        setTimeout(() => {
+          navigate("/hospital/dashboard"); // or wherever you want
+        }, 1000);
       } else {
-        setMessage({
-          text: "Hospital logged in successfully!",
-          type: "success",
-        });
+        setMessage({ text: "Invalid Credentials", type: "error" });
       }
     } catch (error) {
       console.error("Login error:", error);
