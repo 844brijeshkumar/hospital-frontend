@@ -85,6 +85,16 @@ const HospitalDashboard = () => {
         return null;
     }
   };
+  const logout = () => {
+    // Clear user data from localStorage
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    // Redirect to login page after a short delay to ensure state updates
+
+    setTimeout(() => {
+      window.location.href = "/login/hospital"; // or wherever your login page is
+    }, 500);
+  };
 
   return (
     <div className=" space-y-8">
@@ -135,7 +145,10 @@ const HospitalDashboard = () => {
               <div className="bg-[#d1e8e5] p-2 rounded-full">
                 <Stethoscope className="h-5 w-5 text-[#0b4f4a]" />
               </div>
-              <button className="text-[#0b4f4a] hover:text-[#0b4f4a] transition-colors p-2 rounded-lg hover:bg-[#e0f1ef]">
+              <button
+                onClick={logout}
+                className="text-[#0b4f4a] hover:text-[#0b4f4a] transition-colors p-2 rounded-lg hover:bg-[#e0f1ef]"
+              >
                 <LogOut className="h-5 w-5" />
               </button>
             </div>
