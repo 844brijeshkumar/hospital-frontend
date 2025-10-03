@@ -113,7 +113,7 @@ const DoctorsSection = ({
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 p-10">
       {/* Header */}
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <h2 className="text-3xl font-bold text-[var(--color-text)]">
