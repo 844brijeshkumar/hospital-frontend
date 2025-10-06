@@ -1,11 +1,11 @@
-import api from "./api";
+import api from './api';
 
 export const getUsers = async () => {
-  const res = await api.get("/api/auth/userlist");
+  const res = await api.get('/api/users');
   return res.data;
 };
 
-export const updateProfile = async (userId, profileData) => {
-  const res = await api.put(`/api/auth/user/${userId}`, profileData);
+export const getUserProfile = async (userId) => {
+  const res = await api.get(`/api/users/${userId}`);
   return res.data;
 };
