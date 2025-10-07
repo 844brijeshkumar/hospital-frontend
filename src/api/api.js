@@ -1,14 +1,13 @@
-import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from "axios";
 
 const api = axios.create({
-  baseURL: process.env.VITE_BASE_URL,
+  baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 30000,
 });
 
 api.interceptors.request.use(
-  async (config) => {
-    const token = await AsyncStorage.getItem('token');
+  (config) => {
+    const token = localStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -19,9 +18,10 @@ api.interceptors.request.use(
 
 api.interceptors.response.use(
   (response) => response,
-  async (error) => {
+  (error) => {
     if (error.response?.status === 401) {
-      await AsyncStorage.removeItem('token');
+      localStorage.removeItem("token");
+      window.location.href = "/login";
     }
     return Promise.reject(error);
   }
