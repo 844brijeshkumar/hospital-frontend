@@ -12,6 +12,7 @@ const Home = lazy(() => import("../pages/Home"));
 const NotFound = lazy(() => import("../pages/NotFound"));
 const PatientDashboard = lazy(() => import("../pages/Patient/Dashboard"));
 const DoctorDashboard = lazy(() => import("../pages/Doctor/Dashboard"));
+const AdminDashboard = lazy(() => import("../pages/Admin/adminPortal.jsx"));
 const HospitalDashboard = lazy(() =>
   import("../pages/Hospital/Dashboard/index")
 );
@@ -59,6 +60,7 @@ const router = createBrowserRouter([
   { path: "/about", element: <About /> },
   { path: "/services", element: <Service /> },
   { path: "/privacy-policy", element: <PrivacyPolicy /> },
+  { path: "/admin", element: <AdminDashboard /> },
   { path: "/terms-of-service", element: <TermsOfService /> },
   {
     path: "/login/patient",
