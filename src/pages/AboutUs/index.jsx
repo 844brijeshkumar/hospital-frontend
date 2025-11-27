@@ -95,7 +95,7 @@ const AboutUs = () => {
                   The passionate minds driving India's healthcare revolution.
                 </p>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
                 {teamMembers.map((member, index) => (
                   <div
                     key={index}
