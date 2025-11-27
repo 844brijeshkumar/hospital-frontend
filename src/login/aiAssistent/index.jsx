@@ -278,7 +278,7 @@ const App = () => {
       model: "gemini-2.5-flash-preview-tts",
     };
 
-    const apiKey = "";
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
 
     let audioBlob = null;
