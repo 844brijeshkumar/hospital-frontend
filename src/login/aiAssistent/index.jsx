@@ -215,7 +215,7 @@ const App = () => {
 
     const responseText = await handleApiCall(
       messageText,
-      "gemini-2.5-flash-preview-05-20",
+      "gemini-2.5-flash",
       conversationHistory
     );
     setIsTyping(false);
@@ -275,11 +275,11 @@ const App = () => {
           },
         },
       },
-      model: "gemini-2.5-flash-preview-tts",
+      model: "gemini-2.5-flash",
     };
 
     const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
     let audioBlob = null;
     let retryCount = 0;
@@ -359,7 +359,7 @@ const App = () => {
 
     const questions = await handleApiCall(
       prompt,
-      "gemini-2.5-flash-preview-05-20",
+      "gemini-2.5-flash",
       [],
       schema
     );

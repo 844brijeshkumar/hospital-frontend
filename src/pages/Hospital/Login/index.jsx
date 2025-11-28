@@ -168,7 +168,7 @@ export default function Login() {
                 <div className="absolute right-3 top-8 z-10">
                   {eyePassword ? (
                     <Eye
-                      onClick={() => setEyePassword(!eyePassword)}
+                      onClick={() => setEyePassword(eyePassword)}
                       className=" h-5 w-5 text-gray-400 cursor-pointer"
                     />
                   ) : (
