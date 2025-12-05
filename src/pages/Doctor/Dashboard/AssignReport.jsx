@@ -11,8 +11,9 @@ import {
   ClipboardCheck, // Added for the new "Assign" button
 } from "lucide-react";
 import { getCategoryIcon, formatDate, getPriorityColor } from "../../../utils";
+import { mockReports } from "../../../utils";
 
-const AssignReport = ({ reports }) => {
+const AssignReport = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedPriority, setSelectedPriority] = useState("all");
@@ -38,7 +39,7 @@ const AssignReport = ({ reports }) => {
 
   // Use useMemo to filter and sort reports efficiently
   const filteredAndSortedReports = useMemo(() => {
-    let filtered = reports?.filter((report) => {
+    let filtered = mockReports?.filter((report) => {
       // Updated search to include patientName
       const matchesSearch =
         report.patientName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -73,7 +74,7 @@ const AssignReport = ({ reports }) => {
 
     return filtered;
   }, [
-    reports,
+    mockReports,
     searchTerm,
     selectedCategory,
     selectedPriority,
@@ -82,7 +83,7 @@ const AssignReport = ({ reports }) => {
   ]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="fade-in w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header updated for doctor's assignment view */}
       <div className="bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94] rounded-2xl shadow-2xl p-8 mb-8 text-white">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
@@ -154,7 +155,8 @@ const AssignReport = ({ reports }) => {
         </div>
 
         <div className="mt-6 text-sm text-white/80 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
-          Showing {filteredAndSortedReports.length} of {reports.length} reports
+          Showing {filteredAndSortedReports.length} of {mockReports.length}{" "}
+          reports
         </div>
       </div>
 

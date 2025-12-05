@@ -1,4 +1,3 @@
-
 import { useState, useMemo } from "react";
 import {
   Search,
@@ -22,7 +21,7 @@ const getCategoryIcon = (category) => {
     case "consultation":
       return "👨‍⚕️";
     case "surgery":
-      return "🔪"; 
+      return "🔪";
     case "vaccination":
       return "💉";
     default:
@@ -54,9 +53,10 @@ const getPriorityColor = (priority) => {
       return "bg-gray-100 text-gray-800 border-gray-200";
   }
 };
+import { mockPatient, mockReports } from "../../../utils";
 
 // Component now receives the reports array via props
-const MedicalHistory = ({ reports }) => {
+const MedicalHistory = () => {
   // All state for filtering and sorting remains local
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -86,7 +86,7 @@ const MedicalHistory = ({ reports }) => {
 
   // Use useMemo to filter and sort reports efficiently
   const filteredAndSortedReports = useMemo(() => {
-    let filtered = reports.filter((report) => {
+    let filtered = mockReports.filter((report) => {
       const matchesSearch =
         report.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         report.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -111,16 +111,16 @@ const MedicalHistory = ({ reports }) => {
         const priorityOrder = { critical: 4, high: 3, medium: 2, low: 1 };
         const priorityA = priorityOrder[a.priority];
         const priorityB = priorityOrder[b.priority];
-        return sortOrder === "desc" ?
-          priorityB - priorityA :
-          priorityA - priorityB;
+        return sortOrder === "desc"
+          ? priorityB - priorityA
+          : priorityA - priorityB;
       }
       return 0;
     });
 
     return filtered;
   }, [
-    reports, // reports comes from props
+    mockReports, // reports comes from props
     searchTerm,
     selectedCategory,
     selectedPriority,
@@ -129,7 +129,7 @@ const MedicalHistory = ({ reports }) => {
   ]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className=" fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header with the new color gradient */}
       <div className="bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94] rounded-2xl shadow-2xl p-8 mb-8 text-white">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
@@ -205,7 +205,8 @@ const MedicalHistory = ({ reports }) => {
         </div>
 
         <div className="mt-6 text-sm text-white/80 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
-          Showing {filteredAndSortedReports.length} of {reports.length} reports
+          Showing {filteredAndSortedReports.length} of {mockReports.length}{" "}
+          reports
         </div>
       </div>
 

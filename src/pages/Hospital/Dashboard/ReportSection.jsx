@@ -10,13 +10,17 @@ import {
   Tag,
   Clock,
 } from "lucide-react";
+import { doctorsData, reportsData } from "../../../utils";
 
-const ReportsSection = ({ reports, doctors }) => {
+const ReportsSection = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedPriority, setSelectedPriority] = useState("all");
   const [sortBy, setSortBy] = useState("date");
+  const [doctors, setDoctors] = useState(doctorsData);
+
   const [sortOrder, setSortOrder] = useState("desc");
+  const reports = reportsData;
 
   const categories = [
     { value: "all", label: "All Categories" },
@@ -126,7 +130,7 @@ const ReportsSection = ({ reports, doctors }) => {
   };
 
   return (
-    <div className="space-y-8 p-10">
+    <div className=" w-full space-y-8 p-10">
       {/* Header */}
       <div className="flex items-center justify-between">
         <h2 className="text-3xl font-bold text-[var(--color-text)]">

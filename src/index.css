@@ -17,6 +17,30 @@
 .animate-scroll-infinite:hover {
   animation-play-state: paused;
 }
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #0d0e0d transparent; /* light green indicator, no background */
+}
+
+/* Chrome / Edge / Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent; /* no background */
+}
+
+*::-webkit-scrollbar-thumb {
+  background: transparent; /* hide thumb */
+  border-radius: 10px;
+}
+
+/* Hover should still not show thumb */
+*::-webkit-scrollbar-thumb:hover {
+  background: transparent;
+}
 
 body {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -51,7 +75,7 @@ body {
   --color-text: #e0e0e0;
   --color-primary: #0b4f4a;
   --color-secondary: #3b82f6;
-  --color-hover:#2a9b94;
+  --color-hover: #2a9b94;
   --color-card-bg: #1e1e1e;
   --color-card-text: #f0f0f0;
   --color-card-secondary-text: #a0a0a0;
@@ -117,6 +141,16 @@ body {
   justify-content: center;
   align-items: center;
   gap: 3px;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in forwards;
+  opacity: 0;
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
 .spinner > div {

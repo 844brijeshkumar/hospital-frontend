@@ -82,7 +82,7 @@ export default function Login() {
     } catch (error) {
       console.error("Login failed:", error);
       setMessage({
-        text: error.response?.data?.error || "Login failed",
+        text: error.response?.data?.error || "try again later",
         type: "error",
       });
     }
@@ -159,7 +159,7 @@ export default function Login() {
                   Password
                 </label>
                 <input
-                  type="password"
+                  type={eyePassword ? "text" : "password"}
                   id="login-password"
                   name="login-password"
                   placeholder="Enter your password"
@@ -281,7 +281,7 @@ export default function Login() {
                   Create Password
                 </label>
                 <input
-                  type="password"
+                  type={eyePassword ? "text" : "password"}
                   id="signup-password"
                   name="signup-password"
                   placeholder="Create a strong password"
