@@ -1,7 +1,5 @@
-// src/pages/Patient/Dashboard/MedicalHistory.jsx
 
 import { useState, useMemo } from "react";
-import { useSelector } from "react-redux"; // Import useSelector hook
 import {
   Search,
   Filter,
@@ -12,7 +10,7 @@ import {
   Clock,
 } from "lucide-react";
 
-// Helper functions (you can keep these in utils or outside the component)
+// Helper functions (kept outside the component)
 const getCategoryIcon = (category) => {
   switch (category) {
     case "lab":
@@ -24,7 +22,7 @@ const getCategoryIcon = (category) => {
     case "consultation":
       return "👨‍⚕️";
     case "surgery":
-      return "🔪"; // Replaced with a more appropriate icon
+      return "🔪"; 
     case "vaccination":
       return "💉";
     default:
@@ -57,11 +55,9 @@ const getPriorityColor = (priority) => {
   }
 };
 
-const MedicalHistory = () => {
-  // Get the reports array directly from the Redux store
-  const reports = useSelector((state) => state.patient.reports);
-
-  // All other state for filtering and sorting remains local
+// Component now receives the reports array via props
+const MedicalHistory = ({ reports }) => {
+  // All state for filtering and sorting remains local
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedPriority, setSelectedPriority] = useState("all");
@@ -124,7 +120,7 @@ const MedicalHistory = () => {
 
     return filtered;
   }, [
-    reports,
+    reports, // reports comes from props
     searchTerm,
     selectedCategory,
     selectedPriority,
