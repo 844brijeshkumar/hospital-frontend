@@ -9,13 +9,11 @@ import {
 } from "lucide-react";
 import DoctorForm from "./DoctorForm";
 import { initialDoctorForm } from "../../../utils";
+import { doctorsData } from "../../../utils";
 
-const DoctorsSection = ({
-  doctors,
-  onAddDoctor,
-  onUpdateDoctor,
-  onDeleteDoctor,
-}) => {
+const DoctorsSection = () => {
+  const [doctors, setDoctors] = useState(doctorsData);
+
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [formData, setFormData] = useState(initialDoctorForm);
   const [editingDoctorId, setEditingDoctorId] = useState(null);
@@ -25,7 +23,36 @@ const DoctorsSection = ({
   const [selectedHospital, setSelectedHospital] = useState("all");
   const [sortBy, setSortBy] = useState("name");
   const [sortOrder, setSortOrder] = useState("asc");
+  const onAddDoctor = (doctor) => {
+    const newDoctor = {
+      ...doctor,
+      id: "DOC" + Math.floor(Math.random() * 1000 + 100),
+      lastLogin: new Date().toISOString(),
+      specialty: doctor.specialization,
+      contact: doctor.email,
+    };
+    setDoctors([newDoctor, ...doctors]);
+  };
 
+  const onUpdateDoctor = (id, updatedDoctor) => {
+    setDoctors(
+      doctors.map((doc) =>
+        doc.id === id
+          ? {
+              ...doc,
+              ...updatedDoctor,
+              specialty:
+                updatedDoctor.specialization || updatedDoctor.specialty,
+              contact: updatedDoctor.email || updatedDoctor.contact,
+            }
+          : doc
+      )
+    );
+  };
+
+  const onDeleteDoctor = (id) => {
+    setDoctors(doctors.filter((doc) => doc.id !== id));
+  };
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (editingDoctorId) {

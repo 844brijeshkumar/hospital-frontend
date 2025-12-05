@@ -10,8 +10,9 @@ import {
   CheckCircle,
   X,
 } from "lucide-react";
+import { mockReports } from "../../../utils";
 
-const ReportUpload = ({ onUpload }) => {
+const ReportUpload = () => {
   const [formData, setFormData] = useState({
     patientName: "", // New field for the patient's name
     title: "",
@@ -23,7 +24,11 @@ const ReportUpload = ({ onUpload }) => {
     priority: "medium",
     tags: "",
   });
+  const [reports, setReports] = useState(mockReports);
 
+  const handleUploadReport = (newReport) => {
+    setReports((prevReports) => [newReport, ...prevReports]);
+  };
   const [dragOver, setDragOver] = useState(false);
   const [uploadedFile, setUploadedFile] = useState(null);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -96,7 +101,7 @@ const ReportUpload = ({ onUpload }) => {
       fileUrl: uploadedFile ? URL.createObjectURL(uploadedFile) : undefined,
     };
 
-    onUpload(newReport);
+    handleUploadReport(newReport);
 
     // Reset form
     setFormData({
@@ -121,7 +126,7 @@ const ReportUpload = ({ onUpload }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-black">
+    <div className="fade-in max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-black">
       {/* Success Message */}
       {showSuccess && (
         <div className="bg-gradient-to-r from-[#e8f2f1] to-[#f0f5f4] border border-[#8FBEB9] rounded-2xl p-6 mb-8 flex items-center shadow-lg">
