@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { Send, User, Stethoscope, Building2 } from "lucide-react";
 
-const DoctorForm = ({ formData, setFormData, onSubmit, onCancel, editingDoctorId }) => {
+const DoctorForm = ({
+  formData,
+  setFormData,
+  onSubmit,
+  onCancel,
+  editingDoctorId,
+}) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e) => {
@@ -17,7 +23,7 @@ const DoctorForm = ({ formData, setFormData, onSubmit, onCancel, editingDoctorId
   };
 
   return (
-    <div className="bg-[var(--color-card-bg)] rounded-3xl shadow-[var(--color-shadow)] border border-[var(--color-border)] p-8 max-w-3xl mx-auto">
+    <div className="fade-in bg-[var(--color-card-bg)] rounded-3xl shadow-[var(--color-shadow)] border border-[var(--color-border)] p-8 max-w-3xl mx-auto">
       <h3 className="text-3xl font-bold text-[var(--color-card-text)] mb-6">
         {editingDoctorId ? "Edit Doctor" : "Add New Doctor"}
       </h3>
@@ -66,7 +72,11 @@ const DoctorForm = ({ formData, setFormData, onSubmit, onCancel, editingDoctorId
             onChange={handleChange}
             required={!editingDoctorId}
             className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent bg-[var(--color-card-bg)] transition-all"
-            placeholder={editingDoctorId ? "Leave blank to keep current password" : "Enter password"}
+            placeholder={
+              editingDoctorId
+                ? "Leave blank to keep current password"
+                : "Enter password"
+            }
           />
         </div>
 
@@ -151,7 +161,8 @@ const DoctorForm = ({ formData, setFormData, onSubmit, onCancel, editingDoctorId
         {/* Submission Success */}
         {isSubmitted && (
           <div className="mt-6 p-6 bg-[var(--color-border)] border-2 border-[var(--color-primary)] rounded-2xl text-[var(--color-card-text)] font-semibold">
-            Doctor details have been successfully {editingDoctorId ? "updated" : "added"}!
+            Doctor details have been successfully{" "}
+            {editingDoctorId ? "updated" : "added"}!
           </div>
         )}
       </form>
