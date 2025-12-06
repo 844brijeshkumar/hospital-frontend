@@ -30,6 +30,7 @@ const Layout = ({ children, navigation, name }) => {
         navigation={navigation}
         toggleSidebar={toggleSidebar}
         isCollapsed={isCollapsed}
+        name={name}
       />
 
       {/* Main content */}

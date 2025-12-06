@@ -19,7 +19,7 @@ const HospitalDashboard = () => {
   const recentDoctorActivity = doctors?.slice(0, 4) || [];
 
   return (
-    <div className="space-y-12 p-10">
+    <div className="space-y-12 p-10 fade-in">
       {/* --- Top Stats Cards --- */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="bg-gradient-to-r from-[#0b4f4a] via-[#1a756f] to-[#2a9b94] p-6 rounded-3xl shadow-[0_4px_15px_rgba(0,0,0,0.1)] border border-[#d1e8e5] hover:scale-105 transition-transform duration-300 text-white">

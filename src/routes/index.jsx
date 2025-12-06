@@ -36,9 +36,9 @@ const LoginHospital = lazy(() => import("../pages/Hospital/Login"));
 const LoginA = lazy(() => import("../login/aiAssistent"));
 const LoginDoctor = lazy(() => import("../pages/Doctor/Login"));
 const HospitalHomePage = lazy(() => import("../pages/Hospital/Home"));
-const doctor = "doctor";
-const patient = "patient";
-const hospital = "hospital";
+const doctor = "Doctor";
+const patient = "Patient";
+const hospital = "Hospital";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -122,7 +122,7 @@ const router = createBrowserRouter([
     path: "/hospital/dashboard",
     element: (
       // <PrivateRoute allowedRoles={["hospital"]} redirectTo="/login/hospital">
-      <Layout navigation={hospitalNavigation}>
+      <Layout navigation={hospitalNavigation} name={hospital}>
         <HospitalDashboard />
       </Layout>
       // </PrivateRoute>

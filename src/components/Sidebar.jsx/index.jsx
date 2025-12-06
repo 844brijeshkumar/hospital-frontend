@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import { LogOut, User } from "lucide-react";
 
-function Sidebar({ navigation, toggleSidebar, isCollapsed }) {
+function Sidebar({ navigation, toggleSidebar, isCollapsed, name }) {
   // 1. State to manage the sidebar's collapsed state
   //   const [isCollapsed, setIsCollapsed] = useState(false);
   const location = useLocation();
@@ -81,7 +81,7 @@ function Sidebar({ navigation, toggleSidebar, isCollapsed }) {
             className={`${userInfoVisibility} transition-opacity duration-300 flex flex-col`}
           >
             <span className="text-sm font-bold">Name</span>
-            <span className="text-sm">Patient</span>
+            <span className="text-sm">{name}</span>
           </div>
         </div>
         {/* Navigation */}
